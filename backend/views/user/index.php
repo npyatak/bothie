@@ -1,0 +1,53 @@
+<?php
+
+use yii\helpers\Url;
+use yii\helpers\Html;
+use yii\grid\GridView;
+use yii\widgets\Pjax;
+
+$this->title = 'Пользователи';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="user-index">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <?php Pjax::begin(); ?>    
+        <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel,
+            'rowOptions'=>function($model){
+                if($model->status === get_class($model)::STATUS_BANNED) {
+                    return ['class' => 'danger'];
+                }
+            },
+            'columns' => [
+                ['class' => 'yii\grid\SerialColumn'],
+
+                'id',
+                'ig_id',
+                'username',
+                'full_name',
+                'profile_picture',
+                'status',
+                [
+                    'attribute' => 'created_at',
+                    'value' => function($data) {
+                        return date('d.m.Y H:i', $data->created_at);
+                    }
+                ],
+
+                [
+                    'class' => 'yii\grid\ActionColumn',
+                    'template' => '{view} {ban}',
+                    'buttons' => [
+                        'ban' => function ($url, $model) {
+                            $url = Url::toRoute(['/user/ban', 'id'=>$model->id]);
+                            return $model->status === get_class($model)::STATUS_ACTIVE ? Html::a('<span class="glyphicon glyphicon-remove-sign"></span>', $url, ['title' => 'Забанить']) : Html::a('<span class="glyphicon glyphicon-ok-sign"></span>', $url, ['title' => 'Вернуть из бана']);
+                        },
+                    ],
+                ],
+            ],
+        ]); ?>
+    <?php Pjax::end(); ?>
+</div>
