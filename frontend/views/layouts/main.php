@@ -1,8 +1,5 @@
 <?php
-
-/* @var $this \yii\web\View */
-/* @var $content string */
-
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -26,57 +23,63 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Главная', 'url' => ['/site/index']],
-        ['label' => 'Участвовать', 'url' => ['/site/participate']],
-        ['label' => 'Голосовать', 'url' => ['/site/vote']],
-        ['label' => 'Правила', 'url' => ['/site/rules']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
-
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
+<div class="wrapper">
+    <div class="main-menu">
+        <div class="main-menu__inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="main-menu__left">
+                            <a href=""></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <?php
+                        $menuItems = [
+                            ['label' => 'Главная', 'action' => 'index'],
+                            ['label' => 'Участвовать', 'action' => 'participate'],
+                            ['label' => 'Голосовать', 'action' => 'vote'],
+                            ['label' => 'Правила', 'action' => 'rules'],
+                        ];
+                        // if (Yii::$app->user->isGuest) {
+                        //     $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
+                        //     $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+                        // } else {
+                        //     $menuItems[] = '<li>'
+                        //         . Html::beginForm(['/site/logout'], 'post')
+                        //         . Html::submitButton(
+                        //             'Logout (' . Yii::$app->user->identity->username . ')',
+                        //             ['class' => 'btn btn-link logout']
+                        //         )
+                        //         . Html::endForm()
+                        //         . '</li>';
+                        // }
+                        ?>
+                        <div class="nav">
+                            <ul class="ul">
+                                <?php foreach ($menuItems as $item):?>
+                                    <li><?=Html::a($item['label'], Url::toRoute(['site/'.$item['action']]), ['class' => Yii::$app->controller->action->id === $item['action']]);?></li>
+                                <?php endforeach;?>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="main-menu__right">
+                            <a href=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-menu__center"></div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
         <?= $content ?>
     </div>
+    <footer>
+
+    </footer>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
 
 <?php $this->endBody() ?>
 </body>

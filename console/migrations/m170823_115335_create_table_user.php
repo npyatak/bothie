@@ -16,7 +16,7 @@ class m170823_115335_create_table_user extends Migration
             'ig_id' => $this->integer()->notNull(),
             'username' => $this->string()->notNull(),
             'full_name' => $this->string(),
-            'profile_picture' => $this->string(),
+            'image' => $this->string(),
             'bio' => $this->string(),
             'website' => $this->string(),
             'status' => $this->integer(1)->notNull()->defaultValue(1),

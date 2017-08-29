@@ -44,6 +44,18 @@ class UserController extends Controller
         ]);
     }
 
+    public function actionBan($id) {
+        $model = $this->findModel($id);
+        if($model->status === get_class($model)::STATUS_BANNED) {
+            $model->status = get_class($model)::STATUS_ACTIVE;
+        } else {
+            $model->status = get_class($model)::STATUS_BANNED;
+        }
+        $model->save(false, ['status', 'updated_at']);
+
+        return $this->redirect(['index']);
+    }
+
     public function actionDelete($id) {
         $this->findModel($id)->delete();
 

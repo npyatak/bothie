@@ -8,6 +8,7 @@ use common\models\search\WeekSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * WeekController implements the CRUD actions for Week model.
@@ -66,12 +67,26 @@ class WeekController extends Controller
         $model = new Week();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+                       
+            if($model->imageFile) {
+                $path = $model->imageSrcPath;
+                if(!file_exists($path)) {
+                    mkdir($path, 0775, true);
+                }
+
+                $model->image = md5(time()).'.'.$model->imageFile->extension;
+                
+                $model->imageFile->saveAs($path.$model->image);
+                $model->save(false, ['image']);
+            }
+
             return $this->redirect(['index']);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
+        } 
+            
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -85,12 +100,29 @@ class WeekController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+
+            if($model->imageFile) {
+                $path = $model->imageSrcPath;
+                if(!file_exists($path)) {
+                    mkdir($path, 0775, true);
+                }
+                if($model->image && file_exists($path.$model->image)) {
+                    unlink($path.$model->image);
+                }
+
+                $model->image = md5(time()).'.'.$model->imageFile->extension;
+                
+                $model->imageFile->saveAs($path.$model->image);
+                $model->save(false, ['image']);
+            }
+
             return $this->redirect(['index']);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
+        } 
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**

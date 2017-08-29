@@ -9,9 +9,11 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\helpers\Url;
 use yii\web\UploadedFile;
+use frontend\widgets\cropimage\helpers\Image;
 
 use common\models\User;
 use common\models\Post;
+use common\models\PostAction;
 use common\models\Week;
 
 
@@ -85,7 +87,7 @@ class SiteController extends Controller
     public function actionParticipate() {
         $model = new Post();
 
-        if ($model->load(Yii::$app->request->post())) {
+        if(!Yii::$app->user->isGuest && $model->load(Yii::$app->request->post())) {
             $model->user_id = Yii::$app->user->id;
             $model->week_id = Week::getCurrent();
 
@@ -100,9 +102,27 @@ class SiteController extends Controller
                 if(!file_exists($path)) {
                     mkdir($path, 0775, true);
                 }
-                
                 $model->frontImageFile->saveAs($path.$model->front_image);
                 $model->backImageFile->saveAs($path.$model->back_image);
+                
+                Image::cropImageSection($path.$model->front_image, $path.$model->front_image, [
+                    'width' => $model->front_w,
+                    'height' => $model->front_h,
+                    'y' => $model->front_y,
+                    'x' => $model->front_x,
+                    'scale' => $model->front_scale,
+                    'angle' => $model->front_angle,
+                ]);
+                Image::cropImageSection($path.$model->back_image, $path.$model->back_image, [
+                    'width' => $model->back_w,
+                    'height' => $model->back_h,
+                    'y' => $model->back_y,
+                    'x' => $model->back_x,
+                    'scale' => $model->back_scale,
+                    'angle' => $model->back_angle,
+                ]);
+
+
 
                 return $this->redirect(['index']);
             }
@@ -110,6 +130,87 @@ class SiteController extends Controller
 
         return $this->render('participate', [
             'model' => $model,
+        ]);
+    }
+
+    public  function actionImage($id){
+        $post = Post::findOne($id);
+
+        $x = getimagesize($post->frontImageUrl)[0];
+        $y = getimagesize($post->frontImageUrl)[1];
+
+        $outputImage = imagecreatetruecolor($x*2, $y);
+
+        $frontImage = imagecreatefromjpeg($post->frontImageUrl);
+        $backImage = imagecreatefromjpeg($post->backImageUrl);
+
+        imagecopymerge($outputImage, $frontImage, 0, 0, 0, 0, $x, $y, 100);
+        imagecopymerge($outputImage, $backImage, $x, 0, 0, 0, $x, $y, 100);
+
+        header('Content-type: image/jpeg');
+        imagejpeg($outputImage);
+
+        imagedestroy($outputImage);
+        imagedestroy($frontImage);
+        imagedestroy($backImage);
+    }
+
+    public function actionVote() {
+        $query = Post::find();
+        if(!Yii::$app->user->isGuest) {
+            $query->select(['post.*', 'post_action.*'])
+                ->leftJoin([
+                'post_action' => PostAction::find()
+                    ->select(['MAX(post_action.id) as last_user_action_id', 'MAX(post_action.created_at) as last_user_action_time', 'post_action.type', 'post_action.post_id'])
+                    ->where(['post_action.user_id'=>Yii::$app->user->id])
+                    ->groupBy('post_action.type, post_action.post_id')
+                    ->orderBy('post_action.id DESC, post_action.type')
+                    ->asArray()
+                ], 
+                'post_action.post_id = post.id');
+        }        
+        $query->where(['status'=>Post::STATUS_ACTIVE])->limit(12)->orderBy(new \yii\db\Expression('rand()'))->asArray();
+        
+        $posts = $query->all();
+
+        return $this->render('vote', [
+            'posts' => $posts,
+        ]);
+    }
+
+    public function actionUserAction($id, $type=null) {        
+        if(Yii::$app->request->isAjax) {
+            switch ($type) {
+                case 'vk':
+                    $type = PostAction::TYPE_SHARE_VK;
+                    break;
+                case 'fb':
+                    $type = PostAction::TYPE_SHARE_FB;
+                    break;                
+                default:
+                    $type = PostAction::TYPE_LIKE;
+                    break;
+            }
+            $post = Post::findOne($id);
+            if($post !== null && $post->userCan($type)) {
+                echo 'userCan';
+                PostAction::create($id, $type);
+
+                $newScore = Post::find()->select('score')->where(['id' => $id])->column();
+                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                return ['score' => $newScore];
+            }
+        }
+    }
+
+    public function actionPost($id) {
+        $post = Post::findOne($id);
+        if($post === null || $post->status === Post::STATUS_BANNED) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        return $this->render('post', [
+            'post' => $post,
         ]);
     }
 
@@ -209,9 +310,9 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionAbout()
+    public function actionRules()
     {
-        return $this->render('about');
+        return $this->render('rules');
     }
 
     /**
@@ -231,55 +332,6 @@ class SiteController extends Controller
         }
 
         return $this->render('signup', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Requests password reset.
-     *
-     * @return mixed
-     */
-    public function actionRequestPasswordReset()
-    {
-        $model = new PasswordResetRequestForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
-
-                return $this->goHome();
-            } else {
-                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
-            }
-        }
-
-        return $this->render('requestPasswordResetToken', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Resets password.
-     *
-     * @param string $token
-     * @return mixed
-     * @throws BadRequestHttpException
-     */
-    public function actionResetPassword($token)
-    {
-        try {
-            $model = new ResetPasswordForm($token);
-        } catch (InvalidParamException $e) {
-            throw new BadRequestHttpException($e->getMessage());
-        }
-
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->session->setFlash('success', 'New password saved.');
-
-            return $this->goHome();
-        }
-
-        return $this->render('resetPassword', [
             'model' => $model,
         ]);
     }

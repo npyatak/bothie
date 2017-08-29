@@ -25,13 +25,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'filterModel' => $searchModel,
             'columns' => [
                 'number',
-                'name',       
+                'name',  
                 [
                     'attribute' => 'image',
                     'format' => 'raw',
                     'value' => function($data) {
-                        return Html::img($data->image);
-                    },
+                        return Html::img($data->imageUrl, ['width' => '200px']);
+                    }
                 ],
                 'description_1:ntext',
                 'description_2:ntext',

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ba455626a9b53fa2f6ee1ef73d119631",
-    "content-hash": "378f4a9d862dbdfcdf0dc976f0636a19",
+    "hash": "e566032e715245d45ba76707fceef36c",
+    "content-hash": "c284816a00818c1b4053fa40400b76f0",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -89,16 +89,16 @@
         },
         {
             "name": "bower-asset/jquery.inputmask",
-            "version": "3.3.7",
+            "version": "3.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RobinHerbots/Inputmask.git",
-                "reference": "9835731cb78cac749734d94a1cb5bd70da4d3b10"
+                "reference": "791d84990c4a98df1597e9d155be53a3725805dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/9835731cb78cac749734d94a1cb5bd70da4d3b10",
-                "reference": "9835731cb78cac749734d94a1cb5bd70da4d3b10",
+                "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/791d84990c4a98df1597e9d155be53a3725805dd",
+                "reference": "791d84990c4a98df1597e9d155be53a3725805dd",
                 "shasum": ""
             },
             "require": {
@@ -345,6 +345,53 @@
                 "html"
             ],
             "time": "2017-06-03 02:28:16"
+        },
+        {
+            "name": "ijackua/yii2-sharelinks-widget",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iJackUA/yii2-sharelinks-widget.git",
+                "reference": "3b90735ece30d1abf4777e563081122289d058e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iJackUA/yii2-sharelinks-widget/zipball/3b90735ece30d1abf4777e563081122289d058e5",
+                "reference": "3b90735ece30d1abf4777e563081122289d058e5",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "ijackua\\sharelinks\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Evgeniy Kuzminov",
+                    "email": "kyzminov@gmail.com",
+                    "homepage": "http://stdout.in"
+                }
+            ],
+            "description": "Yii2 widget for popular social networks 'share link' generation",
+            "homepage": "https://github.com/iJackUA/yii2-sharelinks-widget",
+            "keywords": [
+                "extension",
+                "network",
+                "share",
+                "social",
+                "widget",
+                "yii"
+            ],
+            "abandoned": true,
+            "time": "2016-08-24 13:30:05"
         },
         {
             "name": "intervention/httpauth",
@@ -4083,7 +4130,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "ijackua/yii2-sharelinks-widget": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

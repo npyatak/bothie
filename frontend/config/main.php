@@ -23,6 +23,10 @@ return [
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
         ],
+        'assetManager' => [
+            'bundles' => [
+            ]
+        ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-frontend',
@@ -66,6 +70,8 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
+                'post/<id:\d+>' => 'site/post',
+                'post/<id:\d+>/image.jpg' => 'site/image',
                 '<action:\w+>' => 'site/<action>',
             ],
         ],
@@ -90,19 +96,7 @@ return [
             'class' => 'yii\web\AssetManager',
             'bundles' => [
                 'yii\web\JqueryAsset' => [
-                    'js' => [
-                        YII_ENV_DEV ? 'jquery.js' : 'jquery.min.js'
-                    ]
-                ],
-                'yii\bootstrap\BootstrapAsset' => [
-                    'css' => [
-                        YII_ENV_DEV ? 'css/bootstrap.css' : 'css/bootstrap.min.css',
-                    ]
-                ],
-                'yii\bootstrap\BootstrapPluginAsset' => [
-                    'js' => [
-                        YII_ENV_DEV ? 'js/bootstrap.js' : 'js/bootstrap.min.js',
-                    ]
+                    'js' => ['/js/jquery-3.2.1.min.js'],
                 ],
             ],
         ],

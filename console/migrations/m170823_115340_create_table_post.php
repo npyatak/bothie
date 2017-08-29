@@ -19,6 +19,7 @@ class m170823_115340_create_table_post extends Migration
             'back_image' => $this->string(),
             'score' => $this->integer()->notNull()->defaultValue(0),
             'status' => $this->integer(1)->notNull()->defaultValue(1),
+            'is_from_ig' => $this->integer(1),
 
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),

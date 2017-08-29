@@ -1,0 +1,305 @@
+
+.main-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+.main-menu__inner {
+    height: 115px;
+    line-height: 115px;
+}
+.main-menu__left {
+    position: relative;
+    float: left;
+    width: 220px;
+}
+.main-menu__right {
+    float: right;
+    width: 202px;
+    padding: 0 30px;
+}
+.main-menu__center {
+
+}
+.main-menu__right a {
+    display: inline-block;
+    height: 115px;
+    width: 100%;
+    background: url('../images/logo/logo_nokia.png') no-repeat center;
+    -webkit-background-size: contain;
+    background-size: contain;
+}
+.main-menu__left a {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 142px;
+    background: url('../images/logo/logo_friday.png') no-repeat center;
+    -webkit-background-size: contain;
+    background-size: contain;
+}
+.nav a {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    padding: 15px;
+    border: 5px solid transparent;
+    color: #fff;
+}
+.nav a.active, .nav a:hover {
+    border-color: #de9c78;
+    text-decoration: none;
+}
+.nav .ul::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.nav .ul li {
+    float: left;
+    margin-right: 52px;
+}
+.nav .ul li:last-child {
+    margin-right: 0;
+}
+.main-page {
+    background: url('../images/backgrounds/main_Nokia_16.jpg') no-repeat top center;
+    -webkit-background-size: 1600px;
+    background-size: 1600px;
+}
+header .top-layer {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    z-index: 2;
+}
+/*header .middle-layer {*/
+    /*position: absolute;*/
+    /*top: 354px;*/
+    /*left: 50%;*/
+    /*-webkit-transform: translateX(-50%) rotate(4deg);*/
+    /*-moz-transform: translateX(-50%) rotate(4deg);*/
+    /*-ms-transform: translateX(-50%) rotate(4deg);*/
+    /*-o-transform: translateX(-50%) rotate(4deg);*/
+    /*transform: translateX(-50%) rotate(4deg);*/
+    /*z-index: 1;*/
+/*}*/
+header .bottom-layer {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    z-index: 1;
+}
+header .bottom-layer::before {
+
+}
+/*header .top-layer::after {*/
+    /*content: '';*/
+    /*display: block;*/
+    /*position: absolute;*/
+    /*top: 108px;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*height: 120px;*/
+    /*background: #124191;*/
+    /*-webkit-transform: rotate(-22.5deg);*/
+    /*-moz-transform: rotate(-22.5deg);*/
+    /*-ms-transform: rotate(-22.5deg);*/
+    /*-o-transform: rotate(-22.5deg);*/
+    /*transform: rotate(-22.5deg);*/
+    /*z-index: -1;*/
+/*}*/
+header .top-figure img {
+    display: block;
+    width: 900px;
+}
+header .top.row {
+    position: relative;
+    z-index: 3;
+}
+header .bottom.row {
+    position: relative;
+    margin-top: 193px;
+    z-index: 0;
+}
+.header-footer {
+    position: relative;
+    margin-top: 120px;
+    padding-bottom: 25px;
+}
+.shares {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+.shares-title {
+    margin-bottom: 25px;
+    color: #de9c78;
+    font-size: 12px;
+}
+.shares ul::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.shares li {
+    display: inline-block;
+    margin-right: 50px;
+}
+.shares li:last-child {
+    margin-right: 0;
+}
+.shares li a {
+    color: #de9c78;
+    font-size: 25px;
+}
+.screen-second {
+    padding-top: 155px;
+    padding-bottom: 80px;
+}
+.screen-second .middle {
+    margin-top: 40px;
+    color: #fff;
+}
+.screen-second p {
+    margin: 0;
+}
+.screen-second .links {
+    padding: 40px 0;
+}
+.screen-second .left {
+    padding-top: 60px;
+    text-align: right;
+}
+.screen-second .left img {
+    margin-right: -30px;
+}
+.screen-second .left .img-caption {
+    width: 122px;
+    margin-top: 20px;
+    margin-left: 200px;
+    text-align: center;
+    color: #fff;
+}
+.screen-second .right {
+    padding-top: 120px;
+}
+.screen-second .right img {
+    margin-left: -30px;
+}
+.screen-second .bottom-p {
+    margin-top: 30px;
+    text-transform: uppercase;
+    color: #021234;
+    font-size: 30px;
+    line-height: 30px;
+}
+.screen-second .bottom-p span {
+    text-transform: none;
+}
+.screen-second .button-wrap {
+    margin-top: 70px;
+}
+.screen-third {
+    padding-top: 155px;
+    padding-bottom: 80px;
+}
+.simple-bothie-block {
+    margin-top: 75px;
+    background: #fff;
+}
+.simple-bothie-block .img-wrap .left, .simple-bothie-block .img-wrap .right {
+    float: left;
+    width: 50%;
+}
+.simple-bothie-block .simple-bothie__content {
+    padding: 40px 45px 30px;
+    color: #001135;
+}
+.simple-bothie-block .title-bothie {
+    margin: 0;
+    text-transform: uppercase;
+}
+.simple-bothie-block p {
+    margin: 0;
+}
+.simple-bothie-block .descr-bothie {
+    padding: 35px 0 30px;
+}
+.screen-fourth {
+    padding-top: 210px;
+    padding-bottom: 50px;
+}
+.screen-fourth .title-lg {
+    margin-bottom: 35px;
+}
+.screen-fourth .links {
+    margin: 35px 0;
+}
+.screen-fifth {
+    padding-top: 180px;
+    padding-bottom: 55px;
+}
+.screen-fifth .title-lg {
+    margin-bottom: 30px;
+}
+#screen-fifth__carousel {
+    margin-top: 90px;
+}
+#screen-fifth__carousel .owl-prev .owl-left-icon {
+    margin-right: 35px;
+}
+#screen-fifth__carousel .owl-next .owl-right-icon {
+    margin-left: 35px;
+}
+#screen-fifth__carousel .owl-prev {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+#screen-fifth__carousel .owl-next {
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.screen-fifth .bottom-p {
+    max-width: 372px;
+    margin: 50px auto 0;
+    text-transform: uppercase;
+    color: #021234;
+    font-size: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+.screen-fifth .links {
+    margin-top: 45px;
+}

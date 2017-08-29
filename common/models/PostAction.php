@@ -20,7 +20,8 @@ use Yii;
 class PostAction extends \yii\db\ActiveRecord
 {
     const TYPE_LIKE = 1;
-    const TYPE_SHARE = 2;
+    const TYPE_SHARE_VK = 2;
+    const TYPE_SHARE_FB = 3;
     /**
      * @inheritdoc
      */
@@ -40,7 +41,7 @@ class PostAction extends \yii\db\ActiveRecord
             [['post_id'], 'exist', 'skipOnError' => true, 'targetClass' => Post::className(), 'targetAttribute' => ['post_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
             
-            ['type', 'in', [self::TYPE_LIKE, self::TYPE_SHARE]],
+            ['type', 'in',  'range' => [self::TYPE_LIKE, self::TYPE_SHARE_VK, self::TYPE_SHARE_FB]],
         ];
     }
 
@@ -60,13 +61,22 @@ class PostAction extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
-            'post_id' => 'Post ID',
-            'type' => 'Type',
-            'score' => 'Score',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'user_id' => 'Пользователь',
+            'post_id' => 'Пост',
+            'type' => 'Тип',
+            'score' => 'Баллы',
+            'created_at' => 'Дата/Время',
         ];
+    }
+
+    public function afterSave($insert, $changedAttributes) {
+        $this->post->score = PostAction::find()->where(['post_id'=>$this->post->id])->sum('score');
+        $this->post->save(false, ['score']);
+        // $userWeekScore = new UserWeekScore;
+        // $userWeekScore->score = PostAction::find()->select('SUM(score)')->where(['post_id'=>$this->post_id])->column();
+        // $userWeekScore->save(false, ['score']);
+
+        return parent::afterSave($insert, $changedAttributes);
     }
 
     /**
@@ -85,18 +95,31 @@ class PostAction extends \yii\db\ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
-    public static function getScoreArray() {
+    public static function getTypeArray() {
+        return [
+            self::TYPE_LIKE => 'Лайк',
+            self::TYPE_SHARE_VK => 'Поделиться ВК',
+            self::TYPE_SHARE_FB => 'Поделиться FB',
+        ];
+    }
+
+    public function getTypeLabel() {
+        return self::getTypeArray()[$this->type];
+    }
+
+    public function getTypeScores() {
         return [
             self::TYPE_LIKE => 1,
-            self::TYPE_SHARE => 2,
+            self::TYPE_SHARE_VK => 2,
+            self::TYPE_SHARE_FB => 2,
         ];
     }
 
     public function getScoreInitial() {
-        return self::getScoreArray()[$this->type];
+        return self::getTypeScores()[$this->type];
     }
 
-    public function create($post_id, $type) {
+    public static function create($post_id, $type) {
         $model = new self;
         $model->user_id = Yii::$app->user->id;
         $model->post_id = $post_id;
@@ -104,5 +127,9 @@ class PostAction extends \yii\db\ActiveRecord
         $model->score = $model->scoreInitial;
 
         $model->save();
+    }
+
+    public static function userCanDo($lastActionTime) {
+        return strtotime('today midnight') > $lastActionTime;
     }
 }

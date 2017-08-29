@@ -2,10 +2,12 @@
 
 use yii\helpers\Url;
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 
 use common\models\Post;
+use common\models\Week;
 
 $this->title = 'Посты';
 $this->params['breadcrumbs'][] = $this->title;
@@ -27,6 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 ['class' => 'yii\grid\SerialColumn'],
 
                 'id',
+                [
+                    'attribute' => 'week_id',
+                    'value' => function($data) {
+                        return $data->week->name;
+                    },
+                    'filter' => Html::activeDropDownList($searchModel, 'week_id', ArrayHelper::map(Week::find()->all(), 'id', 'name'), ['prompt'=>'']),
+                ],
                 [
                     'attribute' => 'user_id',
                     'value' => function($data) {

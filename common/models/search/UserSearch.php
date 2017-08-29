@@ -19,7 +19,7 @@ class UserSearch extends User
     {
         return [
             [['id', 'ig_id', 'created_at', 'updated_at'], 'integer'],
-            [['username', 'full_name', 'profile_picture', 'bio', 'website'], 'safe'],
+            [['username', 'full_name', 'bio', 'website'], 'safe'],
         ];
     }
 
@@ -67,7 +67,6 @@ class UserSearch extends User
 
         $query->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'full_name', $this->full_name])
-            ->andFilterWhere(['like', 'profile_picture', $this->profile_picture])
             ->andFilterWhere(['like', 'bio', $this->bio])
             ->andFilterWhere(['like', 'website', $this->website]);
 

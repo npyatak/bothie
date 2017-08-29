@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -7,7 +8,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Post */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Posts', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Посты', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="post-view">
@@ -15,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Ban', ['ban', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -29,13 +30,48 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'user_id',
-            'front_image',
-            'back_image',
+            [
+                'attribute' => 'user_id',
+                'format' => 'raw',
+                'value' => function($model) {
+                    return Html::a($model->user->username, Url::toRoute(['/user/view', 'id'=>$model->user->id]));
+                }
+            ],            
+            [
+                'attribute' => 'front_image',
+                'format' => 'raw',
+                'value' => function($model) {
+                    return Html::img($model->frontImageUrl);
+                }
+            ],
+            [
+                'attribute' => 'back_image',
+                'format' => 'raw',
+                'value' => function($model) {
+                    return Html::img($model->backImageUrl);
+                }
+            ],
             'score',
-            'status',
-            'created_at',
-            'updated_at',
+            
+            [
+                'attribute' => 'status',
+                'format' => 'raw',
+                'value' => function($model) {
+                    return $model->statusLabel;
+                }
+            ],
+            [
+                'attribute' => 'created_at',
+                'value' => function($model) {
+                    return date('d.m.Y H:i', $model->created_at);
+                }
+            ],
+            [
+                'attribute' => 'updated_at',
+                'value' => function($model) {
+                    return date('d.m.Y H:i', $model->updated_at);
+                }
+            ],
         ],
     ]) ?>
 

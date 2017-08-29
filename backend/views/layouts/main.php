@@ -39,7 +39,7 @@ AppAsset::register($this);
         ['label' => 'Недели', 'url' => ['/week']],
         ['label' => 'Пользователи', 'url' => ['/user']],
         ['label' => 'Посты', 'url' => ['/post']],
-        ['label' => 'Действия', 'url' => ['/user-week-action']],
+        ['label' => 'Действия', 'url' => ['/post-action']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Войти', 'url' => ['/site/login']];

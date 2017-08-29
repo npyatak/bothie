@@ -28,15 +28,26 @@ $this->params['breadcrumbs'][] = $this->title;
                 'ig_id',
                 'username',
                 'full_name',
-                'profile_picture',
-                'status',
+                [
+                    'attribute' => 'image',
+                    'format' => 'raw',
+                    'value' => function($data) {
+                        return Html::img($data->imageUrl, ['width' => '200px']);
+                    }
+                ],
+                [
+                    'attribute' => 'status',
+                    'value' => function($data) {
+                        return $data->statusLabel;
+                    },
+                    'filter' => Html::activeDropDownList($searchModel, 'status', $dataProvider->query->modelClass::getStatusArray(), ['prompt'=>'']),
+                ],
                 [
                     'attribute' => 'created_at',
                     'value' => function($data) {
                         return date('d.m.Y H:i', $data->created_at);
                     }
                 ],
-
                 [
                     'class' => 'yii\grid\ActionColumn',
                     'template' => '{view} {ban}',

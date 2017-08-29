@@ -1,0 +1,2 @@
+<a class="btn bt-danger fb" onclick="Share.facebook('<?=$id;?>', '<?=$url;?>','<?=$title;?>','<?=$image;?>','<?=$desc;?>')">fb</a>
+<a class="btn bt-danger vk" onclick="Share.vkontakte('<?=$id;?>', '<?=$url;?>','<?=$title;?>','<?=$image;?>','<?=$desc;?>')">vk</a>

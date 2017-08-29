@@ -11,7 +11,7 @@ use Yii;
  * @property integer $ig_id
  * @property string $username
  * @property string $full_name
- * @property string $profile_picture
+ * @property string $image
  * @property string $bio
  * @property string $website
  * @property integer $created_at
@@ -43,7 +43,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             [['ig_id', 'username', 'status', 'created_at', 'updated_at'], 'required'],
             [['ig_id', 'status', 'created_at', 'updated_at'], 'integer'],
             ['status', 'in', [self::STATUS_ACTIVE, self::STATUS_BANNED]],
-            [['username', 'full_name', 'profile_picture', 'bio', 'website'], 'string', 'max' => 255],
+            [['username', 'full_name', 'image', 'bio', 'website'], 'string', 'max' => 255],
         ];
     }
 
@@ -54,15 +54,35 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             'id' => 'ID',
-            'ig_id' => 'Ig ID',
+            'ig_id' => 'ID инстаграмма',
             'username' => 'Username',
-            'full_name' => 'Full Name',
-            'profile_picture' => 'Profile Picture',
+            'status' => 'Статус',
+            'full_name' => 'Имя',
+            'image' => 'Аватар',
             'bio' => 'Bio',
-            'website' => 'Website',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'website' => 'Сайт',
+            'created_at' => 'Дата/Время создания',
+            'updated_at' => 'Время последнего изменения',
         ];
+    }
+
+    public function behaviors() {
+        return [
+            [
+                'class' => \yii\behaviors\TimestampBehavior::className(),
+            ],
+        ];
+    }
+
+    public static function getStatusArray() {
+        return [
+            self::STATUS_ACTIVE => 'Активен',
+            self::STATUS_BANNED => 'Забанен',
+        ];
+    }
+
+    public function getStatusLabel() {
+        return self::getStatusArray()[$this->status];
     }
 
     public function getId() {
@@ -109,11 +129,11 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return $this->hasMany(Post::className(), ['user_id' => 'id']);
     }
 
-    public function getUserWeekScores() {
-        return $this->hasMany(UserWeekScore::className(), ['user_id' => 'id']);
-    }
-
     public function getPostActions() {
         return $this->hasMany(PostAction::className(), ['user_id' => 'id']);
+    }
+
+    public function getImageUrl() {
+        return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl('/uploads/user/'.$this->image);
     }
 }

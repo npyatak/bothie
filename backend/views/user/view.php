@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\User */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Пользователи', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-view">
@@ -21,11 +21,34 @@ $this->params['breadcrumbs'][] = $this->title;
             'ig_id',
             'username',
             'full_name',
-            'profile_picture',
+            [
+                'attribute' => 'image',
+                'format' => 'raw',
+                'value' => function($model) {
+                    return Html::img($model->imageUrl);
+                }
+            ],
             'bio',
             'website',
-            'created_at',
-            'updated_at',
+            [
+                'attribute' => 'status',
+                'format' => 'raw',
+                'value' => function($model) {
+                    return $model->statusLabel;
+                }
+            ],
+            [
+                'attribute' => 'created_at',
+                'value' => function($model) {
+                    return date('d.m.Y H:i', $model->created_at);
+                }
+            ],
+            [
+                'attribute' => 'updated_at',
+                'value' => function($model) {
+                    return date('d.m.Y H:i', $model->updated_at);
+                }
+            ],
         ],
     ]) ?>
 

@@ -3,22 +3,8 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\Url;
 
-/**
- * This is the model class for table "{{%post}}".
- *
- * @property integer $id
- * @property integer $user_id
- * @property string $front_image
- * @property string $back_image
- * @property integer $score
- * @property integer $status
- * @property integer $created_at
- * @property integer $updated_at
- *
- * @property User $user
- * @property PostAction[] $postActions
- */
 class Post extends \yii\db\ActiveRecord
 {
     const STATUS_ACTIVE = 1;
@@ -26,6 +12,19 @@ class Post extends \yii\db\ActiveRecord
 
     public $frontImageFile;
     public $backImageFile;
+
+    public $front_x;
+    public $front_y;
+    public $front_w;
+    public $front_h;
+    public $front_scale;
+    public $front_angle;
+    public $back_x;
+    public $back_y;
+    public $back_w;
+    public $back_h;
+    public $back_scale;
+    public $back_angle;
     /**
      * @inheritdoc
      */
@@ -41,10 +40,11 @@ class Post extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'frontImageFile', 'backImageFile'], 'required'],
-            [['user_id', 'score', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['user_id', 'score', 'status', 'created_at', 'updated_at', 'is_from_ig'], 'integer'],
             [['front_image', 'back_image'], 'string', 'max' => 255],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
 
+            [['front_x', 'front_y', 'front_w', 'front_h', 'front_scale', 'front_angle', 'back_x', 'back_y', 'back_w', 'back_h', 'back_scale', 'back_angle'], 'safe'],
             [['frontImageFile'], 'file', 'skipOnEmpty' => false, 'extensions'=>'jpg, jpeg, png', 'maxSize'=>1024 * 1024 * 5, 'mimeTypes' => 'image/jpg, image/jpeg, image/png'],
             [['backImageFile'], 'file', 'skipOnEmpty' => false, 'extensions'=>'jpg, jpeg, png', 'maxSize'=>1024 * 1024 * 5, 'mimeTypes' => 'image/jpg, image/jpeg, image/png'],
         ];
@@ -54,7 +54,7 @@ class Post extends \yii\db\ActiveRecord
         return [
             [
                 'class' => \yii\behaviors\TimestampBehavior::className(),
-            ]
+            ],
         ];
     }
 
@@ -65,13 +65,13 @@ class Post extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
-            'front_image' => 'Front Image',
-            'back_image' => 'Back Image',
-            'score' => 'Score',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'user_id' => 'Пользователь',
+            'front_image' => 'Фото с фронтальной камеры',
+            'back_image' => 'Фото с тыловой камеры',
+            'score' => 'Баллы',
+            'status' => 'Статус',
+            'created_at' => 'Дата/Время создания',
+            'updated_at' => 'Время последнего изменения',
         ];
     }
 
@@ -94,12 +94,21 @@ class Post extends \yii\db\ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
+    public function getWeek()
+    {
+        return $this->hasOne(Week::className(), ['id' => 'week_id']);
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getPostActions()
     {
         return $this->hasMany(PostAction::className(), ['post_id' => 'id']);
+    }
+
+    public function getUrl() {
+        return Url::toRoute(['/site/post', 'id'=>$this->id]);
     }
 
     public function getImageSrcPath() {
@@ -114,6 +123,10 @@ class Post extends \yii\db\ActiveRecord
         return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl('/uploads/post/'.$this->user_id.'/'.$this->back_image);
     }
 
+    public function getGluedImageUrl() {
+        return Url::toRoute(['site/image', 'id'=>$this->id]);
+    }
+
     public static function getStatusArray() {
         return [
             self::STATUS_ACTIVE => 'Активен',
@@ -123,5 +136,24 @@ class Post extends \yii\db\ActiveRecord
 
     public function getStatusLabel() {
         return self::getStatusArray()[$this->status];
+    }
+
+    public function getLastUserActions() {
+        return PostAction::find()
+            ->select(['MAX(id) as last_user_action_id', 'MAX(created_at) as last_user_action_time', 'type'])
+            ->where(['user_id'=>Yii::$app->user->id, 'post_id'=>$this->id])
+            ->groupBy('type, post_id')
+            ->orderBy('id DESC, type')
+            ->indexBy('type')
+            ->asArray()
+            ->all();
+    }
+
+    public function userCan($type) {
+        if(isset($this->lastUserActions[$type]) && !PostAction::userCanDo($this->lastUserActions[$type]['last_user_action_time'])) {
+            return false;
+        }
+
+        return true;
     }
 }

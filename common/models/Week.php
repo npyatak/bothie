@@ -47,7 +47,7 @@ class Week extends \yii\db\ActiveRecord
             [['image'], 'string', 'max' => 255],
             [['number'], 'unique'],
             
-            [['imageFile'], 'file', 'extensions'=>'jpg, jpeg, png', 'maxSize'=>1024 * 1024 * 5],
+            [['imageFile'], 'file', 'extensions'=>'jpg, jpeg, png', 'maxSize'=>1024 * 1024 * 5, 'mimeTypes' => 'image/jpg, image/jpeg, image/png'],
         ];
     }
 
@@ -67,6 +67,14 @@ class Week extends \yii\db\ActiveRecord
         ];
     }
 
+    public function afterDelete() {
+        $path = $this->imageSrcPath;
+        if(file_exists($path.$this->image) && is_file($path.$this->image)) {
+            unlink($path.$this->image);
+        }
+        return parent::afterDelete();
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -81,6 +89,14 @@ class Week extends \yii\db\ActiveRecord
     public function getUserWeekScores()
     {
         return $this->hasMany(UserWeekScore::className(), ['week_id' => 'id']);
+    }
+
+    public function getImageSrcPath() {
+        return __DIR__ . '/../../frontend/web/uploads/week/';
+    }
+
+    public function getImageUrl() {
+        return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl('/uploads/week/'.$this->image);
     }
 
     public static function getStatusArray() {

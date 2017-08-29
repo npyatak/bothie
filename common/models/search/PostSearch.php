@@ -18,7 +18,7 @@ class PostSearch extends Post
     public function rules()
     {
         return [
-            [['id', 'user_id', 'score', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'user_id', 'week_id', 'score', 'status', 'created_at', 'updated_at'], 'integer'],
             [['front_image', 'back_image'], 'safe'],
         ];
     }
@@ -61,6 +61,7 @@ class PostSearch extends Post
         $query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,
+            'week_id' => $this->week_id,
             'score' => $this->score,
             'status' => $this->status,
             'created_at' => $this->created_at,
