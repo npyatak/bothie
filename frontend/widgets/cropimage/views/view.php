@@ -8,12 +8,6 @@ $removeBtn = !empty($template_image) ? '' : 'hidden';
 $emptyBlock = empty($template_image) ? '' : 'hidden';
 ?>
     <div class="mr-section-base <?= $class_block ?>" style="width: <?= $plugin_options['width'] + 4 ?>px; ">
-
-        <div class="mr-upload-block mr-tmp-clear-block hidden">
-            <i class="fa fa-photo fa-5x" style="margin-top:<?= $plugin_options['height'] / 3 ?>px;"></i>
-            <h2>Нажмите на поле, чтобы загрузить изображение</h2>
-        </div>
-
         <div class="mr-section" id="<?= $plugin_options['section'] ?>" data-role="upload_image"
              style="width: <?= $plugin_options['width'] + 4 ?>px; height: <?= $plugin_options['height'] + 3 ?>px;  ">
             <?php if ($template_image): ?>
@@ -44,7 +38,7 @@ $emptyBlock = empty($template_image) ? '' : 'hidden';
                 <span class="glyphicon glyphicon-upload"></span>
             </button>
         </div>
-        <?= $form->field($model, $attribute, ['template'=>'{input}'])->fileInput($options); ?>
+        <?= $form->field($model, $attribute, ['template' => '{input}'])->fileInput($options); ?>
         
         <?=Html::activeHiddenInput($model, $attribute_x) ?>
         <?=Html::activeHiddenInput($model, $attribute_y) ?>

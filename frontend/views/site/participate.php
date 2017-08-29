@@ -31,8 +31,8 @@ use yii\widgets\ActiveForm;
             //'attribute_remove'=>'front_remove',
             'class_block'=>'center-block',
             'plugin_options' => [
-                'width' => 250,
-                'height' => 250,
+                'width' => Yii::$app->params['postImageSize']['width'],
+                'height' => Yii::$app->params['postImageSize']['height'],
                 'id_input_file' => 'front_image_file',
                 'section' => 'front'
             ],
@@ -55,8 +55,8 @@ use yii\widgets\ActiveForm;
             //'attribute_remove'=>'back_remove',
             'class_block'=>'center-block',
             'plugin_options' => [
-                'width' => 250,
-                'height' => 250,
+                'width' => Yii::$app->params['postImageSize']['width'],
+                'height' => Yii::$app->params['postImageSize']['height'],
                 'id_input_file' => 'back_image_file',
                 'section' => 'back'
             ],

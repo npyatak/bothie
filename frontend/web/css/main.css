@@ -1,4 +1,6 @@
-
+.hidden {
+    display: none;
+}
 .main-menu {
     position: fixed;
     top: 0;
