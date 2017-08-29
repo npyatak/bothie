@@ -8,8 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $model common\models\Week */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
-<div class="week-form">
+<div class="main-page">
 
     <?php $form = ActiveForm::begin([
     	'options' => ['enctype' => 'multipart/form-data'],
@@ -69,8 +68,7 @@ use yii\widgets\ActiveForm;
 
     <?php ActiveForm::end(); ?>
 
+    <?php foreach (Yii::$app->user->identity->posts as $post):?>
+        <?=$this->render('_post', ['post' => $post]);?>
+    <?php endforeach;?>
 </div>
-
-<?php foreach (Yii::$app->user->identity->posts as $post):?>
-    <?=$this->render('_post', ['post' => $post]);?>
-<?php endforeach;?>

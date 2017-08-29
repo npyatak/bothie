@@ -20,8 +20,7 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "nodge/yii2-eauth": "~2.0",
         "skeeks/yii2-assets-auto-compress": "*",
-        "mihaildev/yii2-ckeditor": "*",
-        "ijackua/yii2-sharelinks-widget": "dev-master"
+        "mihaildev/yii2-ckeditor": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
