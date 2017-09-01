@@ -1,6 +1,4 @@
-.hidden {
-    display: none;
-}
+
 .main-menu {
     position: fixed;
     top: 0;
@@ -85,15 +83,15 @@ header .top-layer {
     z-index: 2;
 }
 /*header .middle-layer {*/
-    /*position: absolute;*/
-    /*top: 354px;*/
-    /*left: 50%;*/
-    /*-webkit-transform: translateX(-50%) rotate(4deg);*/
-    /*-moz-transform: translateX(-50%) rotate(4deg);*/
-    /*-ms-transform: translateX(-50%) rotate(4deg);*/
-    /*-o-transform: translateX(-50%) rotate(4deg);*/
-    /*transform: translateX(-50%) rotate(4deg);*/
-    /*z-index: 1;*/
+/*position: absolute;*/
+/*top: 354px;*/
+/*left: 50%;*/
+/*-webkit-transform: translateX(-50%) rotate(4deg);*/
+/*-moz-transform: translateX(-50%) rotate(4deg);*/
+/*-ms-transform: translateX(-50%) rotate(4deg);*/
+/*-o-transform: translateX(-50%) rotate(4deg);*/
+/*transform: translateX(-50%) rotate(4deg);*/
+/*z-index: 1;*/
 /*}*/
 header .bottom-layer {
     position: absolute;
@@ -110,20 +108,20 @@ header .bottom-layer::before {
 
 }
 /*header .top-layer::after {*/
-    /*content: '';*/
-    /*display: block;*/
-    /*position: absolute;*/
-    /*top: 108px;*/
-    /*left: 0;*/
-    /*right: 0;*/
-    /*height: 120px;*/
-    /*background: #124191;*/
-    /*-webkit-transform: rotate(-22.5deg);*/
-    /*-moz-transform: rotate(-22.5deg);*/
-    /*-ms-transform: rotate(-22.5deg);*/
-    /*-o-transform: rotate(-22.5deg);*/
-    /*transform: rotate(-22.5deg);*/
-    /*z-index: -1;*/
+/*content: '';*/
+/*display: block;*/
+/*position: absolute;*/
+/*top: 108px;*/
+/*left: 0;*/
+/*right: 0;*/
+/*height: 120px;*/
+/*background: #124191;*/
+/*-webkit-transform: rotate(-22.5deg);*/
+/*-moz-transform: rotate(-22.5deg);*/
+/*-ms-transform: rotate(-22.5deg);*/
+/*-o-transform: rotate(-22.5deg);*/
+/*transform: rotate(-22.5deg);*/
+/*z-index: -1;*/
 /*}*/
 header .top-figure img {
     display: block;
@@ -304,4 +302,63 @@ header .bottom.row {
 }
 .screen-fifth .links {
     margin-top: 45px;
+}
+.personal-account {
+    padding-top: 165px;
+    padding-bottom: 180px;
+    background: url('../images/backgrounds/PersonalAccount_Nokia_8.jpg') no-repeat top center;
+    -webkit-background-size: 1600px;
+    background-size: 1600px;
+}
+.personal-account__inner {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.p-a_links-week::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.p-a_links-week {
+    margin-top: 55px;
+    margin-left: -10px;
+}
+.p-a_links-week>div {
+    float: left;
+    width: 25%;
+}
+.p-a_links-week a {
+    display: inline-block;
+    width: 88px;
+    padding: 20px 0;
+    border: 5px solid transparent;
+    line-height: 20px;
+    text-align: center;
+}
+.p-a_links-week a.active{
+    width: 123px;
+    padding: 20px;
+    border-color: #de9c78;
+}
+.p-a_links-week a:hover {
+    color: #fff;
+}
+.p-a_links-week a.disabled {
+    color: #8697bc !important;
+    cursor: default;
+}
+.p-a_links-week>div:first-child {
+    text-align: left;
+    padding-left: 0;
+}
+.p-a_links-week>div:last-child {
+    text-align: right;
+}
+.p-a__title {
+    height: 62px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background: url('../images/screen/screen-second-title.png') no-repeat center;
+    -webkit-background-size: 190px;
+    background-size: 190px;
 }
