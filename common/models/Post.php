@@ -68,6 +68,8 @@ class Post extends \yii\db\ActiveRecord
             'user_id' => 'Пользователь',
             'front_image' => 'Фото с фронтальной камеры',
             'back_image' => 'Фото с тыловой камеры',
+            'frontImageFile' => 'Фото с фронтальной камеры',
+            'backImageFile' => 'Фото с тыловой камеры',
             'score' => 'Баллы',
             'status' => 'Статус',
             'created_at' => 'Дата/Время создания',

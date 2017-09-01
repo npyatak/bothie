@@ -58,7 +58,7 @@ function mr_section_init(default_options) {
                 $templateClear.find('h2').css("font-size", font_size);
                 $templateClear.find('.fa-photo').css("font-size", font_size_icon);
             }
-            $(default_options.id_input_file).replaceWith( $(default_options.id_input_file).clone( true ) );
+            $(default_options.id_input_file).replaceWith($(default_options.id_input_file).clone( true ));
             if($block.find('.mr-remove-input').length){
                 $block.find('.mr-remove-input').val(1);
             }
@@ -71,15 +71,15 @@ function mr_section_init(default_options) {
      * Dynamic preview image and Initialization widget croping
      */
     $(default_options.id_input_file).change(function () {
-        $(this).siblings('.mr-data-inputs').find('.mr-x').val(default_options.x);
-        $(this).siblings('.mr-data-inputs').find('.mr-y').val(default_options.y);
-        $(this).siblings('.mr-data-inputs').find('.mr-w').val(default_options.width);
-        $(this).siblings('.mr-data-inputs').find('.mr-h').val(default_options.height);
-        $(this).siblings('.mr-data-inputs').find('.mr-scale').val(default_options.scale);
-        $(this).siblings('.mr-data-inputs').find('.mr-angle').val(default_options.angle);
+        $(this).closest('.mr-section-base').find('.mr-x').val(default_options.x);
+        $(this).closest('.mr-section-base').find('.mr-y').val(default_options.y);
+        $(this).closest('.mr-section-base').find('.mr-w').val(default_options.width);
+        $(this).closest('.mr-section-base').find('.mr-h').val(default_options.height);
+        $(this).closest('.mr-section-base').find('.mr-scale').val(default_options.scale);
+        $(this).closest('.mr-section-base').find('.mr-angle').val(default_options.angle);
 
-        var $section = $(this).siblings('[data-role="upload_image"]');
-         readURL(this, $section);
+        var $section = $(this).closest('.mr-section-base').find('[data-role="upload_image"]');
+        readURL(this, $section);
 
     });
 
@@ -127,9 +127,12 @@ function mr_section_init(default_options) {
             $(this).on('guillotinechange', function (ev, data, action) {
                 data.scale = parseFloat(data.scale.toFixed(4));
 
-                options.data_block.find('.mr-origin-height').val($(this).height());
-                options.data_block.find('.mr-origin-width').val($(this).width());
+                //options.data_block.find('.mr-origin-height').val($(this).height());
+                //options.data_block.find('.mr-origin-width').val($(this).width());
+                console.log(options.data_block);
                 for (var k in data) {
+                    console.log(k);
+                    console.log(data[k]);
                     options.data_block.find('.mr-' + k).val(data[k]);
                 }
             });
@@ -182,14 +185,14 @@ function mr_section_init(default_options) {
                 }
                 // Initialization crop widget
                 $img.init_crop({
-                    nav_block: $section.siblings('.mr-control-panel'),
+                    nav_block: $section.closest('.mr-section-base').find('.mr-control-panel'),
                     width: default_options.width,
                     height: default_options.height,
-                    data_block: $section.siblings('.mr-data-inputs')
+                    data_block: $section.closest('.mr-section-base').find('.mr-data-inputs')
                 });
 
-                $section.siblings('.mr-data-inputs').find('.mr-origin-height').val($img.height());
-                $section.siblings('.mr-data-inputs').find('.mr-origin-width').val($img.width());
+                //$section.siblings('.mr-data-inputs').find('.mr-origin-height').val($img.height());
+                //$section.siblings('.mr-data-inputs').find('.mr-origin-width').val($img.width());
             };
             reader.readAsDataURL(input.files[0]);
         }

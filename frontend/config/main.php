@@ -5,6 +5,7 @@ $params = array_merge(
     require(__DIR__ . '/params.php'),
     require(__DIR__ . '/params-local.php')
 );
+$baseUrl = str_replace('/frontend/web', '', (new \yii\web\Request)->getBaseUrl());
 
 return [
     'id' => 'app-frontend',
@@ -16,6 +17,7 @@ return [
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
+            'baseUrl' => $baseUrl,
             'csrfParam' => '_csrf-frontend',
         ],
         'user' => [
@@ -96,7 +98,7 @@ return [
             'class' => 'yii\web\AssetManager',
             'bundles' => [
                 'yii\web\JqueryAsset' => [
-                    'js' => ['/js/jquery-3.2.1.min.js'],
+                    //'js' => ['/js/jquery-3.2.1.min.js'],
                 ],
             ],
         ],
