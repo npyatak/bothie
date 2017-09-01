@@ -72,6 +72,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
+                'rules.pdf' => 'site/rules',
                 'post/<id:\d+>' => 'site/post',
                 'post/<id:\d+>/image.jpg' => 'site/image',
                 '<action:\w+>' => 'site/<action>',

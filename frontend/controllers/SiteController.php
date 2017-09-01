@@ -305,14 +305,10 @@ class SiteController extends Controller
         }
     }
 
-    /**
-     * Displays about page.
-     *
-     * @return mixed
-     */
-    public function actionRules()
-    {
-        return $this->render('rules');
+    public function actionRules(){
+        $completePath = __DIR__.'/../web/pdf/rules.pdf';
+        $filename = '/pdf/rules.pdf';
+        return Yii::$app->response->sendFile($completePath, $filename, ['inline'=>true]);
     }
 
     /**
