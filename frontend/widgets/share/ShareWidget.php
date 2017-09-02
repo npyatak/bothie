@@ -5,54 +5,59 @@ use yii\helpers\Url;
 
 class ShareWidget extends \yii\bootstrap\Widget  {
 	
-	public $id;
+	public $post;
 	public $url;
-	public $title;
+	public $title = 'Короли Bothie';
 	public $image;
-	public $desc;
+	public $desc = 'Поддержи мою работу в конкурсе';
+
+	public function init() {
+		$this->image = $this->image ? $this->image : Url::to($this->post->gluedImageUrl, true);
+		$this->url = $this->url ? $this->url : Url::to($this->post->url, true);
+	}
 
     public function run() {
     	$script = "
-    		Share = {
-				vkontakte: function(id, purl, ptitle, pimg, text) {
+    		$(document).on('click', '.shares-link', function(e) {
+    			obj = $(this);
+    			if(obj.is('[disabled=disabled]')) {
+    				return false;
+    			}
+    			if(obj.data('type') == 'vk') {
 					url  = 'http://vkontakte.ru/share.php?';
-					url += 'url='          + encodeURIComponent(purl);
-					url += '&title='       + encodeURIComponent(ptitle);
-					url += '&description=' + encodeURIComponent(text);
-					url += '&image='       + encodeURIComponent(pimg);
+					url += 'url='          + encodeURIComponent(obj.data('url'));
+					url += '&title='       + encodeURIComponent(obj.data('title'));
+					url += '&description=' + encodeURIComponent(obj.data('desc'));
+					url += '&image='       + encodeURIComponent(obj.data('image'));
 					url += '&noparse=true';
-					Share.response(id, 'vk');
-					Share.popup(url);
-				},
-				facebook: function(id, purl, ptitle, pimg, text) {
+    			} else {
 					url  = 'http://www.facebook.com/sharer.php?s=100';
-					url += '&p[title]='     + encodeURIComponent(ptitle);
-					url += '&p[summary]='   + encodeURIComponent(text);
-					url += '&p[url]='       + encodeURIComponent(purl);
-					url += '&p[images][0]=' + encodeURIComponent(pimg);
-					Share.response(id, 'fb');
-					Share.popup(url);
-				},
-				popup: function(url) {
-					window.open(url,'','toolbar=0,status=0,width=626,height=436');
-				},
+					url += '&p[title]='     + encodeURIComponent(obj.data('title'));
+					url += '&p[summary]='   + encodeURIComponent(obj.data('desc'));
+					url += '&p[url]='       + encodeURIComponent(obj.data('url'));
+					url += '&p[images][0]=' + encodeURIComponent(obj.data('image'));
+    			}
 
-				response: function(id, type) {
-			        $.ajax({
-			            type: 'GET',
-            			url: '".Url::toRoute(['site/user-action'])."',
-			            data: 'id='+id+'&type='+type,
-			            success: function (data) {
-			                alert(data.score);
-			            }
-			        });
-				}
-			};
+    			$.ajax({
+		            type: 'GET',
+        			url: '".Url::toRoute(['site/user-action'])."',
+		            data: 'id='+obj.data('id')+'&type='+obj.attr('data-type'),
+		            success: function (data) {
+		            	console.log(obj);
+		            	if(data.status === 'success') {
+		            		obj.closest('.other-jobs__item').find('.o-j__rating span').html(data.score);
+		            		obj.prop('disabled', true);
+		            	}
+		            }
+		        });
+
+    			window.open(url,'','toolbar=0,status=0,width=626,height=436');
+    		});
 	    ";
 	    $this->view->registerJs($script, $this->view::POS_END);
 
 		echo $this->render('widget', [
-			'id' => $this->id,
+			'post' => $this->post,
 			'url' => $this->url,
 			'title' => $this->title,
 			'image' => $this->image,

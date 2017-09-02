@@ -11,16 +11,10 @@ use frontend\widgets\share\ShareWidget;
     </div>
     <div class="bottom">
         <div class="o-j__rating">
-            <h4>Твои баллы: <?=$post->score;?></h4>
+            <h4>Твои баллы: <span><?=$post->score;?></span></h4>
         </div>
         <div class="o-j__shares">
-            <?=ShareWidget::widget([
-                'id' => $post->id,
-                'url' => Url::to($post->url, true),
-                'title' => 'Короли Bothie',
-                'image' => $post->frontImageUrl,
-                'desc' => 'Поддержи мою работу в конкурсе',
-            ]);?>
+            <?=ShareWidget::widget(['post'=>$post]);?>
         </div>
     </div>
 </div>

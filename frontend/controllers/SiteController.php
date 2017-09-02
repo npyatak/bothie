@@ -182,6 +182,7 @@ class SiteController extends Controller
 
     public function actionUserAction($id, $type=null) {        
         if(Yii::$app->request->isAjax) {
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             switch ($type) {
                 case 'vk':
                     $type = PostAction::TYPE_SHARE_VK;
@@ -195,12 +196,12 @@ class SiteController extends Controller
             }
             $post = Post::findOne($id);
             if($post !== null && $post->userCan($type)) {
-                echo 'userCan';
                 PostAction::create($id, $type);
 
                 $newScore = Post::find()->select('score')->where(['id' => $id])->column();
-                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-                return ['score' => $newScore];
+                return ['status' => 'success', 'score' => $newScore];
+            } else {
+                return ['status' => 'error'];
             }
         }
     }
