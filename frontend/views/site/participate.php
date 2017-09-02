@@ -25,10 +25,12 @@ use yii\widgets\ActiveForm;
             <div class="p-a__title"></div>
             <hr class="hr">
             <div class="do-it-bothie">
+                <h3 class="do-it-bothie__title">Сделай бози:</h3>
                 <?php $form = ActiveForm::begin([
                     'options' => [
                         'enctype' => 'multipart/form-data',
-                        'id' => 'post-image-form'
+                        'id' => 'post-image-form',
+                        'no-validate' => ''
                     ],
                     //'enableClientValidation'=>false
                 ]); ?>
@@ -81,12 +83,54 @@ use yii\widgets\ActiveForm;
                     </div>
                 </div>
                 <div class="form-group">
-                    <?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                    <?= Html::submitButton($model->isNewRecord ? 'Готово' : 'Обновить', ['class' => $model->isNewRecord ? 'border-link' : 'border-link']) ?>
+                    <br>
+                    <a href="" class="simple-link">Как выиграть?</a>
                 </div>
                 <?php ActiveForm::end(); ?>
                 <?php foreach (Yii::$app->user->identity->posts as $post):?>
                     <?=$this->render('_post', ['post' => $post]);?>
                 <?php endforeach;?>
+            </div>
+            <hr class="hr">
+        </div>
+        <div class="p-a__second">
+            <div class="other-jobs">
+                <h2 class="title-lg text-center">Другие работы:</h2>
+                <div class="other-jobs__items">
+                    <div class="other-jobs__item">
+                        <div class="top">
+                            <div class="left" style="background-image: url('images/bothie/bothie-9-2.jpg')"></div>
+                            <div class="right" style="background-image: url('images/bothie/bothie-9.jpg')"></div>
+                        </div>
+                        <div class="bottom">
+                            <div class="o-j__rating">
+                                <h4>Твои баллы: 1234</h4>
+                            </div>
+                            <div class="o-j__shares">
+                                <p>Увеличь свои шансы на победу, поделись своим бози в соцсетях:</p>
+                                <a href="" class="shares-link"><i class="fa fa-facebook"></i></a>
+                                <a href="" class="shares-link"><i class="fa fa-vk"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="other-jobs__item">
+                        <div class="top">
+                            <div class="left" style="background-image: url('images/bothie/bothie-9-2.jpg')"></div>
+                            <div class="right" style="background-image: url('images/bothie/bothie-9.jpg')"></div>
+                        </div>
+                        <div class="bottom">
+                            <div class="o-j__rating">
+                                <h4>Твои баллы: 1234</h4>
+                            </div>
+                            <div class="o-j__shares">
+                                <p>Увеличь свои шансы на победу, поделись своим бози в соцсетях:</p>
+                                <a href="" class="shares-link"><i class="fa fa-facebook"></i></a>
+                                <a href="" class="shares-link"><i class="fa fa-vk"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

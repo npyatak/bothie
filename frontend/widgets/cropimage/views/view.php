@@ -14,7 +14,7 @@ $emptyBlock = empty($template_image) ? '' : 'hidden';
                 <?= $template_image ?>
             <?php endif; ?>
             <div class="mr-upload-block <?= $emptyBlock ?>">
-                <h2>Загрузи фото<br> с фронтальной камеры</h2>
+                <h2>Загрузи фото<br> с <span></span> камеры</h2>
             </div>
             <span class="glyphicon glyphicon-remove mr-remove <?= $removeBtn ?>"></span>
         </div>
@@ -29,12 +29,12 @@ $emptyBlock = empty($template_image) ? '' : 'hidden';
                     ['class'=>'rotate-right', 'icon'=>'rotate-right', 'title'=>'Повернуть вправо'],
                 ];?>
                 <?php foreach ($buttons as $b) {
-                    echo Html::button('<span class="glyphicon glyphicon-'.$b['icon'].'"></span>', ['class'=>'btn btn-primary mr-'.$b['class'], 'title'=>$b['title']]);
+                    echo Html::button('<span></span>', ['class'=>'mr-'.$b['class'], 'title'=>$b['title']]);
                 }?>   
 
             </div>
-            <button class='btn btn-success mr-upload-btn-section pull-right' title='Выбрать файл' type='button'>
-                <span class="glyphicon glyphicon-upload"></span>
+            <button class='mr-upload mr-upload-btn-section' title='Выбрать файл' type='button'>
+                <span></span>
             </button>
         </div>
         <?= $form->field($model, $attribute, ['template' => '{input}'])->fileInput($options); ?>

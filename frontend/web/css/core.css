@@ -125,6 +125,11 @@ p {
     color: #de9c78;
     background: transparent;
     font: 19px 'NokiaPureHeadline-Bold', sans-serif;
+    outline: none;
+    cursor: pointer;
+}
+.border-link:focus, .border-link:active {
+    outline: none;
 }
 .simple-link:hover, .simple-link:active, .border-link:hover, .border-link:active {
     color:#de9c78;
@@ -270,5 +275,16 @@ p {
 .hr {
     height: 1px;
     width: 100%;
+    margin: 0;
     background-color: #869dba;
+}
+.shares-link {
+    display: inline-block;
+    padding: 10px;
+    color: #fff;
+    outline: none;
+    background-color: transparent;
+}
+.shares-link:hover, .shares-link:active, .shares-link:focus {
+    color: #fff;
 }

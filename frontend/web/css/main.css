@@ -307,10 +307,10 @@ header .bottom.row {
     padding-top: 165px;
     padding-bottom: 180px;
     background: url('../images/backgrounds/PersonalAccount_Nokia_8.jpg') no-repeat top center;
-    -webkit-background-size: 1600px;
-    background-size: 1600px;
+    -webkit-background-size: cover;
+    background-size: cover;
 }
-.personal-account__inner {
+.p-a__first {
     max-width: 600px;
     margin: 0 auto;
 }
@@ -361,4 +361,190 @@ header .bottom.row {
     background: url('../images/screen/screen-second-title.png') no-repeat center;
     -webkit-background-size: 190px;
     background-size: 190px;
+}
+.do-it-bothie {
+    padding-top: 50px;
+}
+.do-it-bothie__title {
+    margin-bottom: 50px;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #fff;
+}
+.mr-section-base .field-post-frontimagefile, .mr-section-base .field-post-backimagefile {
+    opacity: 0;
+}
+#post-image-form .help-block {
+
+}
+#post-image-form .help-block {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    font-size: 14px;
+    color: #fff;
+}
+#post-image-form .row>div:nth-child(1) .help-block{
+    right: 100%;
+    text-align: right;
+}
+#post-image-form .row>div:nth-child(2) .help-block{
+    left: 100%;
+    text-align: left;
+}
+.mr-section {
+    position: relative;
+    border: 1px solid #869dba !important;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+.mr-upload-block  {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.mr-upload-block h2 {
+    font-size: 18px !important;
+    color: #fff !important;
+}
+#post-image-form .row>div:nth-child(1) .mr-upload-block h2 span::before {
+    content: 'фронтальной';
+}
+#post-image-form .row>div:nth-child(2) .mr-upload-block h2 span::before {
+    content: 'тыловой';
+}
+.mr-control-panel {
+    border: none !important;
+    background-color: transparent !important;
+}
+.mr-control-panel .btn-group {
+    display: none;
+}
+.form-group.has-success .mr-control-panel .btn-group {
+    display: block;
+}
+.form-group.has-error .mr-section {
+    border-color: #d0181e !important;
+}
+.mr-control-panel button {
+    display: inline-block;
+    position: relative;
+    padding: 10px 12px;
+    min-width: 48px;
+    height: 48px;
+    background-color: #001135;
+    color: #fff;
+    outline: none;
+    border: none;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    text-align: center;
+}
+.mr-control-panel button:last-child {
+    margin-right: 0;
+}
+.mr-control-panel button span {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 22px;
+    height: 22px;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.mr-control-panel .mr-rotate-right span {
+    background: url('../images/icons/rotate-right.png') no-repeat center;
+    -webkit-background-size: 22px;
+    background-size: 22px;
+}
+.mr-control-panel .mr-rotate-left span {
+    background: url('../images/icons/rotate-left.png') no-repeat center;
+    -webkit-background-size: 22px;
+    background-size: 22px;
+}
+.mr-control-panel .mr-upload span {
+    background: url('../images/icons/upload.png') no-repeat center;
+    -webkit-background-size: 18px;
+    background-size: 18px;
+}
+.mr-control-panel .mr-zoom-in span {
+    background: url('../images/icons/add.png') no-repeat center;
+    -webkit-background-size: 22px;
+    background-size: 22px;
+}
+.mr-control-panel .mr-zoom-out span {
+    background: url('../images/icons/minus.png') no-repeat center;
+    -webkit-background-size: 22px;
+    background-size: 22px;
+}
+.mr-control-panel .mr-fit span {
+    background: url('../images/icons/resize.png') no-repeat center;
+    -webkit-background-size: 22px;
+    background-size: 22px;
+}
+.do-it-bothie .simple-link {
+    margin-top: 20px;
+}
+.p-a__second {
+    max-width: 645px;
+    margin: 0 auto;
+}
+.p-a__second .title-lg {
+    margin: 60px 0;
+}
+.other-jobs__item {
+    margin-bottom: 90px;
+}
+.other-jobs__item:last-child {
+    margin-bottom: 0;
+}
+.other-jobs__item .top {
+    margin-bottom: 30px;
+}
+.other-jobs__item .top::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.other-jobs__item .left, .other-jobs__item .right {
+    position: relative;
+    float: left;
+    width: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+}
+.other-jobs__item .left:before, .other-jobs__item .right:before {
+    content: '';
+    padding-top: 100%;
+    float: left;
+}
+.other-jobs__item .bottom {
+    font-size: 20px;
+    color: #fff;
+}
+.other-jobs__item .bottom p {
+    margin: 20px 0 25px;
+}
+.o-j__rating h4 {
+    font-family: 'NokiaPureHeadline-ExtraBold', sans-serif;
+    text-transform: uppercase;
+}
+.o-j__shares .shares-link {
+    margin-right: 20px;
+}
+.o-j__shares .shares-link:last-child {
+    margin-right: 0;
 }
