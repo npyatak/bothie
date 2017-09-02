@@ -3,24 +3,30 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
+use common\models\Week;
 ?>
 <div class="personal-account">
     <div class="personal-account__inner">
         <div class="p-a__first text-center">
-            <h2 class="title-lg">Iron_sanya</h2>
+            <h2 class="title-lg"><?=Yii::$app->user->identity->full_name;?></h2>
             <div class="p-a_links-week">
-                <div class="first-week">
-                    <a href="">1 неделя foodporn</a>
+                <?php foreach ($weeks as $week):?>
+                <div>
+                    <?php switch ($week->status) {
+                        case Week::STATUS_ACTIVE;
+                            $class = 'active';
+                            break;
+                        case Week::STATUS_WAITING;
+                            $class = 'disabled';
+                            break;                          
+                        default:
+                            $class = '';
+                            break;
+                    }?>
+                    <a href="" class="<?=$class;?>"><?=$week->number;?> неделя <?=$week->name;?></a>
                 </div>
-                <div class="second-week">
-                    <a href="" class="active">2 неделя beauty</a>
-                </div>
-                <div class="third-week">
-                    <a href="javascript:void(0)" class="disabled">3 неделя wellness</a>
-                </div>
-                <div class="fourth-week">
-                    <a href="javascript:void(0)" class="disabled">4 неделя moms&kids</a>
-                </div>
+                <?php endforeach;?>
             </div>
             <div class="p-a__title"></div>
             <hr class="hr">
@@ -83,56 +89,28 @@ use yii\widgets\ActiveForm;
                     </div>
                 </div>
                 <div class="form-group">
-                    <?= Html::submitButton($model->isNewRecord ? 'Готово' : 'Обновить', ['class' => $model->isNewRecord ? 'border-link' : 'border-link']) ?>
+                    <?= Html::submitButton('Готово', ['class' =>'border-link']) ?>
                     <br>
-                    <a href="" class="simple-link">Как выиграть?</a>
+                    <?=Html::a('Как выиграть?', Url::toRoute(['site/rules']), ['class' => 'simple-link']);?>
                 </div>
                 <?php ActiveForm::end(); ?>
-                <?php foreach (Yii::$app->user->identity->posts as $post):?>
-                    <?=$this->render('_post', ['post' => $post]);?>
-                <?php endforeach;?>
             </div>
             <hr class="hr">
         </div>
+
+
+        <?php if(count(Yii::$app->user->identity->posts) > 0):?>
         <div class="p-a__second">
             <div class="other-jobs">
                 <h2 class="title-lg text-center">Другие работы:</h2>
                 <div class="other-jobs__items">
-                    <div class="other-jobs__item">
-                        <div class="top">
-                            <div class="left" style="background-image: url('images/bothie/bothie-9-2.jpg')"></div>
-                            <div class="right" style="background-image: url('images/bothie/bothie-9.jpg')"></div>
-                        </div>
-                        <div class="bottom">
-                            <div class="o-j__rating">
-                                <h4>Твои баллы: 1234</h4>
-                            </div>
-                            <div class="o-j__shares">
-                                <p>Увеличь свои шансы на победу, поделись своим бози в соцсетях:</p>
-                                <a href="" class="shares-link"><i class="fa fa-facebook"></i></a>
-                                <a href="" class="shares-link"><i class="fa fa-vk"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="other-jobs__item">
-                        <div class="top">
-                            <div class="left" style="background-image: url('images/bothie/bothie-9-2.jpg')"></div>
-                            <div class="right" style="background-image: url('images/bothie/bothie-9.jpg')"></div>
-                        </div>
-                        <div class="bottom">
-                            <div class="o-j__rating">
-                                <h4>Твои баллы: 1234</h4>
-                            </div>
-                            <div class="o-j__shares">
-                                <p>Увеличь свои шансы на победу, поделись своим бози в соцсетях:</p>
-                                <a href="" class="shares-link"><i class="fa fa-facebook"></i></a>
-                                <a href="" class="shares-link"><i class="fa fa-vk"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php foreach (Yii::$app->user->identity->posts as $post):?>
+                        <?=$this->render('_post', ['post' => $post]);?>
+                    <?php endforeach;?>
                 </div>
             </div>
         </div>
+        <?php endif;?>
     </div>
 </div>
         

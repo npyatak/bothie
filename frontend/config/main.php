@@ -75,6 +75,7 @@ return [
                 'rules.pdf' => 'site/rules',
                 'post/<id:\d+>' => 'site/post',
                 'post/<id:\d+>/image.jpg' => 'site/image',
+                'how-to-win' => 'site/how-to-win',
                 '<action:\w+>' => 'site/<action>',
             ],
         ],

@@ -445,6 +445,7 @@ header .bottom.row {
     margin-right: 2px;
     margin-bottom: 2px;
     text-align: center;
+    cursor: pointer;
 }
 .mr-control-panel button:last-child {
     margin-right: 0;

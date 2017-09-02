@@ -41,25 +41,23 @@ AppAsset::register($this);
                             ['label' => 'Голосовать', 'action' => 'vote'],
                             ['label' => 'Правила', 'action' => 'rules'],
                         ];
-                        // if (Yii::$app->user->isGuest) {
-                        //     $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-                        //     $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-                        // } else {
-                        //     $menuItems[] = '<li>'
-                        //         . Html::beginForm(['/site/logout'], 'post')
-                        //         . Html::submitButton(
-                        //             'Logout (' . Yii::$app->user->identity->username . ')',
-                        //             ['class' => 'btn btn-link logout']
-                        //         )
-                        //         . Html::endForm()
-                        //         . '</li>';
-                        // }
                         ?>
                         <div class="nav">
                             <ul class="ul">
                                 <?php foreach ($menuItems as $item):?>
-                                    <li><?=Html::a($item['label'], Url::toRoute(['site/'.$item['action']]), ['class' => Yii::$app->controller->action->id === $item['action']]);?></li>
+                                    <li><?=Html::a($item['label'], Url::toRoute(['site/'.$item['action']]), ['class' => Yii::$app->controller->action->id === $item['action'] ? 'active' : '']);?></li>
                                 <?php endforeach;?>
+                                <!-- <?php if (Yii::$app->user->isGuest):?>
+                                    <li><?=Html::a('Войти', Url::toRoute(['site/login']), ['class' => Yii::$app->controller->action->id === $item['action']]);?></li>
+                                <?php else:?>
+                                    <li><?=Html::beginForm(['/site/logout'], 'post');?>
+                                        <?=Html::submitButton(
+                                            'Выйти (' . Yii::$app->user->identity->full_name . ')',
+                                            ['class' => 'btn btn-link logout']
+                                        )?>
+                                        <?=Html::endForm();?>
+                                    </li>
+                                <?php endif;?> -->
                             </ul>
                         </div>
                     </div>

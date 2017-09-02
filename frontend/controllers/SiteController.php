@@ -88,6 +88,7 @@ class SiteController extends Controller
         $model = new Post();
 
         if(!Yii::$app->user->isGuest && $model->load(Yii::$app->request->post())) {
+            $model->is_from_ig = 0;
             $model->user_id = Yii::$app->user->id;
             $model->week_id = Week::getCurrent();
 
@@ -129,6 +130,7 @@ class SiteController extends Controller
         } 
 
         return $this->render('participate', [
+            'weeks' => Week::find()->all(),
             'model' => $model,
         ]);
     }
@@ -267,6 +269,11 @@ class SiteController extends Controller
         }
 
         return $this->render('login');
+    }
+
+    public function actionHowToWin()
+    {
+        return $this->render('how_to_win');
     }
 
 
