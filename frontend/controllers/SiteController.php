@@ -217,6 +217,10 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionLogin2() {
+        return $this->render('login');
+    }
+
     public function actionLogin() {
         $user = User::findOne(1);
         Yii::$app->getUser()->login($user);

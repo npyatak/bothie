@@ -47,7 +47,7 @@ AppAsset::register($this);
                                 <?php foreach ($menuItems as $item):?>
                                     <li><?=Html::a($item['label'], Url::toRoute(['site/'.$item['action']]), ['class' => Yii::$app->controller->action->id === $item['action'] ? 'active' : '']);?></li>
                                 <?php endforeach;?>
-                                <!-- <?php if (Yii::$app->user->isGuest):?>
+                                <?php if (Yii::$app->user->isGuest):?>
                                     <li><?=Html::a('Войти', Url::toRoute(['site/login']), ['class' => Yii::$app->controller->action->id === $item['action']]);?></li>
                                 <?php else:?>
                                     <li><?=Html::beginForm(['/site/logout'], 'post');?>
@@ -57,7 +57,7 @@ AppAsset::register($this);
                                         )?>
                                         <?=Html::endForm();?>
                                     </li>
-                                <?php endif;?> -->
+                                <?php endif;?>
                             </ul>
                         </div>
                     </div>
