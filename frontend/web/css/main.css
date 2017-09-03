@@ -208,10 +208,6 @@ header .bottom.row {
 }
 .screen-second .bottom-p {
     margin-top: 30px;
-    text-transform: uppercase;
-    color: #021234;
-    font-size: 30px;
-    line-height: 30px;
 }
 .screen-second .bottom-p span {
     text-transform: none;
@@ -321,7 +317,9 @@ header .bottom.row {
 }
 .p-a_links-week {
     margin-top: 55px;
-    margin-left: -10px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 610px;
 }
 .p-a_links-week>div {
     float: left;
@@ -549,3 +547,102 @@ header .bottom.row {
 .o-j__shares .shares-link:last-child {
     margin-right: 0;
 }
+.how-to-win {
+    background: url('../images/backgrounds/PersonalAccount_Nokia_8.jpg') no-repeat center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.how-to-win__inner {
+    max-width: 670px;
+    margin: 0 auto;
+    padding-top: 135px;
+    padding-bottom: 175px;
+}
+.how-to-win__inner .top__title-first {
+    height: 62px;
+    margin-bottom: 50px;
+    background: url('../images/screen/screen-second-title.png') no-repeat center;
+    -webkit-background-size: 190px;
+    background-size: 190px;
+}
+.how-to-win__second {
+    position: relative;
+}
+.how-to-win__second .left {
+    position: absolute;
+    right: 100%;
+    top: 135px;
+    width: 100%;
+    height: 1100px;
+    margin-right: -80px;
+    background: url('../images/backgrounds/HMD_B1_Packshot3_ExclArteBlack_FINAL_LowRes_20170801-копия.png') no-repeat top right;
+    -webkit-background-size: auto;
+    background-size: auto;
+}
+.how-to-win__second .right {
+    position: absolute;
+    left: 100%;
+    top: -445px;
+    width: 100%;
+    height: 1100px;
+    margin-left: -20px;
+    background: url('../images/backgrounds/HMD_B1_Packshot3_ExclArteBlack_FINAL_LowRes_20170801-копия.png') no-repeat top left;
+    -webkit-background-size: auto;
+    background-size: auto;
+}
+.how-to-win__second .left img {
+    display: block;
+    width: auto;
+}
+.week-type__item {
+    position: relative;
+    width: 205px;
+    height: 205px;
+    margin: 120px auto 130px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 1px solid #69a8da;
+}
+.week-type__img {
+    height: 310px;
+    position: absolute;
+    top: 50%;
+    left: -40px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.week-type__text {
+    position: absolute;
+    top: 50%;
+    left: 47%;
+    line-height: 18px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: #fff;
+    text-align: left;
+}
+.week-steps {
+    padding-bottom: 55px;
+}
+.week-steps .hr {
+    max-width: 600px;
+    margin: 35px auto;
+}
+.week-steps p {
+    line-height: 28px;
+    color: #fff;
+}
+.step-item {
+    margin-bottom: 100px;
+}
+.step-item:last-child {
+    margin-bottom: 0;
+}
+

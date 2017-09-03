@@ -13,6 +13,9 @@
 body, .wrapper, .content {
     min-height: 100%;
 }
+.wrapper {
+    overflow: hidden;
+}
 .content-inner {
     min-height: 100vh;
 }
@@ -287,4 +290,26 @@ p {
 }
 .shares-link:hover, .shares-link:active, .shares-link:focus {
     color: #fff;
+}
+.tt-up {
+    text-transform: uppercase;
+}
+.font-30 {
+    font-size: 30px;
+    line-height: 30px;
+}
+.blue-text {
+    color: #021234;
+}
+.white-text {
+    color: #fff;
+}
+.tt-normal {
+    text-transform: none !important;
+}
+.m-t-30 {
+    margin-top: 30px !important;
+}
+.m-b-40 {
+    margin-bottom: 40px;
 }

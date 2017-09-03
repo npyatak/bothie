@@ -94,9 +94,9 @@
                             Также мы раскажем о 12 лучших авторах в эфире телеканала <br>
                             «Пятница!»
                         </p>
-                        <p class="bottom-p">
+                        <p class="m-t-30 tt-up blue-text font-30">
                             Не ограничивайся селфи. Делай бози <br>
-                            <span>#bothie</span>
+                            <span class="tt-normal">#bothie</span>
                         </p>
                         <div class="button-wrap">
                             <div>
