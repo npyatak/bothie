@@ -52,8 +52,7 @@ AppAsset::register($this);
                                 <?php else:?>
                                     <li><?=Html::beginForm(['/site/logout'], 'post');?>
                                         <?=Html::submitButton(
-                                            'Выйти (' . Yii::$app->user->identity->full_name . ')',
-                                            ['class' => 'btn btn-link logout']
+                                            'Выйти'
                                         )?>
                                         <?=Html::endForm();?>
                                     </li>

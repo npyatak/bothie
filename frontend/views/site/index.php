@@ -13,15 +13,16 @@
                     <div class="top-layer">
                         <img src="images/items/blue_nokia_8.png" alt="Blue Nokia 8">
                     </div>
+                    <div class="middle-layer"></div>
                     <div class="bottom-layer">
                         <img src="images/items/orange_nokia_8_2.png" alt="Orange Nokia 8">
                     </div>
                 </div>
-                <div class="row">
+                <div class="row buttons">
                     <div class="col-12">
                         <div class="button-wrap">
                             <div><p class="tt-up">Конкурс</p></div>
-                            <div>
+                            <div class="m-t-30">
                                 <span class="get-sec-screen button"></span>
                             </div>
                         </div>
@@ -126,12 +127,8 @@
                         <div class="item">
                             <div class="simple-bothie-block">
                                 <div class="img-wrap clearfix">
-                                    <div class="left">
-                                        <img src="images/bothie/bothie-1.jpg" alt="Bothie">
-                                    </div>
-                                    <div class="right">
-                                        <img src="images/bothie/bothie-2.jpg" alt="Bothie">
-                                    </div>
+                                    <div class="left" style="background-image:url('images/bothie/bothie-1.jpg')"></div>
+                                    <div class="right" style="background-image:url('images/bothie/bothie-2.jpg')"></div>
                                 </div>
                                 <div class="simple-bothie__content">
                                     <h3 class="title-bothie">1. Следи за солнцем</h3>

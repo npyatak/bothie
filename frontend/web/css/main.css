@@ -42,15 +42,18 @@
     -webkit-background-size: contain;
     background-size: contain;
 }
-.nav a {
+.nav a, .nav button {
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
     padding: 15px;
     border: 5px solid transparent;
+    background: transparent;
+    outline: none;
     color: #fff;
+    cursor: pointer;
 }
-.nav a.active, .nav a:hover {
+.nav a.active, .nav a:hover, .nav button.active, .nav button:hover {
     border-color: #de9c78;
     text-decoration: none;
 }
@@ -61,41 +64,46 @@
 }
 .nav .ul li {
     float: left;
-    margin-right: 52px;
+    margin-right: 17px;
 }
 .nav .ul li:last-child {
     margin-right: 0;
 }
 .main-page {
-    background: url('../images/backgrounds/main_Nokia_16.jpg') no-repeat top center;
-    -webkit-background-size: 1600px;
-    background-size: 1600px;
+    background: url('../images/backgrounds/main_Nokia_1600.jpg') no-repeat top center;
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 header .top-layer {
     position: absolute;
-    top: 15%;
+    top: 18%;
     left: 50%;
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     -o-transform: translateX(-50%);
     transform: translateX(-50%);
-    z-index: 2;
+    z-index: 3;
 }
-/*header .middle-layer {*/
-/*position: absolute;*/
-/*top: 354px;*/
-/*left: 50%;*/
-/*-webkit-transform: translateX(-50%) rotate(4deg);*/
-/*-moz-transform: translateX(-50%) rotate(4deg);*/
-/*-ms-transform: translateX(-50%) rotate(4deg);*/
-/*-o-transform: translateX(-50%) rotate(4deg);*/
-/*transform: translateX(-50%) rotate(4deg);*/
-/*z-index: 1;*/
-/*}*/
+header .middle-layer {
+    position: absolute;
+    left: 50%;
+    top: -140px;
+    bottom: -20px;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    background: url('../images/backgrounds/top.png') no-repeat center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    z-index: 2;
+    overflow: hidden;
+}
 header .bottom-layer {
     position: absolute;
-    top: 15%;
+    top: 18%;
     left: 50%;
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
@@ -107,25 +115,13 @@ header .bottom-layer {
 header .bottom-layer::before {
 
 }
-/*header .top-layer::after {*/
-/*content: '';*/
-/*display: block;*/
-/*position: absolute;*/
-/*top: 108px;*/
-/*left: 0;*/
-/*right: 0;*/
-/*height: 120px;*/
-/*background: #124191;*/
-/*-webkit-transform: rotate(-22.5deg);*/
-/*-moz-transform: rotate(-22.5deg);*/
-/*-ms-transform: rotate(-22.5deg);*/
-/*-o-transform: rotate(-22.5deg);*/
-/*transform: rotate(-22.5deg);*/
-/*z-index: -1;*/
-/*}*/
 header .top-figure img {
     display: block;
     width: 900px;
+}
+header .buttons {
+    position: relative;
+    z-index: 3;
 }
 header .top.row {
     position: relative;
@@ -226,6 +222,11 @@ header .bottom.row {
 .simple-bothie-block .img-wrap .left, .simple-bothie-block .img-wrap .right {
     float: left;
     width: 50%;
+}
+.simple-bothie-block .img-wrap .left:before, .simple-bothie-block .img-wrap .right::before {
+    content: '';
+    padding-top: 100%;
+    float: left;
 }
 .simple-bothie-block .simple-bothie__content {
     padding: 40px 45px 30px;
@@ -645,4 +646,69 @@ header .bottom.row {
 .step-item:last-child {
     margin-bottom: 0;
 }
-
+.site-login {
+    padding-top: 165px;
+    background: url("../images/backgrounds/registration.jpg") no-repeat center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    color: #fff;
+}
+.site-login__inner {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 270px;
+}
+.site-login__first {
+    padding-bottom: 80px;
+}
+.site-login__inner .eauth {
+    margin: 100px 0 50px;
+}
+.eauth-service {
+    margin: 0 !important;
+}
+.eauth .eauth-list {
+    margin: 0;
+    text-align: center;
+}
+.eauth-service-link {
+    width: 70px;
+    padding-top: 0;
+}
+.eauth-service-link:after {
+    display: none !important;
+}
+.eauth-service-link:before {
+    content: '';
+    display: block;
+    position: static;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    background: url('../images/icons/instagram.png') no-repeat;
+    background-position: center !important;
+    -webkit-background-size: contain;
+    background-size: contain;
+}
+.site-login__second .hr {
+    margin-bottom: 20px;
+}
+.site-login__second {
+    padding-bottom: 50px;
+    text-align: left;
+}
+.site-login__second .left {
+    float: left;
+}
+.site-login__second .right {
+    padding-left: 45px;
+}
+.form-group {
+    margin-bottom: 10px;
+    line-height: 35px;
+}
+@media (min-width: 1880px){
+    header .middle-layer {
+        bottom: -44px;
+    }
+}

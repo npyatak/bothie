@@ -313,3 +313,35 @@ p {
 .m-b-40 {
     margin-bottom: 40px;
 }
+.form-label {
+    position: relative;
+    display: block;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #869dba;
+    z-index: 1;
+    cursor: pointer;
+}
+.form-label::after {
+    content: "\f00c";
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font: normal normal normal 19px/1 FontAwesome;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    z-index: 2;
+}
+.form-label.checked::after {
+    display: block;
+}
+input.form-control {
+    display: block;
+    position: absolute;
+    width: 0;
+    opacity: 0;
+}
