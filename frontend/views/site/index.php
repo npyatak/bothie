@@ -308,7 +308,7 @@ use common\models\PostAction;
             e.preventDefault();
 
             var obj = $(this);
-            if(obj.is('[disabled=disabled]')) {
+            if(obj.hasClass('inactive')) {
                 return false;
             }
 
@@ -318,7 +318,7 @@ use common\models\PostAction;
                 data: 'id='+obj.attr('data-id'),
                 success: function (data) {
                     obj.parent().find('.bothie-rat').html(data.score);
-                    obj.prop('disabled', true);
+                    obj.addClass('inactive');
                 }
             });
         });

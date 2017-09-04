@@ -231,36 +231,28 @@ class SiteController extends Controller
         
         if (isset($serviceName)) {
             $eauth = Yii::$app->get('eauth')->getIdentity($serviceName);
-            $eauth->setRedirectUrl(Yii::$app->request->referrer);
+            $eauth->setRedirectUrl(Url::toRoute('site/participate'));
             $eauth->setCancelUrl(Url::toRoute('site/login'));
             
             try {
                 if ($eauth->authenticate()) {
-                    echo '<pre>';
-                    print_r($eauth);
-                    echo '</pre>';
-                    exit;
-                    $user = User::findByService($serviceName, $eauth->id);
+                    $user = User::findByService(/*$serviceName, */$eauth->id);
                     if(!$user) {
                         $user = new User;
-                        $user->name = $eauth->first_name;
-                        $user->surname = $eauth->last_name;
-                        $user->soc = $serviceName;
-                        $user->sid = $eauth->id;
-                        $user->sex = $eauth->sex;
-                        if(isset($eauth->email)) $user->email = $eauth->email;
-                        if(isset($eauth->country)) $user->country = $eauth->country;
-                        if(isset($eauth->city)) $user->city = $eauth->city;
-                        if(isset($eauth->photo_url)) $user->ava_soc = $eauth->photo_url;
-                        if(isset($eauth->bdate)) $user->birthdate = $eauth->bdate;
-                        $user->lang_id = Yii::$app->controller->cLangId;
+                        $user->ig_id = $eauth->attributes['id'];
+                        $user->username = $eauth->attributes['username'];
+                        $user->full_name = $eauth->attributes['full_name'];
+                        $user->image = $eauth->attributes['profile_picture'];
+                        $user->website = $eauth->attributes['website'];
+                        $user->bio = $eauth->attributes['bio'];
+                        $user->status = User::STATUS_ACTIVE;
+
                         $user->save();
                     }
                     Yii::$app->getUser()->login($user);
                     // special redirect with closing popup window
                     $eauth->redirect();
-                }
-                else {
+                } else {
                     // close popup window and redirect to cancelUrl
                     $eauth->cancel();
                     $eauth->redirect($eauth->getCancelUrl());

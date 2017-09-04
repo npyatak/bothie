@@ -12,8 +12,7 @@ use common\models\PostAction;
 	'data-title' => $title,
 	'data-image' => $image,
 	'data-desc' => $desc,
-	'class' => 'fb shares-link',
-	'disabled' => !$post->userCan(PostAction::TYPE_SHARE_FB) ? 'disabled' : '',
+	'class' => !$post->userCan(PostAction::TYPE_SHARE_FB) ? 'fb shares-link inactive' : 'fb shares-link',
 ]);?>
 
 <?=Html::a('<i class="fa fa-vk"></i>', null, [
@@ -23,6 +22,5 @@ use common\models\PostAction;
 	'data-title' => $title,
 	'data-image' => $image,
 	'data-desc' => $desc,
-	'class' => 'vk shares-link',
-	'disabled' => !$post->userCan(PostAction::TYPE_SHARE_VK) ? 'disabled' : '',
+	'class' => !$post->userCan(PostAction::TYPE_SHARE_VK) ? 'vk shares-link inactive' : 'vk shares-link',
 ]);?>

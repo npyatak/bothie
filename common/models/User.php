@@ -40,9 +40,9 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['ig_id', 'username', 'status', 'created_at', 'updated_at'], 'required'],
+            [['ig_id', 'username', 'status'], 'required'],
             [['ig_id', 'status', 'created_at', 'updated_at'], 'integer'],
-            ['status', 'in', [self::STATUS_ACTIVE, self::STATUS_BANNED]],
+            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_BANNED]],
             [['username', 'full_name', 'image', 'bio', 'website'], 'string', 'max' => 255],
         ];
     }
@@ -108,21 +108,25 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      * @return User
      * @throws ErrorException
      */
-    public static function findByEAuth($service) {
-        if (!$service->getIsAuthenticated()) {
-            throw new ErrorException('EAuth user should be authenticated before creating identity.');
-        }
+    // public static function findByEAuth($service) {
+    //     if (!$service->getIsAuthenticated()) {
+    //         throw new ErrorException('EAuth user should be authenticated before creating identity.');
+    //     }
 
-        $id = $service->getServiceName().'-'.$service->getId();
-        $attributes = [
-            'id' => $id,
-            'username' => $service->getAttribute('name'),
-            'authKey' => md5($id),
-            'profile' => $service->getAttributes(),
-        ];
-        $attributes['profile']['service'] = $service->getServiceName();
-        Yii::$app->getSession()->set('user-'.$id, $attributes);
-        return new self($attributes);
+    //     $id = $service->getServiceName().'-'.$service->getId();
+    //     $attributes = [
+    //         'id' => $id,
+    //         'username' => $service->getAttribute('name'),
+    //         'authKey' => md5($id),
+    //         'profile' => $service->getAttributes(),
+    //     ];
+    //     $attributes['profile']['service'] = $service->getServiceName();
+    //     Yii::$app->getSession()->set('user-'.$id, $attributes);
+    //     return new self($attributes);
+    // }
+
+    public static function findByService($serviceId) {
+        return self::find()->where(['ig_id' => $serviceId])->one();
     }
 
     public function getPosts() {

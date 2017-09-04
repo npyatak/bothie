@@ -20,7 +20,7 @@ class ShareWidget extends \yii\bootstrap\Widget  {
     	$script = "
     		$(document).on('click', '.shares-link', function(e) {
     			obj = $(this);
-    			if(obj.is('[disabled=disabled]')) {
+    			if(obj.hasClass('inactive')) {
     				return false;
     			}
     			if(obj.data('type') == 'vk') {
@@ -46,7 +46,7 @@ class ShareWidget extends \yii\bootstrap\Widget  {
 		            	console.log(obj);
 		            	if(data.status === 'success') {
 		            		obj.closest('.other-jobs__item').find('.o-j__rating span').html(data.score);
-		            		obj.prop('disabled', true);
+		            		obj.addClass('inactive');
 		            	}
 		            }
 		        });

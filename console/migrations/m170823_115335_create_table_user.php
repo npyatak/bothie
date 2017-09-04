@@ -13,7 +13,7 @@ class m170823_115335_create_table_user extends Migration
 
         $this->createTable('{{%user}}', [
             'id' => $this->primaryKey(),
-            'ig_id' => $this->integer()->notNull(),
+            'ig_id' => $this->bigInteger()->notNull(),
             'username' => $this->string()->notNull(),
             'full_name' => $this->string(),
             'image' => $this->string(),
