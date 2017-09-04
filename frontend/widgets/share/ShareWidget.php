@@ -54,7 +54,7 @@ class ShareWidget extends \yii\bootstrap\Widget  {
     			window.open(url,'','toolbar=0,status=0,width=626,height=436');
     		});
 	    ";
-	    $this->view->registerJs($script, $this->view::POS_END);
+	    $this->view->registerJs($script, \yii\web\View::POS_END);
 
 		echo $this->render('widget', [
 			'post' => $this->post,

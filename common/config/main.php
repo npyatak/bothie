@@ -14,13 +14,13 @@ return [
             'class' => 'yii\web\urlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'baseUrl' => 'http://bothie.local',
+            //'baseUrl' => 'http://bothie.local',
         ],
         'urlManagerBackEnd' => [
             'class' => 'yii\web\urlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'baseUrl' => 'http://admin.bothie.local',
+            //'baseUrl' => 'http://admin.bothie.local',
         ],  
     ],
 ];
