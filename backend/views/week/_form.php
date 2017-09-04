@@ -4,6 +4,7 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\components\CustomCKEditor;
+use kartik\date\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Week */
@@ -19,6 +20,14 @@ use common\components\CustomCKEditor;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'imageFile')->fileInput() ?>
+
+    <?= $form->field($model, 'date_start')->widget(
+        DatePicker::className()
+    );?>
+
+    <?= $form->field($model, 'date_end')->widget(
+        DatePicker::className()
+    );?>
 
     <?= $form->field($model, 'description_1')->widget(CustomCKEditor::className(),[
         'editorOptions' => [

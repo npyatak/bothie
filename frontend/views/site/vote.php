@@ -29,7 +29,7 @@ use common\models\PostAction;
         var obj = $(this);
         $.ajax({
             type: 'GET',
-            action: '".Url::toRoute(['site/user-action'])."',
+            url: '".Url::toRoute(['site/user-action'])."',
             data: 'id='+obj.attr('data-id'),
             success: function (data) {
                 obj.parent().find('span').html(data.score);

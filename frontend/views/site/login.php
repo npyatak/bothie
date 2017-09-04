@@ -37,3 +37,14 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
+
+<?php $script = "
+    $('.eauth-service-link').on('click', function (e) {
+        if(!$('#conditions').is(':checked') || !$('#rules').is(':checked')) {
+            $('.site-login__second').prepend('<span class=text-danger>Пожалуйста, подтвердите свое согласие с полными правилами и условиями обработки данных</span>');
+            return false;
+        }
+    });
+";?>
+
+<?php $this->registerJs($script, yii\web\View::POS_END);?>

@@ -54,8 +54,8 @@ return [
                 'instagram' => [
                     // register your app here: https://instagram.com/developer/register/
                     'class' => 'nodge\eauth\services\InstagramOAuth2Service',
-                    'clientId' => '9f3fff03891b42d7805c038883f90e12',
-                    'clientSecret' => 'dfcc94e7a88e4675b9ab22f42f138b4b ',
+                    'clientId' => '69af594a80984ee9ab1f3881681c68c0',
+                    'clientSecret' => '058cbd92e0e04b83b45c8f18acd3070c',
                 ],
             ],
         ],

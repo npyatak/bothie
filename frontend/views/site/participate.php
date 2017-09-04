@@ -3,31 +3,12 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
-use common\models\Week;
 ?>
 <div class="personal-account">
     <div class="personal-account__inner">
         <div class="p-a__first text-center">
             <h2 class="title-lg"><?=Yii::$app->user->identity->full_name;?></h2>
-            <div class="p-a_links-week">
-                <?php foreach ($weeks as $week):?>
-                <div>
-                    <?php switch ($week->status) {
-                        case Week::STATUS_ACTIVE;
-                            $class = 'active';
-                            break;
-                        case Week::STATUS_WAITING;
-                            $class = 'disabled';
-                            break;                          
-                        default:
-                            $class = '';
-                            break;
-                    }?>
-                    <a href="" class="<?=$class;?>"><?=$week->number;?> неделя <?=$week->name;?></a>
-                </div>
-                <?php endforeach;?>
-            </div>
+            <?=$this->render('_weeks_menu', ['weeks' => $weeks]);?>
             <div class="p-a__title"></div>
             <hr class="hr">
             <div class="do-it-bothie">
@@ -91,7 +72,7 @@ use common\models\Week;
                 <div class="form-group">
                     <?= Html::submitButton('Готово', ['class' =>'border-link']) ?>
                     <br>
-                    <?=Html::a('Как выиграть?', Url::toRoute(['site/rules']), ['class' => 'simple-link']);?>
+                    <?=Html::a('Как выиграть?', Url::toRoute(['site/how-to-win']), ['class' => 'simple-link']);?>
                 </div>
                 <?php ActiveForm::end(); ?>
             </div>
@@ -105,7 +86,7 @@ use common\models\Week;
                 <h2 class="title-lg text-center">Другие работы:</h2>
                 <div class="other-jobs__items">
                     <?php foreach (Yii::$app->user->identity->posts as $post):?>
-                        <?=$this->render('_post', ['post' => $post]);?>
+                        <?=$this->render('_user_post', ['post' => $post]);?>
                     <?php endforeach;?>
                 </div>
             </div>

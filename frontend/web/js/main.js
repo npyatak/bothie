@@ -25,14 +25,7 @@ $(document).ready(function () {
             
         });
     });
-    var bothie_btn = $('.bothie-btn');
-    $(bothie_btn).on('click', function (e) {
-        e.preventDefault();
-        var bothie_rat = $(this).parent().find('.bothie-rat').text();
-        var bothie_rat_number = parseInt(bothie_rat);
-        bothie_rat_number += 1;
-        $(this).parent().find('.bothie-rat').text(bothie_rat_number)
-    });
+
     $(window).resize(function(){
         middle_layer_fun();
     });

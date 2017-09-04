@@ -22,9 +22,8 @@ use common\models\Week;
  */
 class SiteController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
+    public $currentWeek;
+
     public function behaviors()
     {
         return [
@@ -35,7 +34,7 @@ class SiteController extends Controller
             ],
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['login', 'logout', 'participate'],
+                'only' => ['login', 'logout', 'participate', 'vote', 'user-action'],
                 'rules' => [
                     [
                         'actions' => ['login'],
@@ -43,7 +42,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout', 'participate'],
+                        'actions' => ['logout', 'participate', 'vote', 'user-action'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -74,14 +73,18 @@ class SiteController extends Controller
         ];
     }
 
-    /**
-     * Displays homepage.
-     *
-     * @return mixed
-     */
+    public function init() {
+        $this->currentWeek = Week::getCurrent();
+    }
+
     public function actionIndex()
     {
-        return $this->render('index');
+        $posts = Post::find()->where(['week_id' => $this->currentWeek->id, 'status' => Post::STATUS_ACTIVE])->limit(12)->orderBy(new \yii\db\Expression('rand()'))->all();
+
+        return $this->render('index', [
+            'currentWeek' => $this->currentWeek,
+            'posts' => $posts,
+        ]);
     }
 
     public function actionParticipate() {
@@ -218,14 +221,12 @@ class SiteController extends Controller
     }
 
     public function actionLogin2() {
-        return $this->render('login');
-    }
-
-    public function actionLogin() {
         $user = User::findOne(1);
         Yii::$app->getUser()->login($user);
         return $this->redirect('/');
+    }
 
+    public function actionLogin() {
         $serviceName = Yii::$app->getRequest()->getQueryParam('service');
         
         if (isset($serviceName)) {
@@ -276,8 +277,7 @@ class SiteController extends Controller
         return $this->render('login');
     }
 
-    public function actionHowToWin()
-    {
+    public function actionHowToWin() {
         return $this->render('how_to_win');
     }
 
@@ -287,60 +287,15 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionLogout()
-    {
+    public function actionLogout() {
         Yii::$app->user->logout();
 
         return $this->goHome();
-    }
-
-    /**
-     * Displays contact page.
-     *
-     * @return mixed
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
-            } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending your message.');
-            }
-
-            return $this->refresh();
-        } else {
-            return $this->render('contact', [
-                'model' => $model,
-            ]);
-        }
     }
 
     public function actionRules(){
         $completePath = __DIR__.'/../web/pdf/rules.pdf';
         $filename = '/pdf/rules.pdf';
         return Yii::$app->response->sendFile($completePath, $filename, ['inline'=>true]);
-    }
-
-    /**
-     * Signs user up.
-     *
-     * @return mixed
-     */
-    public function actionSignup()
-    {
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
-                }
-            }
-        }
-
-        return $this->render('signup', [
-            'model' => $model,
-        ]);
     }
 }

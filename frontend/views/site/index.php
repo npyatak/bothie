@@ -1,3 +1,11 @@
+<?php 
+use yii\helpers\Url;
+use yii\helpers\Html;
+
+use common\models\Post;
+use common\models\PostAction;
+?>
+
 <div class="main-page">
     <header class="p-relative text-center">
         <!--<div class="shape-container">-->
@@ -72,7 +80,7 @@
                         <img class="img-inBlock" src="images/screen/screen-second-left.png" alt="Nokia 8">
                         <div class="img-caption">
                             На этой недели: <br>
-                            <span>foodporn</span>
+                            <span><?=$currentWeek->name;?></span>
                         </div>
                     </div>
                 </div>
@@ -84,10 +92,10 @@
                         <p class="top-p">Сделай бози и получи возможность выиграть Nokia 8</p>
                         <div class="links">
                             <div>
-                                <a href="" class="simple-link">Как выиграть?</a>
+                                <a href="<?=Url::toRoute(['site/how-to-win']);?>" class="simple-link">Как выиграть?</a>
                             </div>
                             <div>
-                                <a href="" class="border-link">Участвовать</a>
+                                <a href="<?=Url::toRoute(['site/participate']);?>" class="border-link">Участвовать</a>
                             </div>
                         </div>
                         <p>
@@ -196,114 +204,63 @@
                     <p class="text-white">Иногда, чтобы показать что-то важное, одной фотографии не достаточно. Поэтому мы придумали бози #bothie для тех, кто не любит ограничений. <br>
                        Делай фото сразу с обеих камер с Nokia 8.</p>
                     <div class="links">
-                        <a href="" class="border-link">Участвовать</a>
+                        <a href="<?=Url::toRoute(['site/participate']);?>" class="border-link">Участвовать</a>
                     </div>
-                    <p class="text-white">Участвуй в нашем конкурсе и голосуй за лушие фотографии!</p>
+                    <p class="text-white">Участвуй в нашем конкурсе и голосуй за лучшие фотографии!</p>
                 </div>
             </div>
+            <?php if($posts):?>
             <div class="row">
                 <div class="col-md-12">
                     <div id="container" class="bothie-blocks">
-                        <div class="item">
-                            <div class="bothie-vertical bothie-wrap">
-                                <div class="top bothie" style="background-image:url('images/bothie/bothie-3.jpg')"></div>
-                                <div class="bottom bothie" style="background-image:url('images/bothie/bothie-3-2.jpg')"></div>
-                                <a href="" class="bothie-btn"><span class="icon"></span></a>
-                                <span class="bothie-rat">1235</span>
-                            </div>
-                        </div>
-                        <div class="item w2 text-center">
-                            <div class="bothie-horizontal bothie-wrap">
-                                <div class="left bothie" style="background-image:url('images/bothie/bothie-4.jpg')"></div>
-                                <div class="right bothie" style="background-image:url('images/bothie/bothie-4-2.jpg')"></div>
-                                <a href="" class="bothie-btn"><span class="icon"></span></a>
-                                <span class="bothie-rat">1235</span>
-                            </div>
-                            <div class="bothie-horizontal bothie-wrap">
-                                <div class="left bothie" style="background-image:url('images/bothie/bothie-5-2.jpg')"></div>
-                                <div class="right bothie" style="background-image:url('images/bothie/bothie-5.jpg')"></div>
-                                <a href="" class="bothie-btn"><span class="icon"></span></a>
-                                <span class="bothie-rat">1235</span>
-                            </div>
-                        </div>
-                        <div class="item text-right">
-                            <div class="bothie-vertical bothie-wrap">
-                                <div class="top bothie" style="background-image:url('images/bothie/bothie-6.jpg')"></div>
-                                <div class="bottom bothie" style="background-image:url('images/bothie/bothie-6-2.jpg')"></div>
-                                <a href="" class="bothie-btn"><span class="icon"></span></a>
-                                <span class="bothie-rat">1235</span>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="bothie-vertical bothie-wrap">
-                                <div class="top bothie" style="background-image:url('images/bothie/bothie-7.jpg')"></div>
-                                <div class="bottom bothie" style="background-image:url('images/bothie/bothie-7-2.jpg')"></div>
-                                <a href="" class="bothie-btn"><span class="icon"></span></a>
-                                <span class="bothie-rat">1235</span>
-                            </div>
-                        </div>
-                        <div class="item w2">
-                            <div class="bothie-vertical-wrap">
-                                <div class="bothie-vertical bothie-wrap">
-                                    <div class="top bothie" style="background-image:url('images/bothie/bothie-8.jpg')"></div>
-                                    <div class="bottom bothie" style="background-image:url('images/bothie/bothie-8-2.jpg')"></div>
-                                    <a href="" class="bothie-btn"><span class="icon"></span></a>
-                                    <span class="bothie-rat">1235</span>
+                        <?php $key = 1;
+                        foreach ($posts as $post):?>
+                            <?php if($key % 4 == 1):?>
+                                <div class="item">
+                                    <div class="bothie-vertical bothie-wrap">
+                                        <div class="top bothie" style="background-image:url(<?=$post->frontImageUrl;?>)"></div>
+                                        <div class="bottom bothie" style="background-image:url(<?=$post->backImageUrl;?>)"></div>
+                                        <?=$this->render('_like_button', ['post' => $post]);?>
+                                        <span class="bothie-rat"><?=$post->score;?></span>
+                                    </div>
                                 </div>
-                                <div class="bothie-vertical bothie-wrap">
-                                    <div class="top bothie" style="background-image:url('images/bothie/bothie-9.jpg')"></div>
-                                    <div class="bottom bothie" style="background-image:url('images/bothie/bothie-9-2.jpg')"></div>
-                                    <a href="" class="bothie-btn"><span class="icon"></span></a>
-                                    <span class="bothie-rat">1235</span>
+                            <?php elseif($key % 4 == 2):?>
+                                <div class="item w2 text-center">
+                                    <div class="bothie-horizontal bothie-wrap">
+                                        <div class="left bothie" style="background-image:url(<?=$post->frontImageUrl;?>)"></div>
+                                        <div class="right bothie" style="background-image:url(<?=$post->backImageUrl;?>)"></div>
+                                        <?=$this->render('_like_button', ['post' => $post]);?>
+                                        <span class="bothie-rat"><?=$post->score;?></span>
+                                    </div>
+                            <?php elseif($key % 4 == 3):?>
+                                    <div class="bothie-horizontal bothie-wrap">
+                                        <div class="left bothie" style="background-image:url(<?=$post->frontImageUrl;?>)"></div>
+                                        <div class="right bothie" style="background-image:url(<?=$post->backImageUrl;?>)"></div>
+                                        <?=$this->render('_like_button', ['post' => $post]);?>
+                                        <span class="bothie-rat"><?=$post->score;?></span>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="item text-right">
-                            <div class="bothie-vertical bothie-wrap">
-                                <div class="top bothie" style="background-image:url('images/bothie/bothie-10.jpg')"></div>
-                                <div class="bottom bothie" style="background-image:url('images/bothie/bothie-10-2.jpg')"></div>
-                                <a href="" class="bothie-btn"><span class="icon"></span></a>
-                                <span class="bothie-rat">1235</span>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="bothie-vertical bothie-wrap">
-                                <div class="top bothie" style="background-image:url('images/bothie/bothie-11.jpg')"></div>
-                                <div class="bottom bothie" style="background-image:url('images/bothie/bothie-11-2.jpg')"></div>
-                                <a href="" class="bothie-btn"><span class="icon"></span></a>
-                                <span class="bothie-rat">1235</span>
-                            </div>
-                        </div>
-                        <div class="item w2 text-center">
-                            <div class="bothie-horizontal bothie-wrap">
-                                <div class="left bothie" style="background-image:url('images/bothie/bothie-12-2.jpg')"></div>
-                                <div class="right bothie" style="background-image:url('images/bothie/bothie-12.jpg')"></div>
-                                <a href="" class="bothie-btn"><span class="icon"></span></a>
-                                <span class="bothie-rat">1235</span>
-                            </div>
-                            <div class="bothie-horizontal bothie-wrap">
-                                <div class="left bothie" style="background-image:url('images/bothie/bothie-13.jpg')"></div>
-                                <div class="right bothie" style="background-image:url('images/bothie/bothie-13-2.jpg')"></div>
-                                <a href="" class="bothie-btn"><span class="icon"></span></a>
-                                <span class="bothie-rat">1235</span>
-                            </div>
-                        </div>
-                        <div class="item text-right">
-                            <div class="bothie-vertical bothie-wrap">
-                                <div class="top bothie" style="background-image:url('images/bothie/bothie-14.jpg')"></div>
-                                <div class="bottom bothie" style="background-image:url('images/bothie/bothie-14-2.jpg')"></div>
-                                <a href="" class="bothie-btn"><span class="icon"></span></a>
-                                <span class="bothie-rat">1235</span>
-                            </div>
-                        </div>
+                            <?php else:?>
+                                <div class="item text-right">
+                                    <div class="bothie-vertical bothie-wrap">
+                                        <div class="top bothie" style="background-image:url(<?=$post->frontImageUrl;?>)"></div>
+                                        <div class="bottom bothie" style="background-image:url(<?=$post->backImageUrl;?>)"></div>
+                                        <?=$this->render('_like_button', ['post' => $post]);?>
+                                        <span class="bothie-rat"><?=$post->score;?></span>
+                                    </div>
+                                </div>
+                            <?php endif;?>
+                        <?php $key++;
+                        endforeach;?>
                     </div>
                 </div>
             </div>
             <div class="row text-center">
                 <div class="col-12">
-                    <a href="" class="border-link">Все работы</a>
+                    <a href="<?=Url::toRoute(['site/vote']);?>" class="border-link">Все работы</a>
                 </div>
             </div>
+            <?php endif;?>
         </div>
     </section>
     <section class="screen-fifth">
@@ -344,3 +301,28 @@
         </div>
     </section>
 </div>
+
+<?php if(!Yii::$app->user->isGuest):?>
+    <?php $script = "
+        $('.bothie-btn').on('click', function (e) {
+            e.preventDefault();
+
+            var obj = $(this);
+            if(obj.is('[disabled=disabled]')) {
+                return false;
+            }
+
+            $.ajax({
+                type: 'GET',
+                url: '".Url::toRoute(['site/user-action'])."',
+                data: 'id='+obj.attr('data-id'),
+                success: function (data) {
+                    obj.parent().find('.bothie-rat').html(data.score);
+                    obj.prop('disabled', true);
+                }
+            });
+        });
+    ";?>
+
+    <?php $this->registerJs($script, yii\web\View::POS_END);?>
+<?php endif;?>

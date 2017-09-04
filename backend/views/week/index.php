@@ -23,6 +23,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
+            'rowOptions'=>function($model){
+                if($model->isCurrent()) {
+                    return ['class' => 'success'];
+                }
+            },
             'columns' => [
                 'number',
                 'name',  
@@ -33,8 +38,21 @@ $this->params['breadcrumbs'][] = $this->title;
                         return Html::img($data->imageUrl, ['width' => '200px']);
                     }
                 ],
-                'description_1:ntext',
-                'description_2:ntext',
+
+                [
+                    'attribute' => 'date_start',
+                    'value' => function($data) {
+                        return date('d.m.Y H:i', $data->date_start);
+                    }
+                ],
+                [
+                    'attribute' => 'date_end',
+                    'value' => function($data) {
+                        return date('d.m.Y H:i', $data->date_end);
+                    }
+                ],
+                //'description_1:ntext',
+                //'description_2:ntext',
                 [
                     'attribute' => 'status',
                     'value' => function($data) {

@@ -30,8 +30,8 @@ class m170823_115340_create_table_post extends Migration
     }
 
     public function safeDown() {
-        $this->dropForeignKey('post}_week_id_fkey', '{{%post}}');
-        $this->dropForeignKey('post}_user_id_fkey', '{{%post}}');
+        $this->dropForeignKey('{post}_week_id_fkey', '{{%post}}');
+        $this->dropForeignKey('{post}_user_id_fkey', '{{%post}}');
 
         $this->dropTable('{{%post}}');
     }

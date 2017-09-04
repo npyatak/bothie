@@ -32,6 +32,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'number',
             'name',
             'image',
+            
+            [
+                'attribute' => 'date_start',
+                'value' => function($data) {
+                    return date('d.m.Y H:i', $data->date_start);
+                }
+            ],
+            [
+                'attribute' => 'date_end',
+                'value' => function($data) {
+                    return date('d.m.Y H:i', $data->date_end);
+                }
+            ],
             'description_1:ntext',
             'description_2:ntext',
             'status',

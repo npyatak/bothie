@@ -40,8 +40,8 @@ class Week extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['number', 'name'], 'required'],
-            [['number', 'status'], 'integer'],
+            [['number', 'name', 'date_start', 'date_end'], 'required'],
+            [['number'], 'integer'],
             [['description_1', 'description_2'], 'string'],
             [['name'], 'string', 'max' => 100],
             [['image'], 'string', 'max' => 255],
@@ -64,6 +64,8 @@ class Week extends \yii\db\ActiveRecord
             'description_1' => 'Описание 1',
             'description_2' => 'Описание 2',
             'status' => 'Статус',
+            'date_start' => 'Дата начала этапа',
+            'date_end' => 'Дата окончания этапа',
         ];
     }
 
@@ -99,6 +101,18 @@ class Week extends \yii\db\ActiveRecord
         return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl('/uploads/week/'.$this->image);
     }
 
+    public function getStatus() {
+        if($this->date_start < time() && $this->date_end > time()) {
+            return self::STATUS_ACTIVE;
+        } elseif(time() > $this->date_end) {
+            return self::STATUS_FINISHED;
+        } elseif(time() < $this->date_start) {
+            return self::STATUS_WAITING;
+        } else {
+            return self::STATUS_INACTIVE;            
+        }
+    }
+
     public static function getStatusArray() {
         return [
             self::STATUS_INACTIVE => 'Неактивна',
@@ -112,7 +126,11 @@ class Week extends \yii\db\ActiveRecord
         return self::getStatusArray()[$this->status];
     }
 
+    public function isCurrent() {
+        return $this->date_start < time() && $this->date_end > time();
+    }
+
     public static function getCurrent() {
-        return self::find()/*->where(['status' => self::STATUS_ACTIVE])*/->one();
+        return self::find()->where(['<', 'date_start', time()])->andWhere(['>', 'date_end', time()])->one();
     }
 }
