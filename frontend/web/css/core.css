@@ -118,18 +118,19 @@ p {
     padding: 20px 0;
     font-family: 'NokiaPureHeadline-Bold', sans-serif;
     font-size: 19px;
-    color: #de9c78;
+    color: #FF9A6F;
 }
 .border-link {
     display: inline-block;
     padding: 20px;
     min-width: 220px;
-    border: 5px solid #de9c78;
-    color: #de9c78;
+    border: 5px solid #FF9A6F;
+    color: #FF9A6F;
     background: transparent;
     font: 19px 'NokiaPureHeadline-Bold', sans-serif;
     outline: none;
     cursor: pointer;
+    text-align: center;
 }
 .border-link:focus, .border-link:active {
     outline: none;

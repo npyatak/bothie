@@ -54,7 +54,7 @@
     cursor: pointer;
 }
 .nav a.active, .nav a:hover, .nav button.active, .nav button:hover {
-    border-color: #de9c78;
+    border-color: #FF9A6F;
     text-decoration: none;
 }
 .nav .ul::after {
@@ -165,7 +165,7 @@ header .bottom.row {
     margin-right: 0;
 }
 .shares li a {
-    color: #de9c78;
+    color: #FF9A6F;
     font-size: 25px;
 }
 .screen-second {
@@ -337,7 +337,7 @@ header .bottom.row {
 .p-a_links-week a.active{
     width: 123px;
     padding: 20px;
-    border-color: #de9c78;
+    border-color: #FF9A6F;
 }
 .p-a_links-week a:hover {
     color: #fff;
@@ -382,6 +382,7 @@ header .bottom.row {
     width: 200px;
     font-size: 14px;
     color: #fff;
+    line-height: 18px;
 }
 #post-image-form .row>div:nth-child(1) .help-block{
     right: 100%;
@@ -706,6 +707,102 @@ header .bottom.row {
 .form-group {
     margin-bottom: 10px;
     line-height: 35px;
+}
+.vote-page {
+    padding-top: 165px;
+    padding-bottom: 150px;
+    background: url('../images/backgrounds/back.jpg') no-repeat center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.vote-page__first-inner {
+    max-width: 645px;
+    margin: 0 auto;
+}
+.vote-item {
+    padding-top: 65px;
+    color: #fff;
+}
+.vote-item .top::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.vote-item .top>div {
+    float: left;
+    position: relative;
+    width: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.vote-item .top>div::before {
+    content: '';
+    float: left;
+    padding-top: 100%;
+}
+.vote-item .middle {
+    padding: 35px 0 45px;
+}
+.vote-item h4 {
+    margin: 0 0 20px;
+    font: 20px 'NokiaPureHeadline-ExtraBold', sans-serif;
+    text-transform: uppercase;
+}
+.vote-item{
+    font-size: 20px;
+}
+.vote-item .bottom {
+    text-align: center;
+}
+.vote-button {
+    display: inline-block;
+    position: relative;
+    width: 175px;
+    height: 175px;
+    background-color: #001B96;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-box-shadow: 5px 5px 21px 0 rgba(0,0,0,.39);
+    -moz-box-shadow: 5px 5px 21px 0 rgba(0,0,0,.39);
+    box-shadow: 5px 5px 21px 0 rgba(0,0,0,.39);
+    font-size: 20px;
+    color: #fff;
+}
+.vote-button:hover, .vote-button:active {
+    color: #fff;
+}
+.vote-button span {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+.vote-button span::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 10px auto 0;
+    background: url('../images/icons/check2.png') no-repeat center;
+    -webkit-background-size: contain;
+    background-size: contain;
+}
+.vote-page__first-inner .section-bottom {
+    margin: 55px 0;
+}
+.vote-page__first-inner .section-bottom .links {
+    padding: 75px 0 40px;
+}
+.vote-page__second-inner .bothie-blocks {
+    margin-top: 80px;
 }
 @media (min-width: 1880px){
     header .middle-layer {
