@@ -46,10 +46,10 @@ class UserController extends Controller
 
     public function actionBan($id) {
         $model = $this->findModel($id);
-        if($model->status === get_class($model)::STATUS_BANNED) {
-            $model->status = get_class($model)::STATUS_ACTIVE;
+        if($model->status === User::STATUS_BANNED) {
+            $model->status = User::STATUS_ACTIVE;
         } else {
-            $model->status = get_class($model)::STATUS_BANNED;
+            $model->status = User::STATUS_BANNED;
         }
         $model->save(false, ['status', 'updated_at']);
 

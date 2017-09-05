@@ -66,7 +66,7 @@ use common\models\PostAction;
             <div class="row">
                 <div class="col-md-3">
                     <div class="left">
-                        <img class="img-inBlock" src="images/screen/screen-second-left.png" alt="Nokia 8">
+                        <img class="img-inBlock" src="<?=$currentWeek->imageUrl;?>" alt="Nokia 8">
                         <div class="img-caption">
                             На этой недели: <br>
                             <span><?=$currentWeek->name;?></span>

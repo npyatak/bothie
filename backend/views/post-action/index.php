@@ -18,11 +18,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
-            /*'rowOptions' => function($model) {
-                if($model->status === get_class($model)::STATUS_BANNED) {
-                    return ['class' => 'danger'];
-                }
-            },*/
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
                 [

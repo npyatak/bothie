@@ -5,6 +5,8 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 
+use common\models\User;
+
 $this->title = 'Пользователи';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -17,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'rowOptions'=>function($model){
-                if($model->status === get_class($model)::STATUS_BANNED) {
+                if($model->status === User::STATUS_BANNED) {
                     return ['class' => 'danger'];
                 }
             },
@@ -40,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'value' => function($data) {
                         return $data->statusLabel;
                     },
-                    'filter' => Html::activeDropDownList($searchModel, 'status', $dataProvider->query->modelClass::getStatusArray(), ['prompt'=>'']),
+                    'filter' => Html::activeDropDownList($searchModel, 'status', User::getStatusArray(), ['prompt'=>'']),
                 ],
                 [
                     'attribute' => 'created_at',
@@ -54,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'buttons' => [
                         'ban' => function ($url, $model) {
                             $url = Url::toRoute(['/user/ban', 'id'=>$model->id]);
-                            return $model->status === get_class($model)::STATUS_ACTIVE ? Html::a('<span class="glyphicon glyphicon-remove-sign"></span>', $url, ['title' => 'Забанить']) : Html::a('<span class="glyphicon glyphicon-ok-sign"></span>', $url, ['title' => 'Вернуть из бана']);
+                            return $model->status === User::STATUS_ACTIVE ? Html::a('<span class="glyphicon glyphicon-remove-sign"></span>', $url, ['title' => 'Забанить']) : Html::a('<span class="glyphicon glyphicon-ok-sign"></span>', $url, ['title' => 'Вернуть из бана']);
                         },
                     ],
                 ],
