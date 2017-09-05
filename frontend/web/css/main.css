@@ -804,6 +804,49 @@ header .bottom.row {
 .vote-page__second-inner .bothie-blocks {
     margin-top: 80px;
 }
+.rates-content {
+    padding-top: 145px;
+    background: url('../images/backgrounds/rates.jpg') no-repeat center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.rates-page .title {
+    margin-bottom: 50px;
+}
+.rates-page .title .img-inBlock {
+    width: 505px;
+}
+.rates-page .links {
+    margin-top: 15px;
+}
+.rates-page .links div:nth-child(2) {
+    margin-top: 10px;
+}
+.rates-page .bothie-vertical-wrap .bothie-wrap:first-child {
+    -webkit-transform: translateY(40px);
+    -moz-transform: translateY(40px);
+    -ms-transform: translateY(40px);
+    -o-transform: translateY(40px);
+    transform: translateY(40px);
+}
+.rates-page .bothie-vertical-wrap .bothie-wrap:last-child {
+    -webkit-transform: translateY(120px);
+    -moz-transform: translateY(120px);
+    -ms-transform: translateY(120px);
+    -o-transform: translateY(120px);
+    transform: translateY(120px);
+}
+.rates-page .bothie-blocks {
+    padding-bottom: 175px;
+}
+.rates-footer {
+    padding-top: 60px;
+    padding-bottom: 45px;
+    background-color: #090037;
+}
+.rates-footer .links {
+    margin-bottom: 105px;
+}
 @media (min-width: 1880px){
     header .middle-layer {
         bottom: -44px;

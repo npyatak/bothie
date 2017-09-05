@@ -210,7 +210,7 @@ p {
     -webkit-box-shadow: 5px 5px 21px 0 rgba(0,0,0,.39);
     -moz-box-shadow: 5px 5px 21px 0 rgba(0,0,0,.39);
     box-shadow: 5px 5px 21px 0 rgba(0,0,0,.39);
-    background: #124191;
+    background: #001B96;
     color: #fff;
     z-index: 1;
 }
@@ -221,6 +221,9 @@ p {
     background: url('../images/icons/check.png') no-repeat center;
     -webkit-background-size: 25px;
     background-size: 25px;
+}
+.bothie-btn:hover, .bothie-btn:active {
+    color: #fff;
 }
 .bothie-rat {
     display: inline-block;
@@ -249,11 +252,15 @@ p {
     display: inline-block;
     margin-right: -0.28em;
 }
-.bothie-vertical>div {
+.bothie-vertical>div, .bothie-vertical .wrap>div {
     margin-bottom: -0.28em;
 }
 .bothie-vertical {
     margin-bottom: 60px;
+}
+.bothie-wrap .wrap {
+    position: relative;
+    overflow: hidden;
 }
 .bothie-vertical-wrap {
     padding: 0 15px;
@@ -339,6 +346,34 @@ p {
 }
 .form-label.checked::after {
     display: block;
+}
+.bothie-btn.rates-btn {
+    width: 173px;
+    height: 173px;
+    right: 0;
+    left: auto;
+    -webkit-transform: translateY(-50%) translateX(50%);
+    -moz-transform: translateY(-50%) translateX(50%);
+    -ms-transform: translateY(-50%) translateX(50%);
+    -o-transform: translateY(-50%) translateX(50%);
+    transform: translateY(-50%) translateX(50%);
+    -webkit-box-shadow: 5px 5px 21px 0 rgba(0,0,0,.75);
+    -moz-box-shadow: 5px 5px 21px 0 rgba(0,0,0,.75);
+    box-shadow: 5px 5px 21px 0 rgba(0,0,0,.75);
+}
+.bothie-btn.rates-btn span {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    width: auto;
+    height: auto;
+    background: transparent;
+    font-size: 24px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 input.form-control {
     display: block;
