@@ -56,18 +56,7 @@ use common\models\PostAction;
                             <a href="">Условия обработки персональных данных</a>
                         </div>
                     </div>
-                    <div class="shares">
-                        <div class="shares-title">
-                            <span>Нравится проект?</span>
-                        </div>
-                        <div class="shares-items">
-                            <ul>
-                                <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                                <li><a href=""><i class="fa fa-vk"></i></a></li>
-                                <li><a href=""><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    <?=$this->render('_share_block');?>
                 </div>
             </div>
         </div>
@@ -213,45 +202,7 @@ use common\models\PostAction;
             <div class="row">
                 <div class="col-md-12">
                     <div id="container" class="bothie-blocks">
-                        <?php $key = 1;
-                        foreach ($posts as $post):?>
-                            <?php if($key % 4 == 1):?>
-                                <div class="item">
-                                    <div class="bothie-vertical bothie-wrap">
-                                        <div class="top bothie" style="background-image:url(<?=$post->frontImageUrl;?>)"></div>
-                                        <div class="bottom bothie" style="background-image:url(<?=$post->backImageUrl;?>)"></div>
-                                        <?=$this->render('_like_button', ['post' => $post]);?>
-                                        <span class="bothie-rat"><?=$post->score;?></span>
-                                    </div>
-                                </div>
-                            <?php elseif($key % 4 == 2):?>
-                                <div class="item w2 text-center">
-                                    <div class="bothie-horizontal bothie-wrap">
-                                        <div class="left bothie" style="background-image:url(<?=$post->frontImageUrl;?>)"></div>
-                                        <div class="right bothie" style="background-image:url(<?=$post->backImageUrl;?>)"></div>
-                                        <?=$this->render('_like_button', ['post' => $post]);?>
-                                        <span class="bothie-rat"><?=$post->score;?></span>
-                                    </div>
-                            <?php elseif($key % 4 == 3):?>
-                                    <div class="bothie-horizontal bothie-wrap">
-                                        <div class="left bothie" style="background-image:url(<?=$post->frontImageUrl;?>)"></div>
-                                        <div class="right bothie" style="background-image:url(<?=$post->backImageUrl;?>)"></div>
-                                        <?=$this->render('_like_button', ['post' => $post]);?>
-                                        <span class="bothie-rat"><?=$post->score;?></span>
-                                    </div>
-                                </div>
-                            <?php else:?>
-                                <div class="item text-right">
-                                    <div class="bothie-vertical bothie-wrap">
-                                        <div class="top bothie" style="background-image:url(<?=$post->frontImageUrl;?>)"></div>
-                                        <div class="bottom bothie" style="background-image:url(<?=$post->backImageUrl;?>)"></div>
-                                        <?=$this->render('_like_button', ['post' => $post]);?>
-                                        <span class="bothie-rat"><?=$post->score;?></span>
-                                    </div>
-                                </div>
-                            <?php endif;?>
-                        <?php $key++;
-                        endforeach;?>
+                        <?=$this->render('_bothie_blocks', ['posts' => $posts]);?>
                     </div>
                 </div>
             </div>
@@ -301,28 +252,3 @@ use common\models\PostAction;
         </div>
     </section>
 </div>
-
-<?php if(!Yii::$app->user->isGuest):?>
-    <?php $script = "
-        $('.bothie-btn').on('click', function (e) {
-            e.preventDefault();
-
-            var obj = $(this);
-            if(obj.hasClass('inactive')) {
-                return false;
-            }
-
-            $.ajax({
-                type: 'GET',
-                url: '".Url::toRoute(['site/user-action'])."',
-                data: 'id='+obj.attr('data-id'),
-                success: function (data) {
-                    obj.parent().find('.bothie-rat').html(data.score);
-                    obj.addClass('inactive');
-                }
-            });
-        });
-    ";?>
-
-    <?php $this->registerJs($script, yii\web\View::POS_END);?>
-<?php endif;?>

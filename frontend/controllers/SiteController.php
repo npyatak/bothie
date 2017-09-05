@@ -161,22 +161,24 @@ class SiteController extends Controller
     }
 
     public function actionVote() {
-        $query = Post::find();
-        if(!Yii::$app->user->isGuest) {
-            $query->select(['post.*', 'post_action.*'])
-                ->leftJoin([
-                'post_action' => PostAction::find()
-                    ->select(['MAX(post_action.id) as last_user_action_id', 'MAX(post_action.created_at) as last_user_action_time', 'post_action.type', 'post_action.post_id'])
-                    ->where(['post_action.user_id'=>Yii::$app->user->id])
-                    ->groupBy('post_action.type, post_action.post_id')
-                    ->orderBy('post_action.id DESC, post_action.type')
-                    ->asArray()
-                ], 
-                'post_action.post_id = post.id');
-        }        
-        $query->where(['status'=>Post::STATUS_ACTIVE])->limit(12)->orderBy(new \yii\db\Expression('rand()'))->asArray();
+        //$query = Post::find();
+        // if(!Yii::$app->user->isGuest) {
+        //     $query->select(['post.*', 'post_action.*'])
+        //         ->leftJoin([
+        //         'post_action' => PostAction::find()
+        //             ->select(['MAX(post_action.id) as last_user_action_id', 'MAX(post_action.created_at) as last_user_action_time', 'post_action.type', 'post_action.post_id'])
+        //             ->where(['post_action.user_id'=>Yii::$app->user->id])
+        //             ->groupBy('post_action.type, post_action.post_id')
+        //             ->orderBy('post_action.id DESC, post_action.type')
+        //             ->asArray()
+        //         ], 
+        //         'post_action.post_id = post.id');
+        // }        
+        // $query->where(['status'=>Post::STATUS_ACTIVE])->limit(12)->orderBy(new \yii\db\Expression('rand()'))->asArray();
         
-        $posts = $query->all();
+        //$posts = $query->all();
+        
+        $posts = Post::find()->where(['week_id' => $this->currentWeek->id, 'status' => Post::STATUS_ACTIVE])->limit(12)->orderBy(new \yii\db\Expression('rand()'))->all();
 
         return $this->render('vote', [
             'posts' => $posts,
@@ -210,13 +212,16 @@ class SiteController extends Controller
     }
 
     public function actionPost($id) {
-        $post = Post::findOne($id);
-        if($post === null || $post->status === Post::STATUS_BANNED) {
+        $userPost = Post::findOne($id);
+        if($userPost === null || $userPost->status === Post::STATUS_BANNED) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
+        $posts = Post::find()->where(['week_id' => $this->currentWeek->id, 'status' => Post::STATUS_ACTIVE])->limit(12)->orderBy(new \yii\db\Expression('rand()'))->all();
+
         return $this->render('post', [
-            'post' => $post,
+            'userPost' => $userPost,
+            'posts' => $posts,
         ]);
     }
 
@@ -270,11 +275,10 @@ class SiteController extends Controller
     }
 
     public function actionHowToWin() {
-        return $this->render('how_to_win');
-    }
-
-    public function actionRates() {
-        return $this->render('rates');
+        return $this->render('how_to_win', [
+            'currentWeek' => $this->currentWeek,
+            'weeks' => Week::find()->all(),
+        ]);
     }
 
 

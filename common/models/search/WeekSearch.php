@@ -18,7 +18,7 @@ class WeekSearch extends Week
     public function rules()
     {
         return [
-            [['id', 'number', 'status'], 'integer'],
+            [['id', 'number'], 'integer'],
             [['name', 'image', 'description_1', 'description_2'], 'safe'],
         ];
     }
@@ -61,7 +61,6 @@ class WeekSearch extends Week
         $query->andFilterWhere([
             'id' => $this->id,
             'number' => $this->number,
-            'status' => $this->status,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

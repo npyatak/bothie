@@ -25,6 +25,8 @@ class Post extends \yii\db\ActiveRecord
     public $back_h;
     public $back_scale;
     public $back_angle;
+
+    public $_lastUserActions;
     /**
      * @inheritdoc
      */
@@ -129,6 +131,10 @@ class Post extends \yii\db\ActiveRecord
         return Url::toRoute(['site/image', 'id'=>$this->id]);
     }
 
+    public static function getImageUrl($user_id, $image) {
+        return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl('/uploads/post/'.$user_id.'/'.$image);
+    }
+
     public static function getStatusArray() {
         return [
             self::STATUS_ACTIVE => 'Активен',
@@ -141,14 +147,17 @@ class Post extends \yii\db\ActiveRecord
     }
 
     public function getLastUserActions() {
-        return PostAction::find()
-            ->select(['MAX(id) as last_user_action_id', 'MAX(created_at) as last_user_action_time', 'type'])
-            ->where(['user_id'=>Yii::$app->user->id, 'post_id'=>$this->id])
-            ->groupBy('type, post_id')
-            ->orderBy('id DESC, type')
-            ->indexBy('type')
-            ->asArray()
-            ->all();
+        if($this->_lastUserActions === null) {
+            $this->_lastUserActions = PostAction::find()
+                ->select(['MAX(id) as last_user_action_id', 'MAX(created_at) as last_user_action_time', 'type'])
+                ->where(['user_id'=>Yii::$app->user->id, 'post_id'=>$this->id])
+                ->groupBy('type, post_id')
+                ->orderBy('id DESC, type')
+                ->indexBy('type')
+                ->asArray()
+                ->all();
+        }
+        return $this->_lastUserActions;
     }
 
     public function userCan($type) {

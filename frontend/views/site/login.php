@@ -13,6 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <p>Авторизуйся, используя свой аккаунт в Instagram</p>
         </div>
         <div class="site-login__second">
+            <span class=text-danger></span>
             <hr class="hr">
             <form action="">
                 <div class="form-group">
@@ -41,8 +42,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php $script = "
     $('.eauth-service-link').on('click', function (e) {
         if(!$('#conditions').is(':checked') || !$('#rules').is(':checked')) {
-            $('.site-login__second').prepend('<span class=text-danger>Пожалуйста, подтвердите свое согласие с полными правилами и условиями обработки данных</span>');
+            $('.site-login__second span.text-danger').html('Пожалуйста, подтвердите свое согласие с полными правилами и условиями обработки данных');
             return false;
+        } else {
+            $('.site-login__second span.text-danger').html('');
         }
     });
 ";?>

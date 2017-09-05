@@ -42,4 +42,20 @@ $(document).ready(function () {
     $('.form-label').on('click',function () {
         $(this).toggleClass('checked');    
     });
+
+    $('.bothie-btn').on('click', function (e) {
+        e.preventDefault();
+
+        var obj = $(this);
+
+        $.ajax({
+            type: 'GET',
+            url: 'site/user-action',
+            data: 'id='+obj.attr('data-id'),
+            success: function (data) {
+                obj.parent().find('.bothie-rat').html(data.score);
+                obj.remove();
+            }
+        });
+    });
 });

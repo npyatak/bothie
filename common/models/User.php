@@ -140,4 +140,8 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function getImageUrl() {
         return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl('/uploads/user/'.$this->image);
     }
+
+    public function getName() {
+        return $this->full_name ? $this->full_name : $this->username;
+    }
 }

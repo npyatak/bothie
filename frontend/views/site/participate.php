@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
 <div class="personal-account">
     <div class="personal-account__inner">
         <div class="p-a__first text-center">
-            <h2 class="title-lg"><?=Yii::$app->user->identity->full_name;?></h2>
+            <h2 class="title-lg"><?=Yii::$app->user->identity->name;?></h2>
             <?=$this->render('_weeks_menu', ['weeks' => $weeks]);?>
             <div class="p-a__title"></div>
             <hr class="hr">

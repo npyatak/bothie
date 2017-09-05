@@ -53,13 +53,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 //'description_1:ntext',
                 //'description_2:ntext',
-                [
-                    'attribute' => 'status',
-                    'value' => function($data) {
-                        return $data->statusLabel;
-                    },
-                    'filter' => Html::activeDropDownList($searchModel, 'status', Week::getStatusArray(), ['prompt'=>'']),
-                ],
+                // [
+                //     'attribute' => 'status',
+                //     'value' => function($data) {
+                //         return $data->statusLabel;
+                //     },
+                //     'filter' => Html::activeDropDownList($searchModel, 'status', Week::getStatusArray(), ['prompt'=>'']),
+                // ],
 
                 ['class' => 'yii\grid\ActionColumn'],
             ],

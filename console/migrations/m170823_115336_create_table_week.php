@@ -25,10 +25,10 @@ class m170823_115336_create_table_week extends Migration
         ], $tableOptions);
 
         $this->batchInsert('{{%week}}', ['number', 'name', 'image', 'description_1', 'description_2', 'date_start', 'date_end'], [
-            [1, 'foodporn', '', 'С 15 по 22 сентября', 'С 15 по 22 сентября 2', strtotime('today midnight'), strtotime('today midnight + 1 week')],
-            [2, 'beauty', '', 'С 23 по 30 сентября', 'С 23 по 30 сентября 2', strtotime('today midnight + 1 week'), strtotime('today midnight + 2 week')],
-            [3, 'wellness', '', 'С 1 по 8 октября', 'С 1 по 8 октября 2', strtotime('today midnight + 2 week'), strtotime('today midnight + 3 week')],
-            [4, 'moms&kids', '', 'С 9 по 16 октября', 'С 9 по 16 октября 2', strtotime('today midnight + 3 week'), strtotime('today midnight + 4 week')],
+            [1, 'foodporn', '', '<p>С 15 по 22 сентября</p>', '<p>С 15 по 22 сентября 2</p>', strtotime('today midnight'), strtotime('today midnight + 1 week')],
+            [2, 'beauty', '', '<p>С 23 по 30 сентября</p>', '<p>С 23 по 30 сентября 2</p>', strtotime('today midnight + 1 week'), strtotime('today midnight + 2 week')],
+            [3, 'wellness', '', '<p>С 1 по 8 октября</p>', '<p>С 1 по 8 октября 2</p>', strtotime('today midnight + 2 week'), strtotime('today midnight + 3 week')],
+            [4, 'moms&kids', '', '<p>С 9 по 16 октября</p>', '<p>С 9 по 16 октября 2</p>', strtotime('today midnight + 3 week'), strtotime('today midnight + 4 week')],
         ]);
     }
 
