@@ -273,6 +273,10 @@ class SiteController extends Controller
         return $this->render('how_to_win');
     }
 
+    public function actionRates() {
+        return $this->render('rates');
+    }
+
 
     /**
      * Logs out the current user.
