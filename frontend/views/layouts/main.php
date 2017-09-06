@@ -19,7 +19,6 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-    <link href="/css/animate.css" rel="stylesheet">
 </head>
 <body class="overflow">
 <?php $this->beginBody() ?>
@@ -79,7 +78,6 @@ AppAsset::register($this);
     </footer>
 </div>
 <?php $this->endBody() ?>
-<script src="/js/wow.min.js"></script>
 </body>
 </html>
 <?php $this->endPage() ?>

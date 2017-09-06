@@ -126,8 +126,6 @@ class SiteController extends Controller
                     'angle' => $model->back_angle,
                 ]);
 
-
-
                 return $this->redirect(['index']);
             }
         } 

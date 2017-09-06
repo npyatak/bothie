@@ -17,6 +17,7 @@ class AppAsset extends AssetBundle
         'css/owl.carousel.min.css',
         'css/core.css',
         'css/main.css',
+        'css/animate.css',
     ];
     public $js = [
         ['https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js', 'integrity' => 'sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4', 'crossorigin' => 'anonymous'],
@@ -25,6 +26,7 @@ class AppAsset extends AssetBundle
         'js/masonry.pkgd.js',
         'js/imagesloaded.pkgb.js',
         'js/main.js',
+        'js/wow.min.js'
     ];
     public $depends = [
         'yii\web\JqueryAsset',
