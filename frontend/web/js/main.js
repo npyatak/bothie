@@ -1,14 +1,13 @@
+$(window).load(function () {
+    $('body').removeClass('overflow');
+    $('.preloader').fadeOut(300);
+    $('.top-layer, .bottom-layer').removeClass('transform');
+});
 $(document).ready(function () {
-    // var triangle = $('.svg-triangle');
-    // var w_triangle = $('header').width();
-    // var h_triangle = $('header').height();
-    // $(triangle).find('polygon').attr({'points': '0 '+ h_triangle +','+ w_triangle +' 0,0,0 '+ h_triangle +' 0'});
-    // console.log(w_triangle, h_triangle)
-    // $('.shape-container').css({'height':h_triangle + 20});{
-    var get_sec_screen = $('.get-sec-screen');
-    $(get_sec_screen).on('click',function (e) {
+    $('.go-to-screen').on('click',function (e) {
         e.preventDefault();
-        $('html,body').animate({scrollTop:$('.screen-second').offset().top},500);
+        var target = $(this).attr('href');
+        $('html,body').animate({scrollTop:$(target).offset().top},500);
         return false;
     });
     $('#simple-bothie, #screen-fifth__carousel').owlCarousel({
@@ -33,8 +32,6 @@ $(document).ready(function () {
     function middle_layer_fun() {
         var middle_layer = $('.middle-layer');
         var w_width = $(window).width();
-        var w_height = $(window).height();
-        // $(middle_layer).css({'width':w_width * 2,'height':w_height * 2})
         $(middle_layer).css({'width':w_width})
     }
     middle_layer_fun();
@@ -58,4 +55,18 @@ $(document).ready(function () {
             }
         });
     });
+
+    var wow = new WOW(
+        {
+            boxClass: 'wow', // animated element css class (default is wow)
+            animateClass: 'animated', // animation css class (default is animated)
+            offset: 100, // distance to the element when triggering the animation (default is 0)
+            mobile: true,        // trigger animations on mobile devices (true is default)
+            callback: function (box) {
+                $(box).addClass('w_100');
+            },
+            scrollContainer: null // optional scroll container selector, otherwise use window
+        }
+    );
+    wow.init();
 });

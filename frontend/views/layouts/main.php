@@ -19,10 +19,11 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <link href="/css/animate.css" rel="stylesheet">
 </head>
-<body>
+<body class="overflow">
 <?php $this->beginBody() ?>
-
+<div class="preloader"><span class="icon"><i class="fa fa-cog fa-spin"></i></span></div>
 <div class="wrapper">
     <div class="main-menu">
         <div class="main-menu__inner">
@@ -77,8 +78,8 @@ AppAsset::register($this);
 
     </footer>
 </div>
-
 <?php $this->endBody() ?>
+<script src="/js/wow.min.js"></script>
 </body>
 </html>
 <?php $this->endPage() ?>

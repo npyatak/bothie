@@ -83,7 +83,21 @@ header .top-layer {
     -ms-transform: translateX(-50%);
     -o-transform: translateX(-50%);
     transform: translateX(-50%);
+    -webkit-transition: .4s ease-in .2s;
+    -moz-transition: .4s ease-in .2s;
+    -ms-transition: .4s ease-in .2s;
+    -o-transition: .4s ease-in .2s;
+    transition: .4s ease-in .2s;
+    opacity: 1;
     z-index: 3;
+}
+header .top-layer.transform {
+    -webkit-transform: translateX(-15%) translateY(-30%);
+    -moz-transform: translateX(-15%) translateY(-30%);
+    -ms-transform: translateX(-15%) translateY(-30%);
+    -o-transform: translateX(-15%) translateY(-30%);
+    transform: translateX(-15%) translateY(-30%);
+    opacity: 0;
 }
 header .middle-layer {
     position: absolute;
@@ -110,7 +124,21 @@ header .bottom-layer {
     -ms-transform: translateX(-50%);
     -o-transform: translateX(-50%);
     transform: translateX(-50%);
+    -webkit-transition: .4s ease-in .5s;
+    -moz-transition: .4s ease-in .5s;
+    -ms-transition: .4s ease-in .5s;
+    -o-transition: .4s ease-in .5s;
+    transition: .4s ease-in .5s;
+    opacity: 1;
     z-index: 1;
+}
+header .bottom-layer.transform {
+    -webkit-transform: translateX(-90%) translateY(27%);
+    -moz-transform: translateX(-90%) translateY(27%);
+    -ms-transform: translateX(-90%) translateY(27%);
+    -o-transform: translateX(-90%) translateY(27%);
+    transform: translateX(-90%) translateY(27%);
+    opacity: 0;
 }
 header .bottom-layer::before {
 

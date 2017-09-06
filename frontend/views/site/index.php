@@ -8,49 +8,42 @@ use common\models\PostAction;
 
 <div class="main-page">
     <header class="p-relative text-center">
-        <!--<div class="shape-container">-->
-            <!--<div class="shape-top"></div>-->
-            <!--<div class="shape-left"></div>-->
-        <!--</div>-->
-        <!--<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-triangle">-->
-            <!--<polygon points=""/>-->
-        <!--</svg>-->
         <div class="content-inner">
             <div class="container">
                 <div class="top-figure">
-                    <div class="top-layer">
+                    <div class="top-layer transform">
                         <img src="images/items/blue_nokia_8.png" alt="Blue Nokia 8">
                     </div>
                     <div class="middle-layer"></div>
-                    <div class="bottom-layer">
+                    <div class="bottom-layer transform">
                         <img src="images/items/orange_nokia_8_2.png" alt="Orange Nokia 8">
                     </div>
                 </div>
                 <div class="row buttons">
                     <div class="col-12">
-                        <div class="button-wrap">
+                        <div class="button-wrap wow fadeInDown" data-wow-duration=".4s" data-wow-delay="1.6s">
                             <div><p class="tt-up">Конкурс</p></div>
                             <div class="m-t-30">
-                                <span class="get-sec-screen button"></span>
+                                <a href="#second-screen" class="go-to-screen button"></a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row top justify-content-center">
                     <div class="col-md-6">
-                        <h2 class="text-left title-lg m-t-60">Покажи свою <span>историю</span></h2>
+                        <h2 class="text-left title-lg m-t-60  wow fadeInLeft" data-wow-duration=".8s" data-wow-delay=".8s">Покажи свою <span>историю</span></h2>
                     </div>
                 </div>
                 <div class="row bottom justify-content-end">
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-6">
-                                <h2 class="text-right title-lg">С обеих <span>сторон</span></h2>
+                                <h2 class="text-right title-lg wow fadeInRight" data-wow-duration=".8s" data-wow-delay="1.1s">С обеих <span>сторон</span></h2>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="header-footer">
+                <div class="header-footer wow fadeInUp">
                     <div class="row text-left">
                         <div class="col-md-2">
                             <a href="">Условия обработки персональных данных</a>
@@ -61,11 +54,11 @@ use common\models\PostAction;
             </div>
         </div>
     </header>
-    <section class="screen-second">
+    <section id="second-screen" class="screen-second">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="left">
+                    <div class="left wow fadeInLeft">
                         <img class="img-inBlock" src="<?=$currentWeek->imageUrl;?>" alt="Nokia 8">
                         <div class="img-caption">
                             На этой недели: <br>
@@ -74,10 +67,10 @@ use common\models\PostAction;
                     </div>
                 </div>
                 <div class="col-md-6 text-center">
-                    <div class="top">
+                    <div class="top wow fadeInUp">
                         <img class="img-inBlock" src="images/screen/screen-second-title.png" alt="Screen image">
                     </div>
-                    <div class="middle">
+                    <div class="middle wow fadeInUp">
                         <p class="top-p">Сделай бози и получи возможность выиграть Nokia 8</p>
                         <div class="links">
                             <div>
@@ -98,28 +91,28 @@ use common\models\PostAction;
                         </p>
                         <div class="button-wrap">
                             <div>
-                                <span class="top-button button"></span>
+                                <a href="#third-screen" class="go-to-screen top-button button"></a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="right">
+                    <div class="right wow fadeInRight">
                         <img class="img-inBlock" src="images/screen/screen-second-right.png" alt="Nokia 8">
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="screen-third">
+    <section id="third-screen" class="screen-third">
         <div class="container">
             <div class="row justify-content-center text-center">
-                <div class="col-md-5">
+                <div class="col-md-5 wow fadeInUp">
                     <h2 class="title-lg">Как сделать лучшее бози?</h2>
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-md-9">
+                <div class="col-md-9 wow fadeInUp">
                     <div id="simple-bothie" class="owl-carousel owl-theme">
                         <div class="item">
                             <div class="simple-bothie-block">
@@ -188,7 +181,7 @@ use common\models\PostAction;
     <section class="screen-fourth">
         <div class="container">
             <div class="row justify-content-center text-center">
-                <div class="col-md-7">
+                <div class="col-md-7 wow fadeInUp">
                     <div class="title-lg">Работы участников</div>
                     <p class="text-white">Иногда, чтобы показать что-то важное, одной фотографии не достаточно. Поэтому мы придумали бози #bothie для тех, кто не любит ограничений. <br>
                        Делай фото сразу с обеих камер с Nokia 8.</p>
@@ -200,14 +193,14 @@ use common\models\PostAction;
             </div>
             <?php if($posts):?>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 wow fadeInUp">
                     <div id="container" class="bothie-blocks">
                         <?=$this->render('_bothie_blocks', ['posts' => $posts]);?>
                     </div>
                 </div>
             </div>
             <div class="row text-center">
-                <div class="col-12">
+                <div class="col-12 wow fadeInUp">
                     <a href="<?=Url::toRoute(['site/vote']);?>" class="border-link">Все работы</a>
                 </div>
             </div>
@@ -217,16 +210,16 @@ use common\models\PostAction;
     <section class="screen-fifth">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-9 text-center">
+                <div class="col-md-9 text-center wow fadeInUp">
                     <h2 class="title-lg">Двухсторонняя съемка и прямой эфир в соцсети</h2>
                 </div>
             </div>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center wow fadeInUp">
                 <div class="col-md-6 text-center">
                     <p class="text-white">Съемка одновременно двумя 13MP камерами – основной и фронтальной. Возможность живой трансляции на FB</p>
                 </div>
             </div>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center wow fadeInUp">
                 <div class="col-md-10">
                     <div id="screen-fifth__carousel" class="owl-carousel">
                         <div class="item">
