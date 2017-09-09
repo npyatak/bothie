@@ -178,8 +178,99 @@ p {
 .owl-prev, .owl-next {
     float:left;
 }
-#container .item { width: 25%; }
-#container .item.w2 { width: 50%; }
+#container {
+    padding: 0 20px;
+}
+#container .grid-item {
+    position: relative;
+    background: #fff;
+    margin-bottom: 40px;
+}
+.grid-item>div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    z-index: 0;
+}
+.grid-item .bothie-site-vertical .first {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.grid-item .bothie-site-vertical .second {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.grid-item .bothie-site-horizontal .first {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.grid-item .bothie-site-horizontal .second {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.grid-item.w280-h280 {
+    width: 21.875%;
+}
+.grid-item.w280-h280::before {
+    content: '';
+    float: left;
+    padding-top: 100%;
+}
+.grid-item.w600-h280 {
+    width: 46.875%;
+}
+.grid-item.w600-h280::before {
+    content: '';
+    float: left;
+    padding-top: 46.667%;
+}
+.grid-item.w280-h600 {
+    width: 21.875%;
+}
+.grid-item.w280-h600::before {
+    content: '';
+    float: left;
+    padding-top: 214.29%;
+}
+.gutter-sizer {
+    width: 4%;
+}
+/*#container .item { width: 25%; }*/
+/*#container .item.w2 { width: 50%; }*/
 .bothie-wrap::after {
     content: '';
     display: block;
@@ -239,16 +330,21 @@ p {
 }
 .bothie {
     display: inline-block;
+    position: relative;
     width: 280px;
-    height: 280px;
     background-position: center;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
 }
+.bothie::before {
+    content: '';
+    padding-top: 100%;
+    float: left;
+}
 .bothie-horizontal {
     width: 560px;
-    height: 280px;
+    max-height: 280px;
     text-align: center;
 }
 .bothie-horizontal .left, .bothie-horizontal .right {
@@ -256,7 +352,7 @@ p {
     margin-right: -0.28em;
 }
 .bothie-vertical>div, .bothie-vertical .wrap>div {
-    margin-bottom: -0.28em;
+    margin-bottom: -0.32em;
 }
 .bothie-vertical {
     margin-bottom: 60px;
@@ -406,4 +502,39 @@ input.form-control {
     transform: translate(-50%,-50%);
     color: #fff;
     font-size: 50px;
+}
+@media (max-width: 1280px) {
+    .bothie-wrap {
+        width: 90% !important;
+    }
+    .bothie-horizontal .bothie {
+        width: 50%;
+    }
+    .bothie-vertical .bothie {
+        width: 100%;
+    }
+    .bothie-vertical>div, .bothie-vertical .wrap>div {
+        margin-bottom: -0.35em;
+    }
+    #container .item>.bothie-horizontal:nth-child(2) {
+        margin-top: 8%;
+        margin-bottom: 8%;
+    }
+}
+@media (min-width: 1024px) and (max-width: 1280px) {
+    .grid-item.w280-h600 {
+        width: 21%;
+    }
+    .grid-item.w280-h280 {
+        width: 21%;
+    }
+    .grid-item.w600-h280 {
+        width: 46%;
+    }
+    .grid-item.w600-h280::before {
+        padding-top: 45.653%;
+    }
+    .grid-item.w280-h600::before {
+        padding-top: 218.59%;
+    }
 }

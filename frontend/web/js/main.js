@@ -2,6 +2,21 @@ $(window).load(function () {
     $('body').removeClass('overflow');
     $('.preloader').fadeOut(300);
     $('.top-layer, .bottom-layer').removeClass('transform');
+    setTimeout(function () {
+        var wow = new WOW(
+            {
+                boxClass: 'wow', // animated element css class (default is wow)
+                animateClass: 'animated', // animation css class (default is animated)
+                offset: 100, // distance to the element when triggering the animation (default is 0)
+                mobile: true,        // trigger animations on mobile devices (true is default)
+                callback: function (box) {
+                    $(box).addClass('w_100');
+                },
+                scrollContainer: null // optional scroll container selector, otherwise use window
+            }
+        );
+        wow.init();
+    },300)
 });
 $(document).ready(function () {
     $('.go-to-screen').on('click',function (e) {
@@ -21,8 +36,13 @@ $(document).ready(function () {
     // Инициализация Масонри, после загрузки изображений
     $container.imagesLoaded( function() {
         $container.masonry({
-            
+            itemSelector: '.grid-item',
+            percentPosition: true,
+            gutter: 40
         });
+    });
+    $container.on( 'layoutComplete', function( event, items ) {
+        console.log( items.length );
     });
 
     $(window).resize(function(){
@@ -55,18 +75,11 @@ $(document).ready(function () {
             }
         });
     });
-
-    var wow = new WOW(
-        {
-            boxClass: 'wow', // animated element css class (default is wow)
-            animateClass: 'animated', // animation css class (default is animated)
-            offset: 100, // distance to the element when triggering the animation (default is 0)
-            mobile: true,        // trigger animations on mobile devices (true is default)
-            callback: function (box) {
-                $(box).addClass('w_100');
-            },
-            scrollContainer: null // optional scroll container selector, otherwise use window
-        }
-    );
-    wow.init();
+    
+    $('.show-menu').click(function () {
+        $(this).toggleClass('active');
+        $('body').toggleClass('overflow');
+        $('.nav').toggleClass('show');
+        $('.main-menu__left').toggleClass('fixed');
+    })
 });

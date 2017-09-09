@@ -38,7 +38,7 @@ use common\models\PostAction;
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-6">
-                                <h2 class="text-right title-lg wow fadeInRight" data-wow-duration=".8s" data-wow-delay="1.1s">С обеих <span>сторон</span></h2>
+                                <h2 class="text-right title-lg wow fadeInRight" data-wow-duration=".8s" data-wow-delay="1.1s" data-wow-offset="-100">С обеих <span>сторон</span></h2>
                             </div>
                         </div>
                     </div>
@@ -191,20 +191,143 @@ use common\models\PostAction;
                     <p class="text-white">Участвуй в нашем конкурсе и голосуй за лучшие фотографии!</p>
                 </div>
             </div>
-            <?php if($posts):?>
-            <div class="row">
-                <div class="col-md-12 wow fadeInUp">
-                    <div id="container" class="bothie-blocks">
-                        <?=$this->render('_bothie_blocks', ['posts' => $posts]);?>
+            <div id="container" class="bothie-blocks wow fadeInUp">
+                <div class="grid-item w280-h600">
+                    <div class="bothie-instargram" style="background-image:url('images/test/280x560.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w280-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w600-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/560x280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w280-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w280-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w600-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/560x280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w280-h600">
+                    <div class="bothie-instargram" style="background-image:url('images/test/280x560.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w280-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w280-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w280-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w600-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/560x280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w280-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w600-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/560x280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w280-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w280-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w280-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w280-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w600-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/560x280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w280-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w280-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w600-h280">
+                    <div class="bothie-site-horizontal">
+                        <div class="first" style="background-image: url('images/bothie/bothie-3.jpg')"></div>
+                        <div class="second" style="background-image: url('images/bothie/bothie-3-2.jpg')"></div>
                     </div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w280-h600">
+                    <div class="bothie-site-vertical">
+                        <div class="first" style="background-image: url('images/bothie/bothie-4-2.jpg')"></div>
+                        <div class="second" style="background-image: url('images/bothie/bothie-4.jpg')"></div>
+                    </div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
+                </div>
+                <div class="grid-item w280-h280">
+                    <div class="bothie-instargram" style="background-image:url('images/test/280.jpg')"></div>
+                    <a href="" class="bothie-btn"><span class="icon"></span></a>
+                    <span class="bothie-rat">1235</span>
                 </div>
             </div>
-            <div class="row text-center">
-                <div class="col-12 wow fadeInUp">
-                    <a href="<?=Url::toRoute(['site/vote']);?>" class="border-link">Все работы</a>
-                </div>
-            </div>
-            <?php endif;?>
+<!--            --><?php //if($posts):?>
+<!--            <div class="row">-->
+<!--                <div class="col-md-12 wow fadeInUp">-->
+<!--                    <div id="container" class="bothie-blocks">-->
+<!--                        --><?//=$this->render('_bothie_blocks', ['posts' => $posts]);?>
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="row text-center">-->
+<!--                <div class="col-12 wow fadeInUp">-->
+<!--                    <a href="--><?//=Url::toRoute(['site/vote']);?><!--" class="border-link">Все работы</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            --><?php //endif;?>
         </div>
     </section>
     <section class="screen-fifth">

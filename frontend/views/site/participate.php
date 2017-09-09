@@ -7,11 +7,13 @@ use yii\widgets\ActiveForm;
 <div class="personal-account">
     <div class="personal-account__inner">
         <div class="p-a__first text-center">
-            <h2 class="title-lg"><?=Yii::$app->user->identity->name;?></h2>
-            <?=$this->render('_weeks_menu', ['weeks' => $weeks]);?>
-            <div class="p-a__title"></div>
+            <h2 class="title-lg wow fadeInDown"><?=Yii::$app->user->identity->name;?></h2>
+            <div class="wow fadeInUp">
+                <?=$this->render('_weeks_menu', ['weeks' => $weeks]);?>
+            </div>
+            <div class="p-a__title wow fadeInUp"></div>
             <hr class="hr">
-            <div class="do-it-bothie">
+            <div class="do-it-bothie wow fadeInUp">
                 <h3 class="do-it-bothie__title">Сделай бози:</h3>
                 <?php $form = ActiveForm::begin([
                     'options' => [
@@ -81,7 +83,7 @@ use yii\widgets\ActiveForm;
 
 
         <?php if(count(Yii::$app->user->identity->posts) > 0):?>
-        <div class="p-a__second">
+        <div class="p-a__second wow fadeInUp">
             <div class="other-jobs">
                 <h2 class="title-lg text-center">Другие работы:</h2>
                 <div class="other-jobs__items">

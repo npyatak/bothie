@@ -28,12 +28,12 @@ AppAsset::register($this);
         <div class="main-menu__inner">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-3">
                         <div class="main-menu__left">
                             <a href=""></a>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-6">
                         <?php
                         $menuItems = [
                             ['label' => 'Главная', 'action' => 'index'],
@@ -59,14 +59,21 @@ AppAsset::register($this);
                                 <?php endif;?>
                             </ul>
                         </div>
+                        <div class="hidden-btn">
+                            <span class="show-menu">
+                                <span class="show-menu__inner">
+                                    <span></span><span></span><span></span>
+                                </span>
+                            </span>
+                        </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-3">
                         <div class="main-menu__right">
                             <a href=""></a>
                         </div>
                     </div>
                 </div>
-                <div class="main-menu__center"></div>
+<!--                <div class="main-menu__center"></div>-->
             </div>
         </div>
     </div>
