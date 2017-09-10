@@ -10,6 +10,10 @@ class Post extends \yii\db\ActiveRecord
     const STATUS_ACTIVE = 1;
     const STATUS_BANNED = 5;
 
+    const IMAGE_SQUARE = 1;
+    const IMAGE_HORIZONTAL = 2;
+    const IMAGE_VERTICAL = 3;
+
     public $frontImageFile;
     public $backImageFile;
 
@@ -42,7 +46,7 @@ class Post extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'frontImageFile', 'backImageFile'], 'required'],
-            [['user_id', 'score', 'status', 'created_at', 'updated_at', 'is_from_ig'], 'integer'],
+            [['user_id', 'score', 'status', 'created_at', 'updated_at', 'is_from_ig', 'ig_parse_data_id', 'image_orientation'], 'integer'],
             [['front_image', 'back_image'], 'string', 'max' => 255],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
 
@@ -50,6 +54,12 @@ class Post extends \yii\db\ActiveRecord
             [['frontImageFile'], 'file', 'skipOnEmpty' => false, 'extensions'=>'jpg, jpeg, png', 'maxSize'=>1024 * 1024 * 5, 'mimeTypes' => 'image/jpg, image/jpeg, image/png'],
             [['backImageFile'], 'file', 'skipOnEmpty' => false, 'extensions'=>'jpg, jpeg, png', 'maxSize'=>1024 * 1024 * 5, 'mimeTypes' => 'image/jpg, image/jpeg, image/png'],
         ];
+    }  
+
+    public function scenarios() {
+        $scenarios = parent::scenarios();
+        $scenarios['parse'] = ['ig_parse_data_id'];
+        return $scenarios;
     }
 
     public function behaviors() {
@@ -125,6 +135,10 @@ class Post extends \yii\db\ActiveRecord
 
     public function getBackImageUrl() {
         return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl('/uploads/post/'.$this->user_id.'/'.$this->back_image);
+    }
+
+    public function getIgImageUrl() {
+        return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl('/uploads/post/'.$this->user_id.'/'.$this->ig_image);
     }
 
     public function getGluedImageUrl() {

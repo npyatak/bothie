@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m170823_115335_create_table_user extends Migration
+class m170823_115337_create_table_ig_parse_data extends Migration
 {
     public function safeUp() {
         $tableOptions = null;
@@ -11,26 +11,20 @@ class m170823_115335_create_table_user extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('{{%user}}', [
+        $this->createTable('{{%ig_parse_data}}', [
             'id' => $this->primaryKey(),
-            'ig_id' => $this->bigInteger()->notNull(),
-            'username' => $this->string(),
-            'full_name' => $this->string(),
+            'ig_user_id' => $this->bigInteger()->notNull(),
+            'ig_post_id' => $this->bigInteger()->notNull()->unique(),
+            'ig_caption' => $this->text(),
             'image' => $this->string(),
-            'bio' => $this->string(),
-            'website' => $this->string(),
             'status' => $this->integer(1)->notNull()->defaultValue(1),
 
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
-
-        $this->batchInsert('{{%user}}', ['ig_id', 'username', 'full_name', 'created_at', 'updated_at'], [
-            [123, 'ya.jamaker', 'ivan ivanov', time(), time()],
-        ]);
     }
 
     public function safeDown() {
-        $this->dropTable('{{%user}}');
+        $this->dropTable('{{%ig_parse_data}}');
     }
 }

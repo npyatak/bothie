@@ -128,7 +128,7 @@ p {
     padding: 20px;
     min-width: 220px;
     border: 5px solid #FF9A6F;
-    color: #FF9A6F;
+    color: #FF9A6F!important;
     background: transparent;
     font: 19px 'NokiaPureHeadline-Bold', sans-serif;
     outline: none;
@@ -284,7 +284,7 @@ p {
     width: 280px;
     position: relative;
 }
-.bothie-btn {
+.bothie-btn, .login-modal-btn {
     display: inline-block;
     width: 82px;
     height: 82px;
@@ -307,8 +307,9 @@ p {
     background: #001B96;
     color: #fff;
     z-index: 1;
+    cursor: pointer;
 }
-.bothie-btn span {
+.bothie-btn span, .login-modal-btn span {
     display: inline-block;
     width: 25px;
     height: 25px;
@@ -316,7 +317,7 @@ p {
     -webkit-background-size: 25px;
     background-size: 25px;
 }
-.bothie-btn:hover, .bothie-btn:active {
+.bothie-btn:hover, .bothie-btn:active, .login-modal-btn:hover, .login-modal-btn:active {
     color: #fff;
 }
 .bothie-rat {
@@ -579,4 +580,12 @@ input.form-control {
     .grid-item.w280-h600::before {
         padding-top: 218.59%;
     }
+}
+.modal-content {
+    background: url(../images/backgrounds/registration.jpg) no-repeat center;
+}
+.loading .icon {
+    display: none;
+    color: #fff;
+    font-size: 50px;
 }

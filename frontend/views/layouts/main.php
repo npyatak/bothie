@@ -73,7 +73,6 @@ AppAsset::register($this);
                         </div>
                     </div>
                 </div>
-<!--                <div class="main-menu__center"></div>-->
             </div>
         </div>
     </div>
@@ -84,6 +83,11 @@ AppAsset::register($this);
         
     </footer>
 </div>
+
+<?php if(Yii::$app->user->isGuest) {
+    echo $this->render('_login_modal');
+}?>
+
 <?php $this->endBody() ?>
 </body>
 </html>

@@ -40,7 +40,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['ig_id', 'username', 'status'], 'required'],
+            [['ig_id'], 'required'],
             [['ig_id', 'status', 'created_at', 'updated_at'], 'integer'],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_BANNED]],
             [['username', 'full_name', 'image', 'bio', 'website'], 'string', 'max' => 255],

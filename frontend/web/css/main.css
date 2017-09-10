@@ -720,11 +720,11 @@ header .bottom.row {
 .eauth-service-link:before {
     content: '';
     display: block;
-    position: static;
-    width: 70px;
-    height: 70px;
+    position: static!important;
+    width: 70px!important;
+    height: 70px!important;
     margin: 0 auto;
-    background: url('../images/icons/instagram.png') no-repeat;
+    background: url('../images/icons/instagram.png') no-repeat!important;
     background-position: center !important;
     -webkit-background-size: contain;
     background-size: contain;

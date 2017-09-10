@@ -25,7 +25,7 @@ use yii\helpers\Html;
                 <div class="col-md-12 wow fadeInUp">
                     <div class="container">
                         <div id="container" class="bothie-blocks">
-                            <?=$this->render('_vote_bothie_blocks', ['posts' => $posts]);?>
+                            <?=$this->render('_bothie_blocks', ['posts' => $posts]);?>
                         </div>
                     </div>
                 </div>
@@ -35,9 +35,12 @@ use yii\helpers\Html;
     </div>
     <div class="rates-footer">
         <div class="container">
+            <?php if(!$noMorePosts):?>
             <div class="links text-center wow fadeInUp">
-                <a href="<?=Url::toRoute(['site/participate']);?>" class="border-link load-more">Загрузить ещё</a>
+                <div class="loading"><span class="icon"><i class="fa fa-cog fa-spin"></i></span></div>
+                <a class="border-link load-more">Загрузить ещё</a>
             </div>
+            <?php endif;?>
             <div class="row text-left wow fadeInUp" data-wow-offset="-400">
                 <div class="col-md-2">
                     <a href="">Условия обработки персональных данных</a>
@@ -47,3 +50,30 @@ use yii\helpers\Html;
         </div>
     </div>
 </div>
+
+<?php $script = "
+    $('.load-more').on('click', function() {
+        var btn = $(this);
+        btn.hide();
+        btn.parent().find('.loading').show();
+
+        var ids = [];
+        $('.grid-item').each(function(el) {
+            ids.push($(this).data('id'));
+        });
+
+        $.ajax({
+            data: {ids: ids},
+            success: function(data) {
+                var html = $(data);
+                $('#container').append(html).masonry('appended', html);
+
+                btn.parent().find('.loading').hide();
+                if(data.length == 0) {
+                    btn.parent().remove();
+                }
+            }
+        });
+    });
+";?>
+<?php $this->registerJs($script, yii\web\View::POS_END);?>

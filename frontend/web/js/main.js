@@ -60,14 +60,14 @@ $(document).ready(function () {
         $(this).toggleClass('checked');    
     });
 
-    $('.bothie-btn').on('click', function (e) {
+    $(document).on('click', '.bothie-btn', function (e) {
         e.preventDefault();
 
         var obj = $(this);
 
         $.ajax({
             type: 'GET',
-            url: 'site/user-action',
+            url: '/site/user-action',
             data: 'id='+obj.attr('data-id'),
             success: function (data) {
                 obj.parent().find('.bothie-rat').html(data.score);
@@ -82,4 +82,18 @@ $(document).ready(function () {
         $('.nav').toggleClass('show');
         $('.main-menu__left').toggleClass('fixed');
     })
+    
+    $('.eauth-service-link').on('click', function (e) {
+        if(!$('#conditions').is(':checked') || !$('#rules').is(':checked')) {
+            $('.site-login__second span.text-danger').html('Пожалуйста, подтвердите свое согласие с полными правилами и условиями обработки данных');
+            return false;
+        } else {
+            $('.site-login__second span.text-danger').html('');
+        }
+    });
+
+    $(document).on('click', '.login-modal-btn', function() {
+        $('#modal-login').modal();
+        return false;
+    });
 });

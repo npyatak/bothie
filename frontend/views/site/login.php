@@ -1,6 +1,5 @@
 <?php
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
 
 $this->title = 'Авторизация';
 $this->params['breadcrumbs'][] = $this->title;
@@ -38,16 +37,3 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
-
-<?php $script = "
-    $('.eauth-service-link').on('click', function (e) {
-        if(!$('#conditions').is(':checked') || !$('#rules').is(':checked')) {
-            $('.site-login__second span.text-danger').html('Пожалуйста, подтвердите свое согласие с полными правилами и условиями обработки данных');
-            return false;
-        } else {
-            $('.site-login__second span.text-danger').html('');
-        }
-    });
-";?>
-
-<?php $this->registerJs($script, yii\web\View::POS_END);?>

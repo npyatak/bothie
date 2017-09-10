@@ -15,7 +15,7 @@ use common\models\User;
 use common\models\Post;
 use common\models\PostAction;
 use common\models\Week;
-
+use common\models\IndexAdvice;
 
 /**
  * Site controller
@@ -34,7 +34,7 @@ class SiteController extends Controller
             ],
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['login', 'logout', 'participate', 'vote', 'user-action'],
+                'only' => ['login', 'logout', 'participate', 'user-action'],
                 'rules' => [
                     [
                         'actions' => ['login'],
@@ -42,7 +42,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout', 'participate', 'vote', 'user-action'],
+                        'actions' => ['logout', 'participate', 'user-action'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -80,10 +80,12 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $posts = Post::find()->where(['week_id' => $this->currentWeek->id, 'status' => Post::STATUS_ACTIVE])->limit(12)->orderBy(new \yii\db\Expression('rand()'))->all();
+        $indexAdvices = IndexAdvice::find()->where(['status' => IndexAdvice::STATUS_ACTIVE])->all();
 
         return $this->render('index', [
             'currentWeek' => $this->currentWeek,
             'posts' => $posts,
+            'indexAdvices' => $indexAdvices,
         ]);
     }
 
@@ -159,27 +161,29 @@ class SiteController extends Controller
     }
 
     public function actionVote() {
-        //$query = Post::find();
-        // if(!Yii::$app->user->isGuest) {
-        //     $query->select(['post.*', 'post_action.*'])
-        //         ->leftJoin([
-        //         'post_action' => PostAction::find()
-        //             ->select(['MAX(post_action.id) as last_user_action_id', 'MAX(post_action.created_at) as last_user_action_time', 'post_action.type', 'post_action.post_id'])
-        //             ->where(['post_action.user_id'=>Yii::$app->user->id])
-        //             ->groupBy('post_action.type, post_action.post_id')
-        //             ->orderBy('post_action.id DESC, post_action.type')
-        //             ->asArray()
-        //         ], 
-        //         'post_action.post_id = post.id');
-        // }        
-        // $query->where(['status'=>Post::STATUS_ACTIVE])->limit(12)->orderBy(new \yii\db\Expression('rand()'))->asArray();
-        
-        //$posts = $query->all();
-        
-        $posts = Post::find()->where(['week_id' => $this->currentWeek->id, 'status' => Post::STATUS_ACTIVE])->limit(12)->orderBy(new \yii\db\Expression('rand()'))->all();
+        $limit = 12;
+        $count = Post::find()->where(['week_id' => $this->currentWeek->id, 'status' => Post::STATUS_ACTIVE])->count();
+
+        $query = Post::find()
+            ->where(['week_id' => $this->currentWeek->id, 'status' => Post::STATUS_ACTIVE])
+            ->limit($limit)
+            ->orderBy(new \yii\db\Expression('rand()'));
+
+        if (Yii::$app->request->isAjax && isset($_GET['ids'])) {
+            $posts = $query->andWhere(['not in', 'id', $_GET['ids']])->all();
+
+            return $this->renderPartial('_bothie_blocks', [
+                'posts' => $posts,
+                'noMorePosts' => $count + count($_GET['ids']) >= $limit ? false : true,
+            ]);
+        }
+
+        $posts = $query->all();
+        $noMorePosts = $count >= $limit ? false : true;
 
         return $this->render('vote', [
             'posts' => $posts,
+            'noMorePosts' => $noMorePosts,
         ]);
     }
 
@@ -248,11 +252,18 @@ class SiteController extends Controller
                         $user->image = $eauth->attributes['profile_picture'];
                         $user->website = $eauth->attributes['website'];
                         $user->bio = $eauth->attributes['bio'];
-                        $user->status = User::STATUS_ACTIVE;
+
+                        $user->save();
+                    } elseif(!$user->username) {                        
+                        $user->username = $eauth->attributes['username'];
+                        $user->full_name = $eauth->attributes['full_name'];
+                        $user->image = $eauth->attributes['profile_picture'];
+                        $user->website = $eauth->attributes['website'];
+                        $user->bio = $eauth->attributes['bio'];
 
                         $user->save();
                     }
-                    Yii::$app->getUser()->login($user);
+                    Yii::$app->user->login($user);
                     // special redirect with closing popup window
                     $eauth->redirect();
                 } else {
