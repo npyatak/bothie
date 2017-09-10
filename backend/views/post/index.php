@@ -31,32 +31,57 @@ $this->params['breadcrumbs'][] = $this->title;
                 'id',
                 [
                     'attribute' => 'week_id',
+                    'format' => 'raw',
                     'value' => function($data) {
-                        return $data->week->name;
+                        return Html::a($data->week->name, Url::toRoute(['week/view', 'id' => $data->week_id]));
                     },
                     'filter' => Html::activeDropDownList($searchModel, 'week_id', ArrayHelper::map(Week::find()->all(), 'id', 'name'), ['prompt'=>'']),
                 ],
                 [
                     'attribute' => 'user_id',
+                    'format' => 'raw',
                     'value' => function($data) {
-                        return $data->user->username;
+                        return Html::a($data->user->username ? $data->user->username : $data->user->ig_id, Url::toRoute(['user/view', 'id' => $data->id]));
                     }
                 ],
                 [
-                    'attribute' => 'front_image',
+                    'attribute' => 'is_from_ig',
+                    'value' => function($data) {
+                        $arr = [0 => 'Нет', 1 => 'Да'];
+                        return $arr[$data->is_from_ig];
+                    },
+                    'filter' => Html::activeDropDownList($searchModel, 'is_from_ig', [0 => 'Нет', 1 => 'Да'], ['prompt'=>'']),
+                ],
+                [
+                    'header' => 'Изображения',
                     'format' => 'raw',
                     'value' => function($data) {
-                        return Html::img($data->frontImageUrl, ['width' => '200px']);
+                        if($data->is_from_ig) {
+                            switch ($data->image_orientation) {
+                                case Post::IMAGE_SQUARE:
+                                    $style = 'width: 140px; height: 140px';
+                                    break;
+                                case Post::IMAGE_HORIZONTAL:
+                                    $style = 'width: 300px; height: 140px';
+                                    break;
+                                case Post::IMAGE_VERTICAL:
+                                    $style = 'width: 140px; height: 300px';
+                                    break;
+                            }
+
+                            return Html::img($data->igImageUrl, ['style' => $style]);
+                        } else {
+                            return Html::img($data->frontImageUrl, ['width' => '140px']).Html::img($data->backImageUrl, ['width' => '140px']);
+                        }
                     }
                 ],
                 [
-                    'attribute' => 'back_image',
+                    'attribute' => 'score',
                     'format' => 'raw',
                     'value' => function($data) {
-                        return Html::img($data->backImageUrl, ['width' => '200px']);
-                    }
-                ],
-                'score',
+                        return Html::a($data->score, Url::toRoute(['post-action/index', 'PostActionSearch[post_id]' => $data->id]));
+                    },
+                ], 
                 [
                     'attribute' => 'status',
                     'value' => function($data) {

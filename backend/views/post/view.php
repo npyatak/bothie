@@ -34,25 +34,53 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'user_id',
                 'format' => 'raw',
                 'value' => function($model) {
-                    return Html::a($model->user->username, Url::toRoute(['/user/view', 'id'=>$model->user->id]));
+                    return Html::a($model->user->username ? $model->user->username : $model->user->ig_id, Url::toRoute(['/user/view', 'id'=>$model->user->id]));
                 }
+            ],  
+            [
+                'attribute' => 'week_id',
+                'format' => 'raw',
+                'value' => function($model) {
+                    return Html::a($model->week->name, Url::toRoute(['week/view', 'id' => $model->week_id]));
+                },
+            ],
+            [
+                'attribute' => 'is_from_ig',
+                'value' => function($model) {
+                    $arr = [0 => 'Нет', 1 => 'Да'];
+                    return $arr[$model->is_from_ig];
+                },
+            ],
+            [
+                'attribute' => 'image',
+                'format' => 'raw',
+                'value' => function($model) {
+                    if($model->is_from_ig) {
+                        switch ($model->image_orientation) {
+                            case Post::IMAGE_SQUARE:
+                                $style = 'width: 140px; height: 140px';
+                                break;
+                            case Post::IMAGE_HORIZONTAL:
+                                $style = 'width: 300px; height: 140px';
+                                break;
+                            case Post::IMAGE_VERTICAL:
+                                $style = 'width: 140px; height: 300px';
+                                break;
+                        }
+
+                        return Html::img($model->igImageUrl, ['style' => $style]);
+                    } else {
+                        return Html::img($model->frontImageUrl, ['width' => '140px']).Html::img($model->backImageUrl, ['width' => '140px']);
+                    }
+                }
+            ],
+            [
+                'attribute' => 'score',
+                'format' => 'raw',
+                'value' => function($model) {
+                    return Html::a($model->score, Url::toRoute(['post-action/index', 'PostActionSearch[post_id]' => $model->id]));
+                },
             ],            
-            [
-                'attribute' => 'front_image',
-                'format' => 'raw',
-                'value' => function($model) {
-                    return Html::img($model->frontImageUrl);
-                }
-            ],
-            [
-                'attribute' => 'back_image',
-                'format' => 'raw',
-                'value' => function($model) {
-                    return Html::img($model->backImageUrl);
-                }
-            ],
-            'score',
-            
             [
                 'attribute' => 'status',
                 'format' => 'raw',

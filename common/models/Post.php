@@ -30,6 +30,8 @@ class Post extends \yii\db\ActiveRecord
     public $back_scale;
     public $back_angle;
 
+    public $image;
+
     public $_lastUserActions;
     /**
      * @inheritdoc
@@ -78,12 +80,15 @@ class Post extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'user_id' => 'Пользователь',
+            'week_id' => 'Неделя',
             'front_image' => 'Фото с фронтальной камеры',
             'back_image' => 'Фото с тыловой камеры',
             'frontImageFile' => 'Фото с фронтальной камеры',
             'backImageFile' => 'Фото с тыловой камеры',
             'score' => 'Баллы',
             'status' => 'Статус',
+            'is_from_ig' => 'Из инстаграма',
+            'image' => 'Изображение',
             'created_at' => 'Дата/Время создания',
             'updated_at' => 'Время последнего изменения',
         ];
