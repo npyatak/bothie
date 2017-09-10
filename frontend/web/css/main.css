@@ -214,6 +214,7 @@ header .bottom.row {
     padding: 40px 0;
 }
 .screen-second .left {
+    position: relative;
     padding-top: 60px;
     text-align: right;
 }
@@ -222,8 +223,10 @@ header .bottom.row {
 }
 .screen-second .left .img-caption {
     width: 122px;
+    position: absolute;
+    top: 100%;
+    right: -32px;
     margin-top: 20px;
-    margin-left: 200px;
     text-align: center;
     color: #fff;
 }
@@ -253,6 +256,10 @@ header .bottom.row {
 .simple-bothie-block .img-wrap .left, .simple-bothie-block .img-wrap .right {
     float: left;
     width: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 .simple-bothie-block .img-wrap .left:before, .simple-bothie-block .img-wrap .right::before {
     content: '';
@@ -1070,6 +1077,21 @@ header .bottom.row {
     .nav .ul li {
         margin-right: 0;
     }
+    .main-page {
+        background: #010431;
+    }
+    .screen-second, .screen-third, .screen-fourth, .screen-fifth {
+        padding-top: 80px;
+    }
+    .screen-second .blue-text {
+        color: #fff;
+    }
+    .screen-second .button-wrap {
+        display: none;
+    }
+    .screen-fifth .bottom-p {
+        color: #fff !important;
+    }
 }
 @media (max-width: 992px) {
     .main-menu .row>div:last-child {
@@ -1096,7 +1118,7 @@ header .bottom.row {
         transform: translateY(0);
     }
     .shares-title {
-        margin-top: 10px;
+        margin-bottom: 10px;
     }
     .header-footer {
         margin-top: 70px;
@@ -1156,14 +1178,65 @@ header .bottom.row {
         left: 0;
         z-index: 13;
     }
-    header .top-figure img {
-        width: 100%;
-    }
+    /*header .top-figure img {*/
+        /*width: 100%;*/
+    /*}*/
     header .top-layer, header .bottom-layer {
+        display: none;
+    }
+    header .bottom.row, header .top h2 {
+        margin-top: 35px;
+    }
+    header .bottom>.col-md-6 {
+        width: 50%;
+    }
+    .screen-second .row>.col-md-3 {
+        display: none;
+    }
+    .screen-fourth p {
+        padding: 0 40px;
+    }
+    .screen-fifth .owl-nav {
+        display: none;
+    }
+}
+@media (max-width: 650px){
+    header .top h2, header .bottom h2 {
+        text-align: center !important;
+    }
+    header .bottom.row {
+        z-index: 3;
+    }
+    header .top>.col-md-6, header .bottom>.col-md-6 {
         width: 100%;
+        padding: 0;
+    }
+    header .bottom>.col-md-6>.row>.col-md-6 {
+        margin: 0 auto;
+    }
+    header .middle-layer {
+        height: 450px;
+    }
+}
+@media (max-width: 600px){
+    .screen-fourth .title-lg {
+        padding: 0 20px;
+        font-size: 38px;
+    }
+}
+@media (max-width: 530px){
+    .header-footer .shares {
+        position: static;
+    }
+    .header-footer .col-md-2 {
+        margin: 0 auto 30px;
+        text-align: center !important;
     }
 }
 @media (max-width: 500px){
+    .container {
+        padding: 0 20px;
+    }
     .main-menu__inner {
         height: 65px;
         line-height: 65px;
@@ -1177,5 +1250,49 @@ header .bottom.row {
     }
     .show-menu {
         top: 7px;
+    }
+    .title-lg {
+        font-size: 35px;
+        line-height: 38px;
+    }
+    header .middle-layer {
+        height: 350px;
+    }
+    header .top h2 {
+        margin-top: 0;
+    }
+    .screen-second .img-inBlock {
+        max-width: 80%;
+    }
+    .screen-second .middle br {
+        display: none;
+    }
+    .screen-second .font-30, .screen-fifth .bottom-p {
+        font-size: 22px;
+    }
+    .simple-bothie-block {
+        margin-top: 30px;
+    }
+    .simple-bothie-block .img-wrap .left, .simple-bothie-block .img-wrap .right {
+        width: 100%;
+    }
+    .simple-bothie-block .simple-bothie__content {
+        padding: 20px 15px;
+    }
+    #simple-bothie .owl-nav {
+        padding-bottom: 20px;
+        text-align: center;
+    }
+    #simple-bothie .owl-prev, #simple-bothie .owl-next {
+        float: none;
+        display: inline-block;
+    }
+    .screen-fourth p {
+        padding: 0 20px;
+    }
+}
+@media (max-width: 340px) {
+    .screen-fifth .title-lg {
+        font-size: 28px;
     }
 }

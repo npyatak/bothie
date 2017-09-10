@@ -81,7 +81,7 @@ AppAsset::register($this);
         <?= $content ?>
     </div>
     <footer>
-
+        
     </footer>
 </div>
 <?php $this->endBody() ?>
