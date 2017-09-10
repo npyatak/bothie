@@ -8,6 +8,13 @@
 .main-menu__inner {
     height: 115px;
     line-height: 115px;
+    background: rgba(0,27,150,1);
+    background: -moz-linear-gradient(top, rgba(0,27,150,1) 0%, rgba(0,0,185,1) 50%, transparent 70%, transparent 100%);
+    background: -webkit-linear-gradient(top, rgba(0,27,150,1) 0%, rgba(0,0,185,1) 50%, transparent 70%, transparent 100%);
+    background: -o-linear-gradient(top, rgba(0,27,150,1) 0%, rgba(0,0,185,1) 50%, transparent 70%, transparent 100%);
+    background: -ms-linear-gradient(top, rgba(0,27,150,1) 0%, rgba(0,0,185,1) 50%, transparent 70%, transparent 100%);
+    background: linear-gradient(to bottom, rgba(0,27,150,1) 0%, rgba(0,0,185,1) 50%, transparent 70%, transparent 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001b96', endColorstr='#ffffff', GradientType=0 );
 }
 .main-menu .container {
     padding: 0 !important;
