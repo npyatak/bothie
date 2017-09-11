@@ -1,4 +1,4 @@
-@font-face {
+/*@font-face {
     font-family: 'NokiaPureHeadline-UltraLight';
     src: url('font/nokia/NOKIAPUREHEADLINE_ULT.TTF') format('truetype');
 }
@@ -9,6 +9,18 @@
 @font-face {
     font-family: 'NokiaPureHeadline-ExtraBold';
     src: url('font/nokia/NOKIAPUREHEADLINE_XBD.TTF') format('truetype');
+}*/
+@font-face {
+    font-family: 'NokiaPureHeadline-UltraLight';
+        src: url('font/nokia/nokiapureheadline_ult-webfont.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'NokiaPureHeadline-Bold';
+    src: url('font/nokia/nokiapureheadline-webfont.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'NokiaPureHeadline-ExtraBold';
+    src: url('font/nokia/nokiapureheadline_xbd-webfont.woff2') format('woff2');
 }
 body, .wrapper, .content {
     min-height: 100%;
@@ -241,6 +253,18 @@ p {
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
+}
+.ig-w600-h280 {
+    width: 600px!important;
+    height: 280px;
+}
+.ig-w280-h280 {
+    width: 280px!important;
+    height: 280px;
+}
+.ig-w280-h600 {
+    width: 280px!important;
+    height: 600px;
 }
 .grid-item.w280-h280 {
     width: 21.875%;

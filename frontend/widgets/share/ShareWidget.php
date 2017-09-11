@@ -7,11 +7,14 @@ class ShareWidget extends \yii\bootstrap\Widget  {
 	
 	public $post;
 	public $url;
-	public $title = 'Короли Bothie';
+	public $title = 'Nokia 8: покажи свою историю с обеих сторон';
 	public $image;
-	public $desc = 'Поддержи мою работу в конкурсе';
+	public $desc = 'Голосуйте за меня и участвуйте в конурсе #fridaybothie #бозинапятнице #bothie';
 
 	public function init() {
+		if($this->is_from_ig) {
+			$this->image = $this->igImageUrl;
+		}
 		$this->image = $this->image ? $this->image : Url::to($this->post->gluedImageUrl, true);
 		$this->url = $this->url ? $this->url : Url::to($this->post->url, true);
 	}

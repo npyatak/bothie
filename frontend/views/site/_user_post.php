@@ -6,8 +6,12 @@ use frontend\widgets\share\ShareWidget;
 
 <div class="other-jobs__item">
     <div class="top">
-        <div class="left" style="background-image: url(<?=$post->frontImageUrl;?>)"></div>
-        <div class="right" style="background-image: url(<?=$post->backImageUrl;?>"></div>
+        <?php if(!$post->is_from_ig):?>
+            <div class="left" style="background-image: url(<?=$post->frontImageUrl;?>)"></div>
+            <div class="right" style="background-image: url(<?=$post->backImageUrl;?>"></div>
+        <?php else:?>
+            <div class="<?=$post->cssClass;?>" style="background-image: url(<?=$post->igImageUrl;?>)"></div>
+        <?php endif;?>
     </div>
     <div class="bottom">
         <div class="o-j__rating">

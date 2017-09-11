@@ -4,8 +4,7 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model common\models\Post */
+use common\models\Post;
 
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Посты', 'url' => ['index']];
@@ -58,19 +57,19 @@ $this->params['breadcrumbs'][] = $this->title;
                     if($model->is_from_ig) {
                         switch ($model->image_orientation) {
                             case Post::IMAGE_SQUARE:
-                                $style = 'width: 140px; height: 140px';
+                                $style = 'width: 280px; height: 280px';
                                 break;
                             case Post::IMAGE_HORIZONTAL:
-                                $style = 'width: 300px; height: 140px';
+                                $style = 'width: 600px; height: 280px';
                                 break;
                             case Post::IMAGE_VERTICAL:
-                                $style = 'width: 140px; height: 300px';
+                                $style = 'width: 280px; height: 600px';
                                 break;
                         }
 
                         return Html::img($model->igImageUrl, ['style' => $style]);
                     } else {
-                        return Html::img($model->frontImageUrl, ['width' => '140px']).Html::img($model->backImageUrl, ['width' => '140px']);
+                        return Html::img($model->frontImageUrl, ['width' => '280px']).Html::img($model->backImageUrl, ['width' => '280px']);
                     }
                 }
             ],

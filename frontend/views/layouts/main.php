@@ -30,7 +30,7 @@ AppAsset::register($this);
                 <div class="row">
                     <div class="col-3">
                         <div class="main-menu__left">
-                            <a href=""></a>
+                            <a href="http://friday.ru" target="_blank"></a>
                         </div>
                     </div>
                     <div class="col-6">
@@ -69,7 +69,7 @@ AppAsset::register($this);
                     </div>
                     <div class="col-3">
                         <div class="main-menu__right">
-                            <a href=""></a>
+                            <a href="https://mobileshop.nokia.ru/378450/nokia-8-tempered-blue" target="_blank"></a>
                         </div>
                     </div>
                 </div>

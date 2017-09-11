@@ -10,6 +10,7 @@ use yii\filters\AccessControl;
 use yii\helpers\Url;
 use yii\web\UploadedFile;
 use frontend\widgets\cropimage\helpers\Image;
+use yii\web\NotFoundHttpException;
 
 use common\models\User;
 use common\models\Post;
@@ -128,7 +129,7 @@ class SiteController extends Controller
                     'angle' => $model->back_angle,
                 ]);
 
-                return $this->redirect(['index']);
+                return $this->redirect(['participate']);
             }
         } 
 
@@ -139,7 +140,11 @@ class SiteController extends Controller
     }
 
     public  function actionImage($id){
-        $post = Post::findOne($id);
+        $post = $this->findPost($id);
+
+        if($post->is_from_ig) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
 
         $x = getimagesize($post->frontImageUrl)[0];
         $y = getimagesize($post->frontImageUrl)[1];
@@ -201,7 +206,7 @@ class SiteController extends Controller
                     $type = PostAction::TYPE_LIKE;
                     break;
             }
-            $post = Post::findOne($id);
+            $post = $this->findPost($id);
             if($post !== null && $post->userCan($type)) {
                 PostAction::create($id, $type);
 
@@ -214,10 +219,7 @@ class SiteController extends Controller
     }
 
     public function actionPost($id) {
-        $userPost = Post::findOne($id);
-        if($userPost === null || $userPost->status === Post::STATUS_BANNED) {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+        $userPost = $this->findPost($id);
 
         $posts = Post::find()->where(['week_id' => $this->currentWeek->id, 'status' => Post::STATUS_ACTIVE])->limit(12)->orderBy(new \yii\db\Expression('rand()'))->all();
 
@@ -228,7 +230,7 @@ class SiteController extends Controller
     }
 
     public function actionLogin2() {
-        $user = User::findOne(1);
+        $user = User::findOne(5);
         Yii::$app->getUser()->login($user);
         return $this->redirect('/');
     }
@@ -306,5 +308,15 @@ class SiteController extends Controller
         $completePath = __DIR__.'/../web/pdf/rules.pdf';
         $filename = '/pdf/rules.pdf';
         return Yii::$app->response->sendFile($completePath, $filename, ['inline'=>true]);
+    }
+
+    private function findPost($id) {
+        $post = Post::findOne($id);
+
+        if($post === null || $post->status === Post::STATUS_BANNED) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        return $post;
     }
 }

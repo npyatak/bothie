@@ -15,8 +15,12 @@ use common\models\PostAction;
                 <h2 class="title-lg text-center"><?=Yii::$app->user->identity->name;?></h2>
                 <div class="vote-item">
                     <div class="top">
-                        <div class="left" style="background-image: url(<?=$userPost->frontImageUrl;?>);?>"></div>
-                        <div class="right" style="background-image: url(<?=$userPost->backImageUrl;?>)"></div>
+                        <?php if(!$userPost->is_from_ig):?>
+                            <div class="left" style="background-image: url(<?=$userPost->frontImageUrl;?>)"></div>
+                            <div class="right" style="background-image: url(<?=$userPost->backImageUrl;?>"></div>
+                        <?php else:?>
+                            <div class="<?=$userPost->cssClass;?>" style="background-image: url(<?=$userPost->igImageUrl;?>)"></div>
+                        <?php endif;?>
                     </div>
                     <div class="middle">
                         <h4>Баллы: <span><?=$userPost->score;?></span></h4>

@@ -4,19 +4,7 @@ use common\models\Post;
 
 <?php foreach ($posts as $post):?>
     <?php if($post->is_from_ig):?>
-        <?php switch ($post->image_orientation) {
-            case Post::IMAGE_SQUARE:
-                $class = 'w280-h280';
-                break;
-            case Post::IMAGE_HORIZONTAL:
-                $class = 'w600-h280';
-                break;
-            case Post::IMAGE_VERTICAL:
-                $class = 'w280-h600';
-                break;
-        }?>
-
-        <div class="grid-item <?=$class;?>" data-id="<?=$post->id;?>">
+        <div class="grid-item <?=$post->cssClass;?>" data-id="<?=$post->id;?>">
             <div class="bothie-instargram" style="background-image:url(<?=$post->igImageUrl;?>)"></div>
             <?=$this->render('_like_button', ['post' => $post]);?>
             <span class="bothie-rat"><?=$post->score;?></span>
