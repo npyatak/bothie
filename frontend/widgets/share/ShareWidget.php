@@ -12,8 +12,8 @@ class ShareWidget extends \yii\bootstrap\Widget  {
 	public $desc = 'Голосуйте за меня и участвуйте в конурсе #fridaybothie #бозинапятнице #bothie';
 
 	public function init() {
-		if($this->is_from_ig) {
-			$this->image = $this->igImageUrl;
+		if($this->post->is_from_ig) {
+			$this->image = $this->post->igImageUrl;
 		}
 		$this->image = $this->image ? $this->image : Url::to($this->post->gluedImageUrl, true);
 		$this->url = $this->url ? $this->url : Url::to($this->post->url, true);
