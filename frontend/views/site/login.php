@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <input id="rules" type="checkbox" class="form-control">
                     </div>
                     <div class="right">
-                        <p>Я согласен с полными правами</p>
+                        <p>Я согласен с полными правилами</p>
                     </div>
                 </div>
             </form>

@@ -411,7 +411,7 @@ p {
     height: 1px;
     width: 100%;
     margin: 0;
-    background-color: #869dba;
+    border-color: #869dba;
 }
 .shares-link {
     display: inline-block;
@@ -444,6 +444,9 @@ p {
 }
 .m-b-40 {
     margin-bottom: 40px;
+}
+.m-b-50 {
+    margin-bottom: 50px;
 }
 .form-label {
     position: relative;
