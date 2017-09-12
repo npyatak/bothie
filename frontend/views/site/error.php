@@ -9,19 +9,18 @@ use yii\helpers\Html;
 
 $this->title = $name;
 ?>
-<div class="site-error">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <div class="alert alert-danger">
-        <?= nl2br(Html::encode($message)) ?>
+<div class="site-error circle-gradient">
+    <div class="container">
+        <div class="site-error__inner">
+            <div class="row justify-content-center">
+                <div class="site-error__content">
+                    <h2 class="title-lg">404</h2>
+                    <h2 class="title-lg">Такой страницы не существует</h2>
+                    <div class="links">
+                        <a href="" class="border-link">На главную</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
-
 </div>

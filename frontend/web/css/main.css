@@ -1,5 +1,5 @@
 .main-menu {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -8,6 +8,9 @@
 .main-menu__inner {
     height: 115px;
     line-height: 115px;
+}
+.main-menu.g-page {
+    position: fixed;
     background: rgba(0,27,150,1);
     background: -moz-linear-gradient(top, rgba(0,27,150,1) 0%, rgba(0,0,185,1) 50%, transparent 70%, transparent 100%);
     background: -webkit-linear-gradient(top, rgba(0,27,150,1) 0%, rgba(0,0,185,1) 50%, transparent 70%, transparent 100%);
@@ -453,7 +456,8 @@ header .bottom.row {
 .personal-account {
     padding-top: 165px;
     padding-bottom: 180px;
-    background: url('../images/backgrounds/PersonalAccount_Nokia_8.jpg') no-repeat top center;
+    /*background: url('../images/backgrounds/PersonalAccount_Nokia_8.jpg') no-repeat top center;*/
+    background: #000934;
     -webkit-background-size: cover;
     background-size: cover;
 }
@@ -1061,6 +1065,29 @@ header .bottom.row {
 }
 .show-menu.active .show-menu__inner span:nth-child(2) {
     opacity: 0;
+}
+.site-error {
+    position: relative;
+    max-width: 100%;
+    min-height: 100vh;
+    background: #000934;
+    background: radial-gradient(circle at center, #45577F, #1C2E51, #000934);
+    background: -webkit-radial-gradient(circle at center, #45577F, #1C2E51, #000934);
+    background: -moz-radial-gradient(circle at center, #45577F, #1C2E51, #000934);
+    background: -ms-radial-gradient(circle at center, #45577F, #1C2E51, #000934);
+    background: -o-radial-gradient(circle at center, #45577F, #1C2E51, #000934);
+    background: radial-gradient(circle at center, #45577F, #1C2E51, #000934);
+}
+.site-error__inner {
+    padding-top: 200px;
+    padding-bottom: 40px;
+    text-align: center;
+}
+.site-error__content {
+    max-width: 450px;
+}
+.site-error__content .title-lg {
+    margin-bottom: 80px;
 }
 @media (max-width: 1920px) {
     .screen-fourth #image2 {

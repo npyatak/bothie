@@ -107,4 +107,8 @@ $(document).ready(function () {
         $('#modal-login').modal();
         return false;
     });
+    
+    if(window.location.pathname=='/'){
+        $('.main-menu').addClass('g-page');
+    }
 });
