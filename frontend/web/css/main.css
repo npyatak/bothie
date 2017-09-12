@@ -845,6 +845,12 @@ header .bottom.row {
     -webkit-background-size: contain;
     background-size: contain;
 }
+.eauth-service-link.fb:before {
+    background: url('../images/icons/facebook.png') no-repeat!important;
+}
+.eauth-service-link.vk:before {
+    background: url('../images/icons/vk.png') no-repeat!important;
+}
 .site-login__second .hr {
     margin-bottom: 20px;
 }

@@ -8,7 +8,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="site-login__inner">
         <div class="site-login__first text-center">
             <h2 class="title-lg"><?= Html::encode($this->title) ?></h2>
-            <?php echo \nodge\eauth\Widget::widget(['action' => 'site/login']); ?>
+            <?php echo \frontend\widgets\social\SocialWidget::widget(['action' => 'site/login']); ?>
             <p>Авторизуйся, используя свой аккаунт в Вконтакте или Facebook</p>
         </div>
         <div class="site-login__second">

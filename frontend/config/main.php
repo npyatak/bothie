@@ -51,12 +51,13 @@ return [
             'cache' => false, // Cache component name or false to disable cache. Defaults to 'cache' on production environments.
             'cacheExpire' => 0, // Cache lifetime. Defaults to 0 - means unlimited.
             'services' => [                
-                // 'instagram' => [
-                //     // register your app here: https://instagram.com/developer/register/
-                //     'class' => 'nodge\eauth\services\InstagramOAuth2Service',
-                //     'clientId' => '69af594a80984ee9ab1f3881681c68c0',
-                //     'clientSecret' => '058cbd92e0e04b83b45c8f18acd3070c',
-                // ],
+                'ig' => [
+                    // register your app here: https://instagram.com/developer/register/
+                    'class' => 'frontend\models\social\IgOAuth2Service',
+                    //'class' => 'nodge\eauth\services\InstagramOAuth2Service',
+                    'clientId' => '69af594a80984ee9ab1f3881681c68c0',
+                    'clientSecret' => '058cbd92e0e04b83b45c8f18acd3070c',
+                ],
                 'fb' => [
                     // register your app here: https://developers.facebook.com/apps/
                     'class' => 'frontend\models\social\FbOAuth2Service',
@@ -84,7 +85,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
-                'rules.pdf' => 'site/rules',
+                'rules.pdf' => 'site/rules-pdf',
                 'post/<id:\d+>' => 'site/post',
                 'post/<id:\d+>/image.jpg' => 'site/image',
                 'how-to-win' => 'site/how-to-win',

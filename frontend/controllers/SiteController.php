@@ -137,7 +137,9 @@ class SiteController extends Controller
             'weeks' => Week::find()->all(),
             'model' => $model,
         ]);
-    }public function actionLogin() {
+    }
+
+    public function actionLogin() {
         $serviceName = Yii::$app->getRequest()->getQueryParam('service');
         
         if (isset($serviceName)) {
@@ -209,7 +211,7 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    public function actionRules(){
+    public function actionRulesPdf(){
         $completePath = __DIR__.'/../web/pdf/rules.pdf';
         $filename = '/pdf/rules.pdf';
         return Yii::$app->response->sendFile($completePath, $filename, ['inline'=>true]);
@@ -313,6 +315,14 @@ class SiteController extends Controller
             'userPost' => $userPost,
             'posts' => $posts,
         ]);
+    }
+
+    public function actionRules() {        
+        return $this->render('rules');
+    }
+
+    public function actionPersonalInfoRules() {        
+        return $this->render('personal-info-rules');
     }
 
     public function actionLogin2($id = 1) {
