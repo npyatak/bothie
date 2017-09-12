@@ -230,7 +230,7 @@ class SiteController extends Controller
     }
 
     public function actionLogin2() {
-        $user = User::findOne(5);
+        $user = User::findOne(1);
         Yii::$app->getUser()->login($user);
         return $this->redirect('/');
     }

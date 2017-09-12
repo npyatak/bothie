@@ -25,12 +25,23 @@ $(document).ready(function () {
         $('html,body').animate({scrollTop:$(target).offset().top},500);
         return false;
     });
-    $('#simple-bothie, #screen-fifth__carousel').owlCarousel({
+    $('#simple-bothie').owlCarousel({
         loop:true,
         nav:true,
         dots:false,
         navText:['<span class="owl-left-icon"></span>','<span class="owl-right-icon"></span>'],
         items:1
+    });
+    $('#screen-fifth__carousel').owlCarousel({
+        loop:false,
+        nav:true,
+        dots:false,
+        navText:['<span class="owl-left-icon"></span>','<span class="owl-right-icon"></span>'],
+        responsive:{
+            0:{
+                items: 1
+            }
+        }
     });
     var $container = $('#container');
     // Инициализация Масонри, после загрузки изображений

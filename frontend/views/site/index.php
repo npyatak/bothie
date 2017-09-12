@@ -54,7 +54,10 @@ use common\models\PostAction;
             </div>
         </div>
     </header>
-    <section id="second-screen" class="screen-second">
+    <section id="second-screen" class="screen-second p-relative">
+        <svg class="svg-left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <rect x="0" y="0" />
+        </svg>
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
@@ -105,7 +108,12 @@ use common\models\PostAction;
         </div>
     </section>
     <?php if($indexAdvices):?>
-    <section id="third-screen" class="screen-third">
+    <section id="third-screen" class="screen-third p-relative">
+        <svg class="svg-left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <rect class="top" x="0" y="0" />
+            <image id="image1" x="0" y="-35%" xlink:href="images/backgrounds/22.png" />
+            <rect class="bottom" x="0" y="0" />
+        </svg>
         <div class="container">
             <div class="row justify-content-center text-center">
                 <div class="col-md-5 wow fadeInUp">
@@ -119,6 +127,8 @@ use common\models\PostAction;
                         <div class="item">
                             <div class="simple-bothie-block">
                                 <div class="img-wrap clearfix">
+                                    <div class="left" style="background-image:url('images/backgrounds/22.png')"></div>
+                                    <div class="right" style="background-image:url('images/backgrounds/22.png')"></div>
                                     <?php if($advice->image_1):?>
                                         <div class="left" style="background-image:url(<?=$advice->image1Url;?>)"></div>
                                     <?php endif;?>
@@ -145,7 +155,11 @@ use common\models\PostAction;
     </section>
     <?php endif;?>
     <?php if($posts):?>
-    <section class="screen-fourth">
+    <section class="screen-fourth p-relative">
+        <svg class="svg-left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <rect class="top" x="0" y="0" />
+            <image id="image2" x="-15%" y="-50%" xlink:href="images/backgrounds/44.jpg" />
+        </svg>
         <div class="container">
             <div class="row justify-content-center text-center">
                 <div class="col-md-7 wow fadeInUp">
@@ -169,7 +183,10 @@ use common\models\PostAction;
         </div>
     </section>
     <?php endif;?>
-    <section class="screen-fifth">
+    <section class="screen-fifth p-relative">
+        <svg class="svg-left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <rect class="top" x="0" y="0" />
+        </svg>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-9 text-center wow fadeInUp">
@@ -184,12 +201,6 @@ use common\models\PostAction;
             <div class="row justify-content-center wow fadeInUp">
                 <div class="col-md-10">
                     <div id="screen-fifth__carousel" class="owl-carousel">
-                        <div class="item">
-                            <img src="images/screen/screen-fifth__carousel.png" alt="Nokia 8">
-                        </div>
-                        <div class="item">
-                            <img src="images/screen/screen-fifth__carousel.png" alt="Nokia 8">
-                        </div>
                         <div class="item">
                             <img src="images/screen/screen-fifth__carousel.png" alt="Nokia 8">
                         </div>
