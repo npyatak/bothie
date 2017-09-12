@@ -17,7 +17,7 @@ yii\bootstrap\Modal::begin([
 
 <div id="modalContent">
     <div class="site-login__first text-center">
-        <?php echo \nodge\eauth\Widget::widget(['action' => 'site/login']); ?>
+        <?php echo \frontend\widgets\social\SocialWidget::widget(['action' => 'site/login']); ?>
         <br>
         <p>Авторизуйся, используя свой аккаунт в Instagram</p>
     </div>

@@ -4,6 +4,8 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 
+use common\models\Page;
+
 $this->title = 'Страницы';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -19,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'rowOptions'=>function($model){
-            if($model->status === get_class($model)::STATUS_INACTIVE) {
+            if($model->status === Page::STATUS_INACTIVE) {
                 return ['class' => 'danger'];
             }
         },

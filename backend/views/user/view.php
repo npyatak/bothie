@@ -22,6 +22,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'sid',
             'name',
             'surname',
+            'ig_id',
+            [
+                'attribute' => 'ig_username',
+                'format' => 'raw',
+                'value' => function($data) {
+                    if($data->ig_username) {
+                        return Html::a($data->ig_username, 'https://instagram.com/'.$data->ig_username);
+                    }
+                }
+            ],
             [
                 'attribute' => 'image',
                 'format' => 'raw',

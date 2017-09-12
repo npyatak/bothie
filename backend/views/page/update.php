@@ -2,10 +2,10 @@
 
 use yii\helpers\Html;
 
-$this->title = Yii::t('app', 'Update Page') .': '. $model->title;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Pages'), 'url' => ['index']];
+$this->title = 'Изменить страницу' .': '. $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Страницы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = 'Изменить';
 ?>
 
 <?= $this->render('_form', [
