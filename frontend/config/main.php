@@ -86,10 +86,13 @@ return [
             'rules' => [
                 '' => 'site/index',
                 'rules.pdf' => 'site/rules-pdf',
+                //'rules' => 'site/page?url=rules',
+                //'personal-info-rules' => 'site/page',
                 'post/<id:\d+>' => 'site/post',
                 'post/<id:\d+>/image.jpg' => 'site/image',
                 'how-to-win' => 'site/how-to-win',
                 '<action:\w+>' => 'site/<action>',
+                'page/<url:\w+>'=>'site/page',
             ],
         ],
         'log' => [

@@ -616,6 +616,6 @@ input.form-control {
     color: #fff;
     font-size: 50px;
 }
-.alert {
-    color: #a6c7ff;
+.alert, .has-error .help-block {
+    color: #a6c7ff!important;
 }

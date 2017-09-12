@@ -27,10 +27,12 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['sid', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['sid', 'ig_id', 'status', 'created_at', 'updated_at'], 'integer'],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_BANNED]],
-            [['surname', 'name', 'image', 'ip'], 'string', 'max' => 255],
+            [['surname', 'name', 'image', 'ip', 'ig_username'], 'string', 'max' => 255],
             ['soc', 'string', 'max' => 2],
+            ['ig_username', 'required', 'on'=>'missing_fields'],
+            ['ig_username', 'checkIfIgProfileExists'],
         ];
     }
 
@@ -43,6 +45,8 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             'id' => 'ID',
             'soc' => 'Соц.сеть',
             'sid' => 'ID соц.сети',
+            'ig_id' => 'ID инстаграма',
+            'ig_username' => 'Логин инстаграма',
             'name' => 'Имя',
             'surname' => 'Фамилия',
             'status' => 'Статус',
@@ -59,6 +63,21 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
                 'class' => \yii\behaviors\TimestampBehavior::className(),
             ],
         ];
+    }
+
+    public function checkIfIgProfileExists($attribute, $model) {
+        $url = 'https://www.instagram.com/'.$this->$attribute.'/?__a=1';
+
+        $headers = get_headers($url);
+        if(substr($headers[0], 9, 3) != "200"){
+            $this->addError($attribute, 'Указанный логин инстаграма не существует');
+        }
+    }
+
+    public function scenarios() {
+        $scenarios = parent::scenarios();
+        $scenarios['missing_fields'] = ['ig_username'];
+        return $scenarios;
     }
 
     public static function getStatusArray() {

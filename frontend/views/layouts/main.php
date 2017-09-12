@@ -36,16 +36,16 @@ AppAsset::register($this);
                     <div class="col-6">
                         <?php
                         $menuItems = [
-                            ['label' => 'Главная', 'action' => 'index'],
-                            ['label' => 'Участвовать', 'action' => 'participate'],
-                            ['label' => 'Голосовать', 'action' => 'vote'],
-                            ['label' => 'Правила', 'action' => 'rules'],
+                            ['label' => 'Главная', 'url' => Url::toRoute(['site/index'])],
+                            ['label' => 'Участвовать', 'url' => Url::toRoute(['site/participate'])],
+                            ['label' => 'Голосовать', 'url' => Url::toRoute(['site/vote'])],
+                            ['label' => 'Правила', 'url' => Url::to(['page/rules'])],
                         ];
                         ?>
                         <div class="nav">
                             <ul class="ul">
                                 <?php foreach ($menuItems as $item):?>
-                                    <li><?=Html::a($item['label'], Url::toRoute(['site/'.$item['action']]), ['class' => Yii::$app->controller->action->id === $item['action'] ? 'active' : '']);?></li>
+                                    <li><?=Html::a($item['label'], $item['url'], ['class' => Yii::$app->controller->action->id === $item['action'] ? 'active' : '']);?></li>
                                 <?php endforeach;?>
                                 <?php if (Yii::$app->user->isGuest):?>
                                     <li><?=Html::a('Войти', Url::toRoute(['site/login']), ['class' => Yii::$app->controller->action->id === $item['action']]);?></li>
@@ -86,6 +86,8 @@ AppAsset::register($this);
 
 <?php if(Yii::$app->user->isGuest) {
     echo $this->render('_login_modal');
+} elseif(!Yii::$app->user->identity->ig_id) {
+    echo $this->render('_missing_fields');
 }?>
 
 <?php $this->endBody() ?>

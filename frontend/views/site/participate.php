@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
 <div class="personal-account">
     <div class="personal-account__inner">
         <div class="p-a__first text-center">
-            <h2 class="title-lg wow fadeInDown"><?=Yii::$app->user->identity->name;?></h2>
+            <h2 class="title-lg wow fadeInDown"><?=Yii::$app->user->identity->fullName;?></h2>
             <div class="wow fadeInUp">
                 <?=$this->render('_weeks_menu', ['weeks' => $weeks]);?>
             </div>

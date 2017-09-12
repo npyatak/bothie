@@ -17,6 +17,7 @@ use common\models\Post;
 use common\models\PostAction;
 use common\models\Week;
 use common\models\IndexAdvice;
+use common\models\Page;
 
 /**
  * Site controller
@@ -157,6 +158,8 @@ class SiteController extends Controller
                         $user->name = $eauth->first_name;
                         $user->surname = $eauth->last_name;
                         if(isset($eauth->photo_url)) $user->image = $eauth->photo_url;
+                        if(isset($eauth->ig_id)) $user->ig_id = $eauth->ig_id;
+                        if(isset($eauth->ig_username)) $user->ig_username = $eauth->ig_username;
                         
                         $user->save();
                     } /*elseif(!$user->username) {                        
@@ -215,16 +218,6 @@ class SiteController extends Controller
         $completePath = __DIR__.'/../web/pdf/rules.pdf';
         $filename = '/pdf/rules.pdf';
         return Yii::$app->response->sendFile($completePath, $filename, ['inline'=>true]);
-    }
-
-    private function findPost($id) {
-        $post = Post::findOne($id);
-
-        if($post === null || $post->status === Post::STATUS_BANNED) {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-
-        return $post;
     }
 
     public  function actionImage($id){
@@ -325,11 +318,68 @@ class SiteController extends Controller
         return $this->render('personal-info-rules');
     }
 
+    public function actionMissingFields() {
+        if(Yii::$app->user->isGuest) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        $user = Yii::$app->user->identity;
+
+        if($user->load(Yii::$app->request->post())) {
+            $user->setScenario('missing_fields');
+
+            if (Yii::$app->request->isAjax) {
+                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                return \yii\widgets\ActiveForm::validate($user);
+            }
+
+            if($user->ig_username) {
+                $url = "https://www.instagram.com/$user->ig_username/?__a=1";
+                $json = json_decode(file_get_contents($url));
+
+                $user->ig_id = $json->user->id;
+
+                $user->save(false, ['ig_username', 'ig_id']);
+                // echo '<pre>';
+                // print_r($json->user->id);
+                // echo '</pre>';
+                // exit;
+            }
+        }
+        
+        return $this->redirect(Yii::$app->request->referrer);
+    }
+
+    public function actionPage($url) {
+        $model = Page::findByUrl($url);
+        if($model === null || $model->status === Page::STATUS_INACTIVE) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        if($model->title) $this->view->title = $model->title;
+        if($model->description) $this->view->registerMetaTag(['description' => $model->description], 'description');
+        if($model->keywords) $this->view->registerMetaTag(['keywords' => $model->keywords], 'keywords');
+
+        return $this->render('page', [
+            'model' => $model
+        ]);
+    }
+
     public function actionLogin2($id = 1) {
         $user = User::findOne($id);
 
         Yii::$app->getUser()->login($user);
 
         return $this->redirect('/');
+    }
+
+    private function findPost($id) {
+        $post = Post::findOne($id);
+
+        if($post === null || $post->status === Post::STATUS_BANNED) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        return $post;
     }
 }

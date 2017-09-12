@@ -25,6 +25,8 @@ class IgOAuth2Service extends \nodge\eauth\services\InstagramOAuth2Service
 		$this->attributes['first_name'] = isset($name) ? $name : '';
 		$this->attributes['last_name'] = isset($surname) ? $surname : '';
 		$this->attributes['photo_url'] = $data['profile_picture'];
+		$this->attributes['ig_id'] = $data['id'];
+		$this->attributes['ig_username'] = $data['username'];
 
 		return true;
 	}

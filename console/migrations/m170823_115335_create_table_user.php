@@ -15,6 +15,8 @@ class m170823_115335_create_table_user extends Migration
             'id' => $this->primaryKey(),
             'soc' => $this->string(2),
             'sid' => $this->bigInteger(),
+            'ig_id' => $this->bigInteger(),
+            'ig_username' => $this->string(),
             'name' => $this->string(),
             'surname' => $this->string(),
             'image' => $this->string(),
@@ -25,8 +27,8 @@ class m170823_115335_create_table_user extends Migration
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
 
-        $this->batchInsert('{{%user}}', ['name', 'surname', 'created_at', 'updated_at'], [
-            ['ivan', 'ivanov', time(), time()],
+        $this->batchInsert('{{%user}}', ['name', 'surname', 'ig_username', 'ig_id', 'created_at', 'updated_at'], [
+            ['ivan', 'ivanov', 'test', '12345', time(), time()],
         ]);
     }
 
