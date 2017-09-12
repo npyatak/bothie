@@ -18,18 +18,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'ig_id',
-            'username',
-            'full_name',
+            'soc',
+            'sid',
+            'name',
+            'surname',
             [
                 'attribute' => 'image',
                 'format' => 'raw',
                 'value' => function($model) {
-                    return Html::img($model->imageUrl);
+                    return Html::img($model->image);
                 }
             ],
-            'bio',
-            'website',
             [
                 'attribute' => 'status',
                 'format' => 'raw',

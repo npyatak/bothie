@@ -5,8 +5,19 @@ use yii\helpers\Html;
 use common\models\Post;
 use common\models\PostAction;
 ?>
+<?php $this->title = 'Nokia 8: покажи свою историю с обеих сторон';?>
+<?php
+if($userPost->is_from_ig) {
+    $image = $userPost->igImageUrl;
+} else {
+    $image = Url::to($userPost->gluedImageUrl, true);
+}
 
-<?php $this->title = 'Пост';?>
+$this->registerMetaTag(['name' => 'og:description', 'content' => 'Голосуйте за меня и участвуйте в конурсе #fridaybothie #бозинапятнице #bothie'], 'og:description');
+$this->registerMetaTag(['name' => 'og:title', 'content' => 'Nokia 8: покажи свою историю с обеих сторон'], 'og:title');
+$this->registerMetaTag(['name' => 'og:image', 'content' => $image], 'og:image');
+$this->registerMetaTag(['name' => 'og:type', 'content' => 'website'], 'og:type');
+?>
 
 <div class="vote-page">
     <div class="vote-page__first">

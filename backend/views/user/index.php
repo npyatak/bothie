@@ -27,14 +27,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 ['class' => 'yii\grid\SerialColumn'],
 
                 'id',
-                'ig_id',
-                'username',
-                'full_name',
+                'soc',
+                'sid',
+                'name',
+                'surname',
                 [
                     'attribute' => 'image',
                     'format' => 'raw',
                     'value' => function($data) {
-                        return Html::img($data->imageUrl, ['width' => '200px']);
+                        return Html::img($data->image, ['width' => '200px']);
                     }
                 ],
                 [

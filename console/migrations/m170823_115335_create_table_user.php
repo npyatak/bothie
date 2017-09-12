@@ -13,20 +13,20 @@ class m170823_115335_create_table_user extends Migration
 
         $this->createTable('{{%user}}', [
             'id' => $this->primaryKey(),
-            'ig_id' => $this->bigInteger()->notNull(),
-            'username' => $this->string(),
-            'full_name' => $this->string(),
+            'soc' => $this->string(2),
+            'sid' => $this->bigInteger(),
+            'name' => $this->string(),
+            'surname' => $this->string(),
             'image' => $this->string(),
-            'bio' => $this->string(),
-            'website' => $this->string(),
             'status' => $this->integer(1)->notNull()->defaultValue(1),
+            'ip' => $this->string(),
 
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
 
-        $this->batchInsert('{{%user}}', ['ig_id', 'username', 'full_name', 'created_at', 'updated_at'], [
-            [123, 'ya.jamaker', 'ivan ivanov', time(), time()],
+        $this->batchInsert('{{%user}}', ['name', 'surname', 'created_at', 'updated_at'], [
+            ['ivan', 'ivanov', time(), time()],
         ]);
     }
 

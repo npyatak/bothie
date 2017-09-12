@@ -137,6 +137,92 @@ class SiteController extends Controller
             'weeks' => Week::find()->all(),
             'model' => $model,
         ]);
+    }public function actionLogin() {
+        $serviceName = Yii::$app->getRequest()->getQueryParam('service');
+        
+        if (isset($serviceName)) {
+            $eauth = Yii::$app->get('eauth')->getIdentity($serviceName);
+            $eauth->setRedirectUrl(Url::toRoute('site/participate'));
+            $eauth->setCancelUrl(Url::toRoute('site/login'));
+            
+            try {
+                if ($eauth->authenticate()) {
+                    $user = User::findByService($serviceName, $eauth->id);
+                    if(!$user) {
+                        $user = new User;
+                        $user->soc = $serviceName;
+                        $user->sid = $eauth->id;
+                        $user->name = $eauth->first_name;
+                        $user->surname = $eauth->last_name;
+                        if(isset($eauth->photo_url)) $user->image = $eauth->photo_url;
+                        
+                        $user->save();
+                    } /*elseif(!$user->username) {                        
+                        $user->username = $eauth->attributes['username'];
+                        $user->full_name = $eauth->attributes['full_name'];
+                        $user->image = $eauth->attributes['profile_picture'];
+                        $user->website = $eauth->attributes['website'];
+                        $user->bio = $eauth->attributes['bio'];
+
+                        $user->save();
+                    }*/
+
+                    $user->ip = $_SERVER['SERVER_ADDR'];
+                    $user->save(false, ['ip']);
+
+                    Yii::$app->user->login($user);
+                    // special redirect with closing popup window
+                    $eauth->redirect();
+                } else {
+                    // close popup window and redirect to cancelUrl
+                    $eauth->cancel();
+                    $eauth->redirect($eauth->getCancelUrl());
+                }
+            } catch (\nodge\eauth\ErrorException $e) {
+                Yii::$app->getSession()->setFlash('error', 'EAuthException: '.$e->getMessage());
+
+                // close popup window and redirect to cancelUrl
+                $eauth->cancel();
+                $eauth->redirect($eauth->getCancelUrl());
+            }
+        }
+
+        return $this->render('login');
+    }
+
+    public function actionHowToWin() {
+        return $this->render('how_to_win', [
+            'currentWeek' => $this->currentWeek,
+            'weeks' => Week::find()->all(),
+        ]);
+    }
+
+
+    /**
+     * Logs out the current user.
+     *
+     * @return mixed
+     */
+    public function actionLogout() {
+        Yii::$app->user->logout();
+
+        return $this->goHome();
+    }
+
+    public function actionRules(){
+        $completePath = __DIR__.'/../web/pdf/rules.pdf';
+        $filename = '/pdf/rules.pdf';
+        return Yii::$app->response->sendFile($completePath, $filename, ['inline'=>true]);
+    }
+
+    private function findPost($id) {
+        $post = Post::findOne($id);
+
+        if($post === null || $post->status === Post::STATUS_BANNED) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        return $post;
     }
 
     public  function actionImage($id){
@@ -229,94 +315,11 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionLogin2() {
-        $user = User::findOne(1);
+    public function actionLogin2($id = 1) {
+        $user = User::findOne($id);
+
         Yii::$app->getUser()->login($user);
+
         return $this->redirect('/');
-    }
-
-    public function actionLogin() {
-        $serviceName = Yii::$app->getRequest()->getQueryParam('service');
-        
-        if (isset($serviceName)) {
-            $eauth = Yii::$app->get('eauth')->getIdentity($serviceName);
-            $eauth->setRedirectUrl(Url::toRoute('site/participate'));
-            $eauth->setCancelUrl(Url::toRoute('site/login'));
-            
-            try {
-                if ($eauth->authenticate()) {
-                    $user = User::findByService(/*$serviceName, */$eauth->id);
-                    if(!$user) {
-                        $user = new User;
-                        $user->ig_id = $eauth->attributes['id'];
-                        $user->username = $eauth->attributes['username'];
-                        $user->full_name = $eauth->attributes['full_name'];
-                        $user->image = $eauth->attributes['profile_picture'];
-                        $user->website = $eauth->attributes['website'];
-                        $user->bio = $eauth->attributes['bio'];
-
-                        $user->save();
-                    } elseif(!$user->username) {                        
-                        $user->username = $eauth->attributes['username'];
-                        $user->full_name = $eauth->attributes['full_name'];
-                        $user->image = $eauth->attributes['profile_picture'];
-                        $user->website = $eauth->attributes['website'];
-                        $user->bio = $eauth->attributes['bio'];
-
-                        $user->save();
-                    }
-                    Yii::$app->user->login($user);
-                    // special redirect with closing popup window
-                    $eauth->redirect();
-                } else {
-                    // close popup window and redirect to cancelUrl
-                    $eauth->cancel();
-                    $eauth->redirect($eauth->getCancelUrl());
-                }
-            } catch (\nodge\eauth\ErrorException $e) {
-                Yii::$app->getSession()->setFlash('error', 'EAuthException: '.$e->getMessage());
-
-                // close popup window and redirect to cancelUrl
-                $eauth->cancel();
-                $eauth->redirect($eauth->getCancelUrl());
-            }
-        }
-
-        return $this->render('login');
-    }
-
-    public function actionHowToWin() {
-        return $this->render('how_to_win', [
-            'currentWeek' => $this->currentWeek,
-            'weeks' => Week::find()->all(),
-        ]);
-    }
-
-
-    /**
-     * Logs out the current user.
-     *
-     * @return mixed
-     */
-    public function actionLogout() {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
-    }
-
-    public function actionRules(){
-        $completePath = __DIR__.'/../web/pdf/rules.pdf';
-        $filename = '/pdf/rules.pdf';
-        return Yii::$app->response->sendFile($completePath, $filename, ['inline'=>true]);
-    }
-
-    private function findPost($id) {
-        $post = Post::findOne($id);
-
-        if($post === null || $post->status === Post::STATUS_BANNED) {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-
-        return $post;
     }
 }

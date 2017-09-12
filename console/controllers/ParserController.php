@@ -49,10 +49,10 @@ class ParserController extends Controller {
 
 	public function actionImages() {
 		$parseData = IgParseData::find()->where(['status' => IgParseData::STATUS_PENDING])->limit(10)->all();
-        $userIds = User::find()->select('ig_id')->asArray()->column();
+        $userIgIds = User::find()->select('ig_id')->asArray()->column();
         
         foreach ($parseData as $data) {
-            if(!in_array($data->ig_user_id, $userIds)) {
+            if(!in_array($data->ig_user_id, $userIgIds)) {
                 $user = new User;
                 $user->ig_id = $data->ig_user_id;
 

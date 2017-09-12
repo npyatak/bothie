@@ -191,13 +191,13 @@ class Post extends \yii\db\ActiveRecord
         if($this->is_from_ig) {
             switch ($this->image_orientation) {
                 case self::IMAGE_SQUARE:
-                    $class = 'ig-w280-h280';
+                    $class = 'w280-h280';
                     break;
                 case self::IMAGE_HORIZONTAL:
-                    $class = 'ig-w600-h280';
+                    $class = 'w600-h280';
                     break;
                 case self::IMAGE_VERTICAL:
-                    $class = 'ig-w280-h600';
+                    $class = 'w280-h600';
                     break;
             }
 

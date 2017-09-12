@@ -613,3 +613,6 @@ input.form-control {
     color: #fff;
     font-size: 50px;
 }
+.alert {
+    color: #a6c7ff;
+}

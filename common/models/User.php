@@ -4,19 +4,6 @@ namespace common\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%user}}".
- *
- * @property integer $id
- * @property integer $ig_id
- * @property string $username
- * @property string $full_name
- * @property string $image
- * @property string $bio
- * @property string $website
- * @property integer $created_at
- * @property integer $updated_at
- */
 class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
     const STATUS_ACTIVE = 1;
@@ -40,10 +27,10 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['ig_id'], 'required'],
-            [['ig_id', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['sid', 'status', 'created_at', 'updated_at'], 'integer'],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_BANNED]],
-            [['username', 'full_name', 'image', 'bio', 'website'], 'string', 'max' => 255],
+            [['surname', 'name', 'image', 'ip'], 'string', 'max' => 255],
+            ['soc', 'string', 'max' => 2],
         ];
     }
 
@@ -54,15 +41,15 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             'id' => 'ID',
-            'ig_id' => 'ID инстаграмма',
-            'username' => 'Username',
+            'soc' => 'Соц.сеть',
+            'sid' => 'ID соц.сети',
+            'name' => 'Имя',
+            'surname' => 'Фамилия',
             'status' => 'Статус',
-            'full_name' => 'Имя',
             'image' => 'Аватар',
-            'bio' => 'Bio',
-            'website' => 'Сайт',
             'created_at' => 'Дата/Время создания',
             'updated_at' => 'Время последнего изменения',
+            'ip' => 'IP адрес',
         ];
     }
 
@@ -103,30 +90,8 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return $this->getAuthKey() === $authKey;
     }
 
-    /**
-     * @param \nodge\eauth\ServiceBase $service
-     * @return User
-     * @throws ErrorException
-     */
-    // public static function findByEAuth($service) {
-    //     if (!$service->getIsAuthenticated()) {
-    //         throw new ErrorException('EAuth user should be authenticated before creating identity.');
-    //     }
-
-    //     $id = $service->getServiceName().'-'.$service->getId();
-    //     $attributes = [
-    //         'id' => $id,
-    //         'username' => $service->getAttribute('name'),
-    //         'authKey' => md5($id),
-    //         'profile' => $service->getAttributes(),
-    //     ];
-    //     $attributes['profile']['service'] = $service->getServiceName();
-    //     Yii::$app->getSession()->set('user-'.$id, $attributes);
-    //     return new self($attributes);
-    // }
-
-    public static function findByService($serviceId) {
-        return self::find()->where(['ig_id' => $serviceId])->one();
+    public static function findByService($soc, $sid) {
+        return static::findOne(['soc' => $soc, 'sid' => $sid]);
     }
 
     public function getPosts() {
@@ -137,11 +102,11 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return $this->hasMany(PostAction::className(), ['user_id' => 'id']);
     }
 
-    public function getImageUrl() {
-        return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl('/uploads/user/'.$this->image);
-    }
+    // public function getImageUrl() {
+    //     return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl('/uploads/user/'.$this->image);
+    // }
 
-    public function getName() {
-        return $this->full_name ? $this->full_name : $this->username;
+    public function getFullName() {
+        return $this->name.' '.$this->surname;
     }
 }

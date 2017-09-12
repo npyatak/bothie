@@ -96,10 +96,10 @@ $(document).ready(function () {
     
     $('.eauth-service-link').on('click', function (e) {
         if(!$('#conditions').is(':checked') || !$('#rules').is(':checked')) {
-            $('.site-login__second span.text-danger').html('Пожалуйста, подтвердите свое согласие с полными правилами и условиями обработки данных');
+            $('.site-login__second span.alert').html('Пожалуйста, подтвердите свое согласие с полными правилами и условиями обработки данных');
             return false;
         } else {
-            $('.site-login__second span.text-danger').html('');
+            $('.site-login__second span.alert').html('');
         }
     });
 

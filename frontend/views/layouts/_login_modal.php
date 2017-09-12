@@ -22,7 +22,7 @@ yii\bootstrap\Modal::begin([
         <p>Авторизуйся, используя свой аккаунт в Instagram</p>
     </div>
     <div class="site-login__second">
-        <span class=text-danger></span>
+        <span class="alert"></span>
         <hr class="hr">
         <form action="">
             <div class="form-group">

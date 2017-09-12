@@ -19,7 +19,7 @@ class ShareWidget extends \yii\bootstrap\Widget  {
 		$this->url = $this->url ? $this->url : Url::to($this->post->url, true);
 	}
 
-    public function run() {
+	public function run() {
     	$script = "
     		$(document).on('click', '.shares-link', function(e) {
     			obj = $(this);
@@ -30,7 +30,7 @@ class ShareWidget extends \yii\bootstrap\Widget  {
 					url  = 'http://vkontakte.ru/share.php?';
 					url += 'url='          + encodeURIComponent(obj.data('url'));
 					url += '&title='       + encodeURIComponent(obj.data('title'));
-					url += '&description=' + encodeURIComponent(obj.data('desc'));
+					url += '&text=' + encodeURIComponent(obj.data('desc'));
 					url += '&image='       + encodeURIComponent(obj.data('image'));
 					url += '&noparse=true';
     			} else {
@@ -46,7 +46,6 @@ class ShareWidget extends \yii\bootstrap\Widget  {
         			url: '".Url::toRoute(['site/user-action'])."',
 		            data: 'id='+obj.data('id')+'&type='+obj.attr('data-type'),
 		            success: function (data) {
-		            	console.log(obj);
 		            	if(data.status === 'success') {
 		            		obj.closest('.other-jobs__item').find('.o-j__rating span').html(data.score);
 		            		obj.addClass('inactive');
