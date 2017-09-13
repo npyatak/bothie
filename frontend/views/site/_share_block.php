@@ -4,7 +4,7 @@ use yii\helpers\Url;
 <?php 
 $imageUrl = Url::toRoute(['images/share.png'], true);
 $title = 'Nokia 8: покажи свою историю с обеих сторон';
-$text = 'Создай свое бози и выигрывай Nokia 8 #fridaybothie #бозинапятнице #bothie';
+$text = 'Создай свое бози и выигрывай Nokia 8 fridaybothie бозинапятнице bothie';
 ?>
 
 <div class="shares text-center">

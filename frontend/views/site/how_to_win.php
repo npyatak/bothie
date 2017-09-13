@@ -28,7 +28,7 @@ use yii\helpers\Html;
                         <div class="week-type__img">
                             <?=Html::img($currentWeek->imageUrl, ['alt' => 'Nokia 8 #bothie']);?>
                         </div>
-                        <div class="week-type__text"><?=$currentWeek->number;?> неделя:<br>тема<br><?=$currentWeek->name;?></div>
+                        <div class="week-type__text"><?=$currentWeek->number;?> этап:<br>тема<br><?=$currentWeek->name;?></div>
                     </div>
                 </div>
             </div>

@@ -143,6 +143,7 @@ class SiteController extends Controller
     public function actionLogin() {
         $serviceName = Yii::$app->getRequest()->getQueryParam('service');
         
+                        Yii::$app->getSession()->setFlash('error', 'Ваш аккаунт заблокирован');
         if (isset($serviceName)) {
             $eauth = Yii::$app->get('eauth')->getIdentity($serviceName);
             $eauth->setRedirectUrl(Url::toRoute('site/participate'));
@@ -162,7 +163,13 @@ class SiteController extends Controller
                         if(isset($eauth->ig_username)) $user->ig_username = $eauth->ig_username;
                         
                         $user->save();
-                    } /*elseif(!$user->username) {                        
+                    } /*elseif($user->status === User::STATUS_BANNED) {
+                        Yii::$app->getSession()->setFlash('error', 'Ваш аккаунт заблокирован');
+                        
+                        $eauth->cancel();
+                        $eauth->redirect();
+                    }*/
+                    /*elseif(!$user->username) {                        
                         $user->username = $eauth->attributes['username'];
                         $user->full_name = $eauth->attributes['full_name'];
                         $user->image = $eauth->attributes['profile_picture'];
@@ -186,7 +193,6 @@ class SiteController extends Controller
             } catch (\nodge\eauth\ErrorException $e) {
                 Yii::$app->getSession()->setFlash('error', 'EAuthException: '.$e->getMessage());
 
-                // close popup window and redirect to cancelUrl
                 $eauth->cancel();
                 $eauth->redirect($eauth->getCancelUrl());
             }

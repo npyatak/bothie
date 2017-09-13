@@ -9,7 +9,7 @@ class ShareWidget extends \yii\bootstrap\Widget  {
 	public $url;
 	public $title = 'Nokia 8: покажи свою историю с обеих сторон';
 	public $image;
-	public $desc = 'Голосуйте за меня и участвуйте в конурсе #fridaybothie #бозинапятнице #bothie';
+	public $desc = 'Голосуйте за меня и участвуйте в конурсе fridaybothie бозинапятнице bothie';
 
 	public function init() {
 		if($this->post->is_from_ig) {
@@ -17,6 +17,7 @@ class ShareWidget extends \yii\bootstrap\Widget  {
 		}
 		$this->image = $this->image ? $this->image : Url::to($this->post->gluedImageUrl, true);
 		$this->url = $this->url ? $this->url : Url::to($this->post->url, true);
+		$this->title = urlencode($this->title);
 	}
 
 	public function run() {

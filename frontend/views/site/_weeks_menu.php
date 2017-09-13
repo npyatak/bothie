@@ -16,7 +16,7 @@ use common\models\Week;
                 $class = '';
                 break;
         }?>
-        <a href="" class="<?=$class;?>"><?=$week->number;?> неделя <?=$week->name;?></a>
+        <a href="" class="<?=$class;?>"><?=$week->number;?> этап <?=$week->name;?></a>
     </div>
     <?php endforeach;?>
 </div>

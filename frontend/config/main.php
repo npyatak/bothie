@@ -58,18 +58,18 @@ return [
                     'clientId' => '69af594a80984ee9ab1f3881681c68c0',
                     'clientSecret' => '058cbd92e0e04b83b45c8f18acd3070c',
                 ],
-                'fb' => [
-                    // register your app here: https://developers.facebook.com/apps/
-                    'class' => 'frontend\models\social\FbOAuth2Service',
-                    'clientId' => '122710335053583',
-                    'clientSecret' => '5fe0786168048de95a3a0a46acfdd433',
-                ],
-                'vk' => [
-                    // register your app here: https://vk.com/editapp?act=create&site=1
-                    'class' => 'frontend\models\social\VkOAuth2Service',
-                    'clientId' => '6165041',
-                    'clientSecret' => 'pL5bLfr1JicZdCjLLtCX',
-                ],
+                // 'fb' => [
+                //     // register your app here: https://developers.facebook.com/apps/
+                //     'class' => 'frontend\models\social\FbOAuth2Service',
+                //     'clientId' => '122710335053583',
+                //     'clientSecret' => '5fe0786168048de95a3a0a46acfdd433',
+                // ],
+                // 'vk' => [
+                //     // register your app here: https://vk.com/editapp?act=create&site=1
+                //     'class' => 'frontend\models\social\VkOAuth2Service',
+                //     'clientId' => '6165041',
+                //     'clientSecret' => 'pL5bLfr1JicZdCjLLtCX',
+                // ],
             ],
         ],
         'i18n' => [
