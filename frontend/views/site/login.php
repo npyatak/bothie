@@ -1,6 +1,5 @@
 <?php
 use yii\helpers\Html;
-use yii\helpers\Url;
 
 $this->title = 'Авторизация';
 $this->params['breadcrumbs'][] = $this->title;
@@ -22,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <input id="conditions" type="checkbox" class="form-control">
                     </div>
                     <div class="right">
-                        <p>Я согласен с <a href="<?=Url::to(['page/personal-info-rules']);?>">условиями обработки данных</a></p>
+                        <p>Я согласен с условиями обработки данных</p>
                     </div>
                 </div>
                 <div class="form-group">

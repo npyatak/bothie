@@ -19,6 +19,11 @@ $(window).load(function () {
     },300)
 });
 $(document).ready(function () {
+    var url = document.location.href;
+    $.each($('.nav a'), function(){
+        if(this.href == url){ $(this).addClass('active') }
+    });
+
     $('.go-to-screen').on('click',function (e) {
         e.preventDefault();
         var target = $(this).attr('href');
@@ -92,7 +97,7 @@ $(document).ready(function () {
         $('body').toggleClass('overflow');
         $('.nav').toggleClass('show');
         $('.main-menu__left').toggleClass('fixed');
-    })
+    });
     
     $('.eauth-service-link').on('click', function (e) {
         if(!$('#conditions').is(':checked') || !$('#rules').is(':checked')) {
