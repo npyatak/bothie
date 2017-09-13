@@ -111,4 +111,9 @@ $(document).ready(function () {
     if(window.location.pathname=='/'){
         $('.main-menu').addClass('g-page');
     }
+
+    $('.shares-items a').click(function(e) {
+        window.open($(this).attr('href'), '', 'toolbar=0,status=0,width=626,height=436');
+        return false;
+    })
 });

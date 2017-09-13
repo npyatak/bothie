@@ -1,4 +1,5 @@
 <?php 
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap\Modal;
 
@@ -31,7 +32,7 @@ yii\bootstrap\Modal::begin([
                     <input id="conditions" type="checkbox" class="form-control">
                 </div>
                 <div class="right">
-                    <p>Я согласен с условиями обработки данных</p>
+                    <p>Я согласен с  <a href="<?=Url::to(['page/personal-info-rules']);?>">условиями обработки данных</a></p>
                 </div>
             </div>
             <div class="form-group">

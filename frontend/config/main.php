@@ -92,7 +92,7 @@ return [
                 'post/<id:\d+>/image.jpg' => 'site/image',
                 'how-to-win' => 'site/how-to-win',
                 '<action:\w+>' => 'site/<action>',
-                'page/<url:\w+>'=>'site/page',
+                'page/<url>'=>'site/page',
             ],
         ],
         'log' => [

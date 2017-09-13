@@ -46,7 +46,7 @@ use common\models\PostAction;
                 <div class="header-footer wow fadeInUp">
                     <div class="row text-left">
                         <div class="col-md-2">
-                            <a href="">Условия обработки персональных данных</a>
+                            <a href="<?=Url::to(['page/personal-info-rules']);?>">Условия обработки персональных данных</a>
                         </div>
                     </div>
                     <?=$this->render('_share_block');?>
