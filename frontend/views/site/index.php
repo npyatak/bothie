@@ -127,8 +127,6 @@ use common\models\PostAction;
                         <div class="item">
                             <div class="simple-bothie-block">
                                 <div class="img-wrap clearfix">
-                                    <div class="left" style="background-image:url('images/backgrounds/22.png')"></div>
-                                    <div class="right" style="background-image:url('images/backgrounds/22.png')"></div>
                                     <?php if($advice->image_1):?>
                                         <div class="left" style="background-image:url(<?=$advice->image1Url;?>)"></div>
                                     <?php endif;?>

@@ -21,11 +21,11 @@ use kartik\date\DatePicker;
 
     <?= $form->field($model, 'imageFile')->fileInput() ?>
 
-    <?= $form->field($model, 'date_start')->widget(
+    <?= $form->field($model, 'dateStartFormatted')->widget(
         DatePicker::className()
     );?>
 
-    <?= $form->field($model, 'date_end')->widget(
+    <?= $form->field($model, 'dateEndFormatted')->widget(
         DatePicker::className()
     );?>
 

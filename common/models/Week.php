@@ -26,6 +26,8 @@ class Week extends \yii\db\ActiveRecord
     const STATUS_FINISHED = 9;
 
     public $imageFile;
+    public $dateStartFormatted;
+    public $dateEndFormatted;
     /**
      * @inheritdoc
      */
@@ -40,7 +42,7 @@ class Week extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['number', 'name', 'date_start', 'date_end'], 'required'],
+            [['number', 'name', 'dateStartFormatted', 'dateEndFormatted'], 'required'],
             [['number'], 'integer'],
             [['description_1', 'description_2'], 'string'],
             [['name'], 'string', 'max' => 100],
@@ -75,6 +77,20 @@ class Week extends \yii\db\ActiveRecord
             unlink($path.$this->image);
         }
         return parent::afterDelete();
+    }
+
+    public function beforeSave($insert) {
+        $this->date_start = strtotime($this->dateStartFormatted);
+        $this->date_end = strtotime($this->dateEndFormatted);
+
+        return parent::beforeSave($insert);
+    }
+
+    public function afterFind() {
+        $this->dateStartFormatted = date('d.m.Y', $this->date_start);
+        $this->dateEndFormatted = date('d.m.Y', $this->date_end);
+
+        return parent::afterFind();
     }
 
     /**
