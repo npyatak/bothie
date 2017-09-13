@@ -88,9 +88,9 @@ use common\models\PostAction;
                             Также мы раскажем о 12 лучших авторах в эфире телеканала <br>
                             «Пятница!»
                         </p>
-                        <p class="m-t-30 tt-up blue-text font-30">
+                        <p class="m-t-30 tt-up white-text font-30">
                             Не ограничивайся селфи. Делай бози <br>
-                            <span class="tt-normal">#bothie</span>
+                            <span class="tt-normal">#bothie #fridaybothie #бозинапятнице</span>
                         </p>
                         <div class="button-wrap">
                             <div>

@@ -18,7 +18,9 @@ use yii\helpers\Html;
                 </div>
                 <div class="bottom m-t-40 wow fadeInUp">
                     <p class="white-text">Иногда, чтобы показать что-то важное, одной фотографии не достаточно. Поэтому мы придумали бози #bothie для тех, кто не любит ограничений. Делай фото сразу с обеих камер с Nokia 8.</p>
-                    <p class="m-t-30 m-b-40 tt-up blue-text font-30">Не ограничивайся селфи. Делай бози <span class="tt-normal">#bothie</span></p>
+                    <p class="m-t-30 m-b-40 tt-up white-text font-30">Не ограничивайся селфи. Делай бози<br>
+                        <span class="tt-normal">#bothie #fridaybothie #бозинапятнице</span>
+                    </p>
                     <p class="white-text">Участвуй в нашем конкурсе и голосуй за лучшие фотографии!</p>
                 </div>
                 <div class="week-type wow fadeInUp">

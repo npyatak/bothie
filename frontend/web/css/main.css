@@ -233,6 +233,19 @@ header .middle-layer {
     z-index: 2;
     overflow: hidden;
 }
+header .bottom-layer::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 60%;
+    left: 30%;
+    width: 350px;
+    height: 200px;
+    background: url('../images/backgrounds/55.png') no-repeat center;
+    -webkit-background-size: contain;
+    background-size: contain;
+    z-index: 0;
+}
 header .bottom-layer {
     position: absolute;
     top: 18%;
@@ -258,12 +271,11 @@ header .bottom-layer.transform {
     transform: translateX(-90%) translateY(27%);
     opacity: 0;
 }
-header .bottom-layer::before {
-
-}
 header .top-figure img {
     display: block;
+    position: relative;
     width: 900px;
+    z-index: 1;
 }
 header .buttons {
     position: relative;
