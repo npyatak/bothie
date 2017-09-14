@@ -111,7 +111,7 @@ use common\models\PostAction;
     <section id="third-screen" class="screen-third p-relative">
         <svg class="svg-left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect class="top" x="0" y="0" />
-            <image id="image1" x="0" y="-35%" xlink:href="images/backgrounds/22.png" />
+            <image id="image1" x="0" y="-35%" xlink:href="images/backgrounds/222.png" />
             <rect class="bottom" x="0" y="0" />
         </svg>
         <div class="container">
@@ -156,7 +156,7 @@ use common\models\PostAction;
     <section class="screen-fourth p-relative">
         <svg class="svg-left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect class="top" x="0" y="0" />
-            <image id="image2" x="-15%" y="-50%" xlink:href="images/backgrounds/44.jpg" />
+            <image id="image2" x="-15%" y="-50%" xlink:href="images/backgrounds/444.jpg" />
         </svg>
         <div class="container">
             <div class="row justify-content-center text-center">
