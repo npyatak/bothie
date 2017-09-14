@@ -20,8 +20,8 @@ use yii\helpers\Html;
                             Делай фото сразу с обеих камер с Nokia 8.</p>
                         <p class="m-t-30 m-b-40 tt-up white-text font-30 wow fadeInUp">
                             Не ограничивайся селфи. Делай бози <br>
-                            <span class="tt-normal">bothie #fridaybothie</span><br>
-                            <span class="tt-normal">bothie #бозинапятнице</span>
+                            <span class="tt-normal">#bothie #fridaybothie</span><br>
+                            <span class="tt-normal">#bothie #бозинапятнице</span>
                         </p>
                         <p class="text-white wow fadeInUp">Участвуй в нашем конкурсе и голосуй за лушие фотографии!</p>
                         <div class="links wow fadeInUp">
@@ -32,7 +32,7 @@ use yii\helpers\Html;
                 </div>
             </div>
             <?php if($posts):?>
-            <div id="container" class="bothie-blocks">
+            <div id="container" class="bothie-blocks wow fadeInUp">
                 <?=$this->render('_bothie_blocks', ['posts' => $posts]);?>
             </div>
             <?php endif;?>

@@ -92,8 +92,8 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'Создай св
                         </p>
                         <p class="m-t-30 tt-up white-text font-30">
                             Не ограничивайся селфи. Делай бози <br>
-                            <span class="tt-normal">bothie #fridaybothie</span><br>
-                            <span class="tt-normal">bothie #бозинапятнице</span>
+                            <span class="tt-normal">#bothie #fridaybothie</span><br>
+                            <span class="tt-normal">#bothie #бозинапятнице</span>
                         </p>
                         <div class="button-wrap">
                             <div>
