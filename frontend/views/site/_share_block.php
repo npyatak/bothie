@@ -13,6 +13,8 @@ $this->registerMetaTag(['property' => 'og:title', 'content' => $title], 'og:titl
 $this->registerMetaTag(['property' => 'og:image', 'content' => $imageUrl], 'og:image');
 $this->registerMetaTag(['property' => 'og:url', 'content' => $url], 'og:url');
 $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:type');
+$this->registerMetaTag(['property' => 'fb:app_id', 'content' => '1704949819546160'], 'fb:app_id');
+
 ?>
 
 <div class="shares text-center">

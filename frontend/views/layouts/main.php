@@ -17,7 +17,7 @@ AppAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= $this->title ? Html::encode($this->title) : 'Nokia 8: покажи свою историю с обеих сторон';?></title>
     <?php $this->head() ?>
 </head>
 <body class="overflow">
