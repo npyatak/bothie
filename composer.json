@@ -22,8 +22,7 @@
         "skeeks/yii2-assets-auto-compress": "*",
         "mihaildev/yii2-ckeditor": "*",
         "kartik-v/yii2-widget-datepicker": "@dev",
-        "yiisoft/yii2-imagine": "*",
-        "mackrais/yii2-crop-image-section": "dev-master"
+        "yiisoft/yii2-imagine": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

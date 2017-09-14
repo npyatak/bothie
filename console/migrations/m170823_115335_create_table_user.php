@@ -22,6 +22,7 @@ class m170823_115335_create_table_user extends Migration
             'image' => $this->string(),
             'status' => $this->integer(1)->notNull()->defaultValue(1),
             'ip' => $this->string(),
+            'browser' => $this->string(),
 
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),

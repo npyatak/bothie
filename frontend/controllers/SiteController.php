@@ -178,7 +178,8 @@ class SiteController extends Controller
                     }*/
 
                     $user->ip = $_SERVER['SERVER_ADDR'];
-                    $user->save(false, ['ip']);
+                    $user->browser = $_SERVER['HTTP_USER_AGENT'];
+                    $user->save(false, ['ip', 'browser']);
 
                     Yii::$app->user->login($user);
                     // special redirect with closing popup window

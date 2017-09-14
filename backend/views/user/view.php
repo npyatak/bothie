@@ -46,6 +46,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->statusLabel;
                 }
             ],
+            'ip',
+            'browser',
             [
                 'attribute' => 'created_at',
                 'value' => function($model) {

@@ -51,6 +51,7 @@ use yii\helpers\Html;
                     <a href="">Условия обработки персональных данных</a>
                 </div>
             </div>
+            <?=$this->render('_share_block');?>
         </div>
     </div>
 </div>

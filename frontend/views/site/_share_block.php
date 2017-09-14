@@ -3,7 +3,7 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 ?>
 <?php 
-$url = Url::to(['site/index'], true);
+$url = Url::canonical();
 $imageUrl = Url::toRoute(['images/items/share.png'], true);
 $title = 'Nokia 8: покажи свою историю с обеих сторон';
 $desc = 'Создай свое бози и выигрывай Nokia 8 #fridaybothie #бозинапятнице #bothie';

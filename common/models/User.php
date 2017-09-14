@@ -29,7 +29,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return [
             [['sid', 'ig_id', 'status', 'created_at', 'updated_at'], 'integer'],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_BANNED]],
-            [['surname', 'name', 'image', 'ip', 'ig_username'], 'string', 'max' => 255],
+            [['surname', 'name', 'image', 'ip', 'ig_username', 'browser'], 'string', 'max' => 255],
             ['soc', 'string', 'max' => 2],
             ['ig_username', 'required', 'on'=>'missing_fields'],
             ['ig_username', 'checkIfIgProfileExists'],
@@ -54,6 +54,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             'created_at' => 'Дата/Время создания',
             'updated_at' => 'Время последнего изменения',
             'ip' => 'IP адрес',
+            'browser' => 'Браузер',
         ];
     }
 
