@@ -27,7 +27,7 @@ $(document).ready(function () {
     $('.go-to-screen').on('click',function (e) {
         e.preventDefault();
         var target = $(this).attr('href');
-        $('html,body').animate({scrollTop:$(target).offset().top},500);
+        $('html,body').animate({scrollTop:($(target).offset().top + 100)},500);
         return false;
     });
     $('#simple-bothie').owlCarousel({
