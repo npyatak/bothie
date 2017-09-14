@@ -17,7 +17,6 @@ class ShareWidget extends \yii\bootstrap\Widget  {
 		}
 		$this->image = $this->image ? $this->image : Url::to($this->post->gluedImageUrl, true);
 		$this->url = $this->url ? $this->url : Url::to($this->post->url, true);
-		$this->title = urlencode($this->title);
 	}
 
 	public function run() {

@@ -85,7 +85,9 @@ AppAsset::register($this);
     </footer>
 </div>
 
-<?= Alert::widget() ?>
+<?= Alert::widget([
+    'options' => ['class' => 'error-sign-in']
+]) ?>
 
 <?php if(Yii::$app->user->isGuest) {
     echo $this->render('_login_modal');

@@ -11,7 +11,7 @@ return [
     'id' => 'app-frontend',
     'language' => 'ru-RU',
     'sourceLanguage' => 'en-US',
-    'name' => 'Короли Bothie',
+    'name' => 'Nokia 8: покажи свою историю с обеих сторон',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log', 'assetsAutoCompress'],
     'controllerNamespace' => 'frontend\controllers',
@@ -61,8 +61,8 @@ return [
                 // 'fb' => [
                 //     // register your app here: https://developers.facebook.com/apps/
                 //     'class' => 'frontend\models\social\FbOAuth2Service',
-                //     'clientId' => '122710335053583',
-                //     'clientSecret' => '5fe0786168048de95a3a0a46acfdd433',
+                //     'clientId' => '1704949819546160',
+                //     'clientSecret' => '68a186f4a709dc925842cf93a699e785',
                 // ],
                 // 'vk' => [
                 //     // register your app here: https://vk.com/editapp?act=create&site=1
