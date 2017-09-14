@@ -7,6 +7,11 @@ $url = Url::to(['site/index'], true);
 $imageUrl = Url::toRoute(['images/items/share.png'], true);
 $title = 'Nokia 8: покажи свою историю с обеих сторон';
 $desc = 'Создай свое бози и выигрывай Nokia 8 #fridaybothie #бозинапятнице #bothie';
+
+$this->registerMetaTag(['name' => 'og:description', 'content' => $desc], 'og:description');
+$this->registerMetaTag(['name' => 'og:title', 'content' => $title], 'og:title');
+$this->registerMetaTag(['name' => 'og:image', 'content' => $imageUrl], 'og:image');
+$this->registerMetaTag(['name' => 'og:type', 'content' => 'website'], 'og:type');
 ?>
 
 <div class="shares text-center">
