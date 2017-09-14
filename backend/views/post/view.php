@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'user_id',
                 'format' => 'raw',
                 'value' => function($model) {
-                    return Html::a($model->user->fullName ? $model->user->fullName : $model->user->id, Url::toRoute(['/user/view', 'id'=>$model->user->id]));
+                    return Html::a($model->user->fullName ? $model->user->fullName : $model->user_id, Url::toRoute(['/user/view', 'id'=>$model->user_id]));
                 }
             ],  
             [

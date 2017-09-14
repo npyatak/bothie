@@ -177,7 +177,7 @@ class SiteController extends Controller
                         $user->save();
                     }*/
 
-                    $user->ip = $_SERVER['SERVER_ADDR'];
+                    $user->ip = $_SERVER['REMOTE_ADDR'];
                     $user->browser = $_SERVER['HTTP_USER_AGENT'];
                     $user->save(false, ['ip', 'browser']);
 
