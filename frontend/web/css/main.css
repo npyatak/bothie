@@ -291,6 +291,7 @@ header .bottom.row {
     position: relative;
     margin-top: 120px;
     padding-bottom: 25px;
+    z-index: 100;
 }
 .shares {
     position: absolute;
