@@ -85,6 +85,8 @@ AppAsset::register($this);
     </footer>
 </div>
 
+<?= Alert::widget() ?>
+
 <?php if(Yii::$app->user->isGuest) {
     echo $this->render('_login_modal');
 } elseif(!Yii::$app->user->identity->ig_id) {

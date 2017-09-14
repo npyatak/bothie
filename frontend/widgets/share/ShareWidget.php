@@ -37,9 +37,9 @@ class ShareWidget extends \yii\bootstrap\Widget  {
     			} else {
 					url  = 'http://www.facebook.com/sharer.php?s=100';
 					url += '&p[title]='     + encodeURIComponent(obj.data('title'));
-					url += '&p[summary]='   + encodeURIComponent(obj.data('desc'));
 					url += '&p[url]='       + encodeURIComponent(obj.data('url'));
 					url += '&p[images][0]=' + encodeURIComponent(obj.data('image'));
+					url += '&p[summary]='   + encodeURIComponent(obj.data('desc'));
     			}
 
     			$.ajax({

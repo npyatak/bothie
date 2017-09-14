@@ -143,7 +143,6 @@ class SiteController extends Controller
     public function actionLogin() {
         $serviceName = Yii::$app->getRequest()->getQueryParam('service');
         
-                        Yii::$app->getSession()->setFlash('error', 'Ваш аккаунт заблокирован');
         if (isset($serviceName)) {
             $eauth = Yii::$app->get('eauth')->getIdentity($serviceName);
             $eauth->setRedirectUrl(Url::toRoute('site/participate'));
@@ -377,6 +376,12 @@ class SiteController extends Controller
         Yii::$app->getUser()->login($user);
 
         return $this->redirect('/');
+    }
+
+    public function actionTest() {
+        Yii::$app->getSession()->setFlash('error', 'Ваш аккаунт заблокирован');
+        
+        return $this->render('test');
     }
 
     private function findPost($id) {

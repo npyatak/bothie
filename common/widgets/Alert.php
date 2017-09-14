@@ -47,6 +47,13 @@ class Alert extends \yii\bootstrap\Widget
     {
         parent::init();
 
+        if(Yii::$app->controller->module->controllerNamespace == 'frontend\controllers') {
+            Yii::$app->assetManager->bundles = [
+                'yii\bootstrap\BootstrapPluginAsset' => false,
+                'yii\bootstrap\BootstrapAsset' => false,
+            ];
+        }
+
         $session = Yii::$app->session;
         $flashes = $session->getAllFlashes();
         $appendCss = isset($this->options['class']) ? ' ' . $this->options['class'] : '';
