@@ -1047,7 +1047,7 @@ header .bottom.row {
 .rates-page .bothie-blocks {
     padding-bottom: 175px;
 }
-.rates-footer, .main-page__footer {
+.rates-footer{
     position: relative;
     padding-top: 60px;
     padding-bottom: 45px;
@@ -1063,6 +1063,16 @@ header .bottom.row {
 }
 .rates-page .shares {
     bottom: 0;
+}
+.main-page__footer {
+    position: relative;
+    background-color: #010431;
+    z-index: 3;
+}
+.main-page__footer .container {
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 45px;
 }
 .main-page__footer .shares {
     bottom: 40px;
@@ -1251,8 +1261,11 @@ header .bottom.row {
     .main-menu .row>.col-6 {
         padding: 0;
     }
-    .rates-footer, .main-page__footer {
+    .rates-footer {
         padding-left: 20px;
+        padding-right: 20px;
+    }
+    .main-page__footer {
         padding-right: 20px;
     }
 }
@@ -1418,11 +1431,6 @@ header .bottom.row {
         right: 0;
         z-index: 13;
     }
-    /*.main-menu .col-6 {*/
-        /*padding-left: 0;*/
-        /*width: calc(100% - 170px);*/
-        /*text-align: right;*/
-    /*}*/
     .shares {
         left: auto;
         right: 0;
@@ -1523,6 +1531,9 @@ header .bottom.row {
     }
     .rates-content__inner {
         padding: 0 20px;
+    }
+    .svg-left {
+        display: none !important;
     }
 }
 @media (max-width: 680px){
@@ -1677,6 +1688,9 @@ header .bottom.row {
     }
     .how-to-win__inner {
         padding-bottom: 50px;
+    }
+    .main-menu__left a {
+        background-position: 20px top;
     }
 }
 @media (max-width: 412px) {
