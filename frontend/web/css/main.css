@@ -84,9 +84,6 @@
 }
 .main-page {
     background: #001135;
-    /*background: url('../images/backgrounds/main_Nokia_1600.jpg') no-repeat top center;*/
-    /*-webkit-background-size: cover;*/
-    /*background-size: cover;*/
 }
 .p-relative {
     position: relative;
@@ -469,10 +466,7 @@ header .bottom.row {
 .personal-account {
     padding-top: 165px;
     padding-bottom: 180px;
-    /*background: url('../images/backgrounds/PersonalAccount_Nokia_8.jpg') no-repeat top center;*/
     background: #000934;
-    -webkit-background-size: cover;
-    background-size: cover;
 }
 .p-a__first {
     max-width: 600px;
@@ -1019,9 +1013,6 @@ header .bottom.row {
 }
 .rates-content {
     padding-top: 145px;
-    /*background: url('../images/backgrounds/rates.jpg') no-repeat center;*/
-    /*-webkit-background-size: cover;*/
-    /*background-size: cover;*/
     background: #000934;
 }
 .rates-page .title {
@@ -1056,13 +1047,14 @@ header .bottom.row {
 .rates-page .bothie-blocks {
     padding-bottom: 175px;
 }
-.rates-footer {
+.rates-footer, .main-page__footer {
     position: relative;
     padding-top: 60px;
     padding-bottom: 45px;
     background-color: #000934;
+    z-index: 3;
 }
-.rates-footer .col-md-2 {
+.rates-footer .col-md-2, .main-page__footer .col-md-2 {
     max-width: 212px;
     flex: 0 0 212px;
 }
@@ -1071,6 +1063,9 @@ header .bottom.row {
 }
 .rates-page .shares {
     bottom: 0;
+}
+.main-page__footer .shares {
+    bottom: 40px;
 }
 .hidden-btn {
     display: none;
@@ -1256,6 +1251,10 @@ header .bottom.row {
     .main-menu .row>.col-6 {
         padding: 0;
     }
+    .rates-footer, .main-page__footer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
 @media (max-width: 1279px) {
     .container {
@@ -1404,9 +1403,6 @@ header .bottom.row {
     }
 }
 @media (max-width: 992px) {
-    /*.main-menu .row>div:last-child {*/
-        /*display: none;*/
-    /*}*/
     .main-menu .col-3 {
         flex: none;
         width: 170px;
@@ -1498,17 +1494,11 @@ header .bottom.row {
         -webkit-background-size: 276px;
         background-size: 276px;
     }
+    .main-page__footer .shares {
+        right: 20px;
+    }
 }
 @media (max-width: 768px) {
-    /*.show-menu.active {*/
-        /*position: fixed;*/
-        /*top: 15px;*/
-        /*right: 0;*/
-        /*z-index: 13;*/
-    /*}*/
-    /*header .top-figure img {*/
-        /*width: 100%;*/
-    /*}*/
     header .top-layer, header .bottom-layer {
         display: none;
     }
@@ -1579,10 +1569,10 @@ header .bottom.row {
     }
 }
 @media (max-width: 530px){
-    .header-footer .shares, .rates-page .shares {
+    .header-footer .shares, .rates-page .shares, .main-page__footer .shares {
         position: static;
     }
-    .header-footer .col-md-2, .rates-page .col-md-2 {
+    .header-footer .col-md-2, .rates-page .col-md-2, .main-page__footer .col-md-2 {
         margin: 0 auto 30px;
         text-align: center !important;
     }
@@ -1591,7 +1581,7 @@ header .bottom.row {
     .container {
         padding: 0 20px;
     }
-    .rates-page .shares {
+    .rates-page .shares, .main-page__footer .shares {
         right: 20px;
     }
     .main-menu .row>div:last-child {

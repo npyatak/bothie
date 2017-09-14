@@ -215,4 +215,12 @@ use common\models\PostAction;
             </div>
         </div>
     </section>
+    <div class="main-page__footer">
+        <div class="row text-left">
+            <div class="col-md-2">
+                <a href="<?=Url::to(['page/personal-info-rules']);?>">Условия обработки персональных данных</a>
+            </div>
+        </div>
+        <?=$this->render('_share_block');?>
+    </div>
 </div>
