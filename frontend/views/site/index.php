@@ -4,6 +4,9 @@ use yii\helpers\Html;
 
 use common\models\Post;
 use common\models\PostAction;
+
+$this->title = 'Nokia 8: покажи свою историю с обеих сторон';
+$this->registerMetaTag(['name' => 'description', 'content' => 'Создай свое бози и выигрывай Nokia 8 #fridaybothie #бозинапятнице #bothie'], 'description');
 ?>
 
 <div class="main-page">

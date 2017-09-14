@@ -162,12 +162,11 @@ class SiteController extends Controller
                         if(isset($eauth->ig_username)) $user->ig_username = $eauth->ig_username;
                         
                         $user->save();
-                    } /*elseif($user->status === User::STATUS_BANNED) {
-                        Yii::$app->getSession()->setFlash('error', 'Ваш аккаунт заблокирован');
+                    } elseif($user->status === User::STATUS_BANNED) {
+                        Yii::$app->getSession()->setFlash('error', 'Вы не можете войти. Ваш аккаунт заблокирован');
                         
-                        $eauth->cancel();
-                        $eauth->redirect();
-                    }*/
+                        $eauth->redirect($eauth->getCancelUrl());
+                    }
                     /*elseif(!$user->username) {                        
                         $user->username = $eauth->attributes['username'];
                         $user->full_name = $eauth->attributes['full_name'];
