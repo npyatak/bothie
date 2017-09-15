@@ -69,7 +69,7 @@ AppAsset::register($this);
                     </div>
                     <div class="col-3">
                         <div class="main-menu__right">
-                            <a href="https://mobileshop.nokia.ru/378450/nokia-8-tempered-blue" target="_blank"></a>
+                            <a href="http://r.mail.ru/r/4166?btype=redir&gpmddealid=27537706&puid1=61&puid2=1&%random%" target="_blank"></a>
                         </div>
                     </div>
                 </div>
