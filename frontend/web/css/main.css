@@ -1207,9 +1207,6 @@ header .bottom.row {
 .simple-bothie__link {
     float: right;
 }
-.screen-second, .screen-third, .screen-fourth, .screen-fifth {
-    display: none;
-}
 @media (max-width: 1920px) {
     .screen-fourth #image2 {
         y: -100%;
