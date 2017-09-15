@@ -1,5 +1,6 @@
 $(window).load(function () {
     $('body').removeClass('overflow');
+    $('.preloader').fadeOut(300);
     $('.top-layer, .bottom-layer').removeClass('transform');
     setTimeout(function () {
         var wow = new WOW(
@@ -18,7 +19,6 @@ $(window).load(function () {
     },300)
 });
 $(document).ready(function () {
-    $('.preloader').fadeOut(300);
     var url = document.location.href;
     $.each($('.nav a'), function(){
         if(this.href == url){ $(this).addClass('active') }
