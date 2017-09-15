@@ -94,14 +94,14 @@ AppAsset::register($this);
     echo $this->render('_missing_fields');
 }?>
 
-<?php //if($_SERVER['HTTP_HOST'] != 'bothie.local') {
+<?php if($_SERVER['HTTP_HOST'] != 'bothie.local') {
     $codes = \common\models\Code::find()->all();
     if($codes) {
         foreach ($codes as $code) {
             echo $code->body;
         }
     }
-//} ?>
+} ?>
 
 <?php $this->endBody() ?>
 </body>
