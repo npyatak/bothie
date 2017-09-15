@@ -6,9 +6,9 @@ use yii\helpers\Html;
     <div class="top-figure">
         <div class="middle-layer"></div>
     </div>
-    <svg class="svg-left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <rect class="top" x="0" y="0" />
-        <image id="image3" x="0" y="-170%" xlink:href="images/backgrounds/bgr.jpg" />
+    <svg version="1.1" baseProfile="full" class="svg-left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <rect fill="#000934" class="top" x="0" y="0" width="100%" height="100%"></rect>
+        <image id="image3" x="-43%" y="-110%" width="189%" height="180%" xlink:href="images/backgrounds/bgr.jpg"></image>
     </svg>
     <div class="rates-content">
         <div class="container">
