@@ -212,7 +212,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'Создай св
                 <div class="col-md-12">
                     <p class="bottom-p">За яркими впечатлениями к нам!</p>
                     <div class="links text-center">
-                        <a href="" class="border-link">Подробнее</a>
+                        <a href="http://r.mail.ru/r/4166?btype=redir&gpmddealid=27537706&puid1=61&puid2=1&%random%" class="border-link" target="_blank">Подробнее</a>
                     </div>
                 </div>
             </div>
