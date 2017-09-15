@@ -1,6 +1,6 @@
-$(window).load(function () {
-    $('body').removeClass('overflow');
+function ready_r() {
     $('.preloader').fadeOut(300);
+    $('body').removeClass('overflow');
     $('.top-layer, .bottom-layer').removeClass('transform');
     setTimeout(function () {
         var wow = new WOW(
@@ -17,8 +17,10 @@ $(window).load(function () {
         );
         wow.init();
     },300)
-});
+}
+document.addEventListener("DOMContentLoaded", ready_r);
 $(document).ready(function () {
+
     var url = document.location.href;
     $.each($('.nav a'), function(){
         if(this.href == url){ $(this).addClass('active') }
