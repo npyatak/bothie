@@ -20,6 +20,17 @@ $(window).load(function () {
 });
 $(document).ready(function () {
 
+    // var videoStep = document.getElementById("video-step");
+    // var video = document.getElementById("video");
+    // videoStep.addEventListener("impress:stepenter", function() {
+    //     video.play();
+    //     alert('play')
+    // }, false);
+    // videoStep.addEventListener("impress:stepleave", function() {
+    //     video.pause();
+    //     alert('not-play')
+    // }, false);
+    
     var url = document.location.href;
     $.each($('.nav a'), function(){
         if(this.href == url){ $(this).addClass('active') }

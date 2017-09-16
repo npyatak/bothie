@@ -137,23 +137,23 @@ svg rect {
     z-index: 1;
 }
 .screen-third #image1 {
-    width: 100%;
-    height: auto;
-    x: 0;
-    y: -35%;
-    -webkit-transform: skewY(22deg);
-    -moz-transform: skewY(22deg);
-    -ms-transform: skewY(22deg);
-    -o-transform: skewY(22deg);
-    transform: skewY(22deg);
+    width: 100% !important;
+    height: auto !important;
+    x: 0 !important;
+    y: -35% !important;
+    -webkit-transform: skewY(22deg) !important;
+    -moz-transform: skewY(22deg) !important;
+    -ms-transform: skewY(22deg) !important;
+    -o-transform: skewY(22deg) !important;
+    transform: skewY(22deg) !important;
     stroke-width: 0;
     stroke-opacity: 0;
     position: relative;
     z-index: 8;
 }
 .screen-fourth .svg-left {
-    height: 850px;
-    top: 42%;
+    height: 850px !important;
+    top: 42% !important;
     -webkit-transform: skewY(-20deg);
     -moz-transform: skewY(-20deg);
     -ms-transform: skewY(-20deg);
@@ -162,15 +162,15 @@ svg rect {
     z-index: 1;
 }
 .screen-fourth #image2 {
-    width: 100%;
-    height: auto;
-    x: -15%;
-    y: -50%;
-    -webkit-transform: skewY(20deg) scale(1.4);
-    -moz-transform: skewY(20deg) scale(1.4);
-    -ms-transform: skewY(20deg) scale(1.4);
-    -o-transform: skewY(20deg) scale(1.4);
-    transform: skewY(20deg) scale(1.4);
+    width: 100% !important;
+    height: auto !important;
+    x: -15% !important;
+    y: -50% !important;
+    -webkit-transform: skewY(20deg) scale(1.4) !important;
+    -moz-transform: skewY(20deg) scale(1.4) !important;
+    -ms-transform: skewY(20deg) scale(1.4) !important;
+    -o-transform: skewY(20deg) scale(1.4) !important;
+    transform: skewY(20deg) scale(1.4) !important;
     stroke-width: 0;
     stroke-opacity: 0;
     position: relative;
@@ -994,23 +994,28 @@ header .bottom.row {
     top: auto;
     bottom: 0;
     left: 0;
-    width: 100%;
-    height: 900px;
-    -webkit-transform: skewY(-20deg) translateY(250px);
-    -moz-transform: skewY(-20deg) translateY(250px);
-    -ms-transform: skewY(-20deg) translateY(250px);
-    -o-transform: skewY(-20deg) translateY(250px);
-    transform: skewY(-20deg) translateY(250px);
+    width: 100% !important;
+    height: 900px !important;
+    -webkit-transform: skewY(-25deg) translateY(250px) !important;
+    -moz-transform: skewY(-25deg) translateY(250px) !important;
+    -ms-transform: skewY(-25deg) translateY(250px) !important;
+    -o-transform: skewY(-25deg) translateY(250px) !important;
+    transform: skewY(-25deg) translateY(250px) !important;
+    overflow: hidden;
 }
 .rates-page .svg-left rect {
     fill: #000934;
 }
 .rates-page #image3 {
-    -webkit-transform: skewY(20deg);
-    -moz-transform: skewY(20deg);
-    -ms-transform: skewY(20deg);
-    -o-transform: skewY(20deg);
-    transform: skewY(20deg);
+    width: 100% !important;
+    height: auto !important;
+    -webkit-transform: skewY(25deg) !important;
+    -moz-transform: skewY(25deg) !important;
+    -ms-transform: skewY(25deg) !important;
+    -o-transform: skewY(25deg) !important;
+    transform: skewY(25deg) !important;
+    y:-100% !important;
+    x: 0 !important;
 }
 .rates-content {
     padding-top: 145px;
@@ -1207,9 +1212,13 @@ header .bottom.row {
 .simple-bothie__link {
     float: right;
 }
+video {
+    width: 100%;
+    height: auto;
+}
 @media (max-width: 1920px) {
     .screen-fourth #image2 {
-        y: -100%;
+        y: -100% !important;
     }
 }
 @media (min-width: 1880px){
@@ -1219,30 +1228,30 @@ header .bottom.row {
 }
 @media (max-width: 1750px) {
     .screen-fourth #image2 {
-        y: -80%;
+        y: -80% !important;
     }
 }
 @media (max-width: 1650px) {
     .screen-third #image1 {
-        y: -31%;
+        y: -31% !important;
     }
 }
 @media (max-width: 1600px) {
     .screen-fourth #image2 {
-        y: -64%;
+        y: -64% !important;
     }
 }
 @media (max-width: 1450px) {
     .screen-third #image1 {
-        y: -27%;
+        y: -27% !important;
     }
     .screen-fourth #image2 {
-        y: -50%;
+        y: -50% !important;
     }
 }
 @media (max-width: 1375px) {
     .screen-third #image1 {
-        y: -25%;
+        y: -25% !important;
     }
 }
 @media (max-width: 1320px) {
@@ -1253,7 +1262,7 @@ header .bottom.row {
         padding: 0;
     }
     .screen-fourth #image2 {
-        y: -40%;
+        y: -40% !important;
     }
     .main-menu .row {
         margin-right: 0;
@@ -1364,10 +1373,10 @@ header .bottom.row {
         height: 605px;
     }
     .screen-third #image1 {
-        y: -20%;
+        y: -20% !important;
     }
     .screen-fourth #image2 {
-        y: -38%;
+        y: -38% !important;
     }
 }
 @media (max-width: 1130px) {
@@ -1391,7 +1400,7 @@ header .bottom.row {
 }
 @media (max-width: 1050px) {
     .screen-fourth #image2 {
-        y: -33%;
+        y: -33% !important;
     }
 }
 @media (max-width: 1023px) {

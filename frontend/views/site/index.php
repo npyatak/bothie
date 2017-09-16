@@ -57,8 +57,8 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'Создай св
         </div>
     </header>
     <section id="second-screen" class="screen-second p-relative">
-        <svg class="svg-left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <rect x="0" y="0" />
+        <svg version="1.1" baseProfile="full" class="svg-left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <rect fill="#004196" x="0" y="0" width="100%" height="100%"></rect>
         </svg>
         <div class="container">
             <div class="row">
@@ -112,10 +112,10 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'Создай св
     </section>
     <?php if($indexAdvices):?>
     <section id="third-screen" class="screen-third p-relative">
-        <svg class="svg-left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <rect class="top" x="0" y="0" />
-            <image id="image1" x="0" y="-35%" xlink:href="images/backgrounds/222.png" />
-            <rect class="bottom" x="0" y="0" />
+        <svg version="1.1" baseProfile="full" class="svg-left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <rect class="top" fill="#004196" x="0" y="0" width="100%" height="50%"></rect>
+            <image id="image1" x="0" y="-35%" width="100%" height="70%" xlink:href="images/backgrounds/222.png"></image>
+            <rect class="bottom" fill="#001135" x="0" y="0" width="100%" height="200%"></rect>
         </svg>
         <div class="container">
             <div class="row justify-content-center text-center">
@@ -130,12 +130,18 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'Создай св
                         <div class="item">
                             <div class="simple-bothie-block">
                                 <div class="img-wrap clearfix">
+                                    <div class="left" style="background-image:url('images/screen/screen-second-left.png')"></div>
+                                    <div class="right" style="background-image:url('images/screen/screen-second-left.png')"></div>
                                     <?php if($advice->image_1):?>
                                         <div class="left" style="background-image:url(<?=$advice->image1Url;?>)"></div>
                                     <?php endif;?>
                                     <?php if($advice->image_2):?>
                                         <div class="right" style="background-image:url(<?=$advice->image2Url;?>)"></div>
                                     <?php endif;?>
+<!--                                    <div id="video-step" class="video">-->
+<!--                                        <video id="video" autoplay loop src="images/Bozy_FB_Live.mp4" type="video/mp4" controls>-->
+<!--                                        </video>-->
+<!--                                    </div>-->
                                 </div>
                                 <div class="simple-bothie__content">
                                     <h3 class="title-bothie"><?=$advice->order;?>. <?=$advice->title;?></h3>
@@ -157,9 +163,9 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'Создай св
     <?php endif;?>
     <?php if($posts):?>
     <section class="screen-fourth p-relative">
-        <svg class="svg-left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <rect class="top" x="0" y="0" />
-            <image id="image2" x="-15%" y="-50%" xlink:href="images/backgrounds/444.jpg" />
+        <svg version="1.1" baseProfile="full" class="svg-left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="62%">
+            <rect class="top" x="0" y="0" width="100%" height="100%"></rect>
+            <image id="image2" x="-40%" y="-50%" width="155%" height="155%" xlink:href="images/backgrounds/444.jpg"></image>
         </svg>
         <div class="container">
             <div class="row justify-content-center text-center">
@@ -186,7 +192,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'Создай св
     <?php endif;?>
     <section class="screen-fifth p-relative">
         <svg class="svg-left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <rect class="top" x="0" y="0" />
+            <rect class="top" x="0" y="0" height="100%" width="100%"></rect>
         </svg>
         <div class="container">
             <div class="row justify-content-center">
