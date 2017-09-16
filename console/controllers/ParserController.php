@@ -13,13 +13,16 @@ use common\models\Post;
 
 class ParserController extends Controller {
 
-	public function actionData($hashtag = 'fridaytvnight') {
+	public function actionData($hashtag = 'fridaybothie') {
+        //fridaybothie и бозинапятнице
         $baseUrl = "https://www.instagram.com/explore/tags/$hashtag/?__a=1";
         $url = $baseUrl;
         $igParseDataIds = IgParseData::find()->select('ig_post_id')->asArray()->column();
         //print_r($igParseDataIds);exit;
         //print_r(htmlentities('#sd'));
         //exit;
+        $totalCount = 0;
+        $count = 0;
 
         while(1) {
             $page = 1;
@@ -31,6 +34,7 @@ class ParserController extends Controller {
             // echo 'page = '.$page;
             $page++;
             foreach ($json->tag->media->nodes as $node) {
+                $totalCount++;
                 if(!in_array($node->id, $igParseDataIds)) {
                     $parseData = new IgParseData;
                     $parseData->ig_post_id = $node->id;
@@ -40,23 +44,34 @@ class ParserController extends Controller {
                     $parseData->status = IgParseData::STATUS_PENDING;
 
                     $parseData->save();
+                    $count++;
                 }
             }
             if(!$json->tag->media->page_info->has_next_page) break;
             $url = $baseUrl.'&max_id='.$json->tag->media->page_info->end_cursor;
         }
+
+        if($count != 0) {
+            Yii::info('Data. '.$hashtag.': new rows added - '.$count.'. Total rows - '.$totalCount, 'parser');
+        } else {
+            Yii::info('Data. '.$hashtag.': no new data. Total rows - '.$totalCount, 'parser');
+        }
 	}
 
-	public function actionImages() {
-		$parseData = IgParseData::find()->where(['status' => IgParseData::STATUS_PENDING])->limit(10)->all();
+	public function actionImages($limit = 10) {
+		$parseData = IgParseData::find()->where(['status' => IgParseData::STATUS_PENDING])->limit($limit)->all();
         $userIgIds = User::find()->select('ig_id')->asArray()->column();
-        
+
+        $newUsersCount = 0;
+        $imagesCount = 0;
+
         foreach ($parseData as $data) {
             if(!in_array($data->ig_user_id, $userIgIds)) {
                 $user = new User;
                 $user->ig_id = $data->ig_user_id;
 
                 $user->save();
+                $newUsersCount++;
             } else {
                 $user = User::find()->where(['ig_id' => $data->ig_user_id])->one();
             }
@@ -109,8 +124,11 @@ class ParserController extends Controller {
 
 	            $data->status = IgParseData::STATUS_PROCESSED;
 	            $data->save(false);
-	        }
 
+                $imagesCount++;
+	        }
         }
+
+        Yii::info('Image. '.count($parseData).' processed. '.$imagesCount.' images saved. '.$newUsersCount.' new users added.', 'parser');
 	}
 }

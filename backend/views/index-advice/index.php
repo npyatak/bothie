@@ -30,10 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => Html::activeDropDownList($searchModel, 'status', IndexAdvice::getStatusArray(), ['prompt'=>'']),
             ],
             [
-                'attribute' => 'image_2',
+                'attribute' => 'image_1',
                 'format' => 'raw',
                 'value' => function($model) {
-                    return Html::img($model->image2Url, ['style'=>'width: 150px;']);
+                    return Html::img($model->image1Url, ['style'=>'width: 150px;']);
                 }
             ],
             [

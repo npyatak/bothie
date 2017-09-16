@@ -40,6 +40,12 @@ return [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                 ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'logFile' => '@app/runtime/logs/eauth.log',
+                    'categories' => ['nodge\eauth\*'],
+                    'logVars' => [],
+                ],
             ],
         ],
         'errorHandler' => [
@@ -93,16 +99,6 @@ return [
                 'how-to-win' => 'site/how-to-win',
                 '<action:\w+>' => 'site/<action>',
                 'page/<url>'=>'site/page',
-            ],
-        ],
-        'log' => [
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'logFile' => '@app/runtime/logs/eauth.log',
-                    'categories' => ['nodge\eauth\*'],
-                    'logVars' => [],
-                ],
             ],
         ],
         'assetsAutoCompress' => [
