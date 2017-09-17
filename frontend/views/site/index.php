@@ -130,8 +130,6 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'Создай св
                         <div class="item">
                             <div class="simple-bothie-block">
                                 <div class="img-wrap clearfix">
-                                    <div class="left" style="background-image:url('images/screen/screen-second-left.png')"></div>
-                                    <div class="right" style="background-image:url('images/screen/screen-second-left.png')"></div>
                                     <?php if($advice->image_1):?>
                                         <div class="left" style="background-image:url(<?=$advice->image1Url;?>)"></div>
                                     <?php endif;?>
