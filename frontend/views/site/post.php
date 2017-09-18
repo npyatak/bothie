@@ -13,10 +13,15 @@ if($userPost->is_from_ig) {
     $image = Url::to($userPost->gluedImageUrl, true);
 }
 
-$this->registerMetaTag(['name' => 'og:description', 'content' => 'Голосуйте за меня и участвуйте в конурсе #fridaybothie #бозинапятнице #bothie'], 'og:description');
-$this->registerMetaTag(['name' => 'og:title', 'content' => 'Nokia 8: покажи свою историю с обеих сторон'], 'og:title');
-$this->registerMetaTag(['name' => 'og:image', 'content' => $image], 'og:image');
-$this->registerMetaTag(['name' => 'og:type', 'content' => 'website'], 'og:type');
+$url = Url::canonical();
+$desc = 'Создай свое бози и выиграй Nokia 8 #fridaybothie #бозинапятнице #bothie';
+
+$this->registerMetaTag(['property' => 'og:description', 'content' => $desc], 'og:description');
+$this->registerMetaTag(['property' => 'og:title', 'content' => $this->title], 'og:title');
+$this->registerMetaTag(['property' => 'og:image', 'content' => $image], 'og:image');
+$this->registerMetaTag(['property' => 'og:url', 'content' => $url], 'og:url');
+$this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:type');
+$this->registerMetaTag(['property' => 'fb:app_id', 'content' => '1704949819546160'], 'fb:app_id');
 ?>
 
 <div class="vote-page">
