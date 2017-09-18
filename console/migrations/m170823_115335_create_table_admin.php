@@ -25,9 +25,9 @@ class m170823_115335_create_table_admin extends Migration
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
 
-        //Админ по умолчанию. Пароль 12345
+        //Админ по умолчанию. Пароль adUIYU%23&$
         $this->batchInsert('{{%admin}}', ['login', 'password_hash', 'auth_key', 'email', 'created_at', 'updated_at'], [
-            ['admin', '$2y$13$Gw0kV1jE93o/4fgRTboHmee/tHqhUOgc43u2xEtVfeTDeMf3HMeRm', 'sdsadasd', '', time(), time()],
+            ['admin', '$2y$13$p/KNFsvgjgMnX1HyfdDj6.HlC3Ud29sEQ6kDPYiiBRbIKvgHrhjOq', 'sdsadasd', '', time(), time()],
         ]);
     }
 

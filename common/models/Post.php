@@ -53,7 +53,7 @@ class Post extends \yii\db\ActiveRecord
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
 
             [['front_x', 'front_y', 'front_w', 'front_h', 'front_scale', 'front_angle', 'back_x', 'back_y', 'back_w', 'back_h', 'back_scale', 'back_angle'], 'safe'],
-            [['frontImageFile', 'backImageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'jpg, jpeg, png', 'maxSize' => 1024 * 1024 * 1, 'tooBig' => 'Изображение не должно быть больше 10Мб', 'checkExtensionByMimeType'=>false],
+            [['frontImageFile', 'backImageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'jpg, jpeg, png', 'maxSize' => 1024 * 1024 * 10, 'tooBig' => 'Изображение не должно быть больше 10Мб', 'checkExtensionByMimeType'=>false],
         ];
     }  
 
