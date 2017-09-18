@@ -37,6 +37,8 @@ use common\components\CustomCKEditor;
 
     <?= $form->field($model, 'status')->dropDownList($model->statusArray, ['class'=>'']) ?>
 
+    <?= $form->field($model, 'link')->textInput() ?>
+
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

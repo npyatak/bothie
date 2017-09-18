@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use common\models\Post;
 use common\models\PostAction;
 
-$this->registerMetaTag(['name' => 'description', 'content' => 'Создай свое бози и выигрывай Nokia 8 #fridaybothie #бозинапятнице #bothie'], 'description');
+$this->registerMetaTag(['name' => 'description', 'content' => 'Создай свое бози и выиграй Nokia 8 #fridaybothie #бозинапятнице #bothie'], 'description');
 ?>
 
 <div class="main-page">
@@ -136,10 +136,6 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'Создай св
                                     <?php if($advice->image_2):?>
                                         <div class="right" style="background-image:url(<?=$advice->image2Url;?>)"></div>
                                     <?php endif;?>
-<!--                                    <div id="video-step" class="video">-->
-<!--                                        <video id="video" autoplay loop src="images/Bozy_FB_Live.mp4" type="video/mp4" controls>-->
-<!--                                        </video>-->
-<!--                                    </div>-->
                                 </div>
                                 <div class="simple-bothie__content">
                                     <h3 class="title-bothie"><?=$advice->order;?>. <?=$advice->title;?></h3>
@@ -149,6 +145,11 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'Создай св
                                     <div class="question-bothie">
                                         <?=$advice->question;?>
                                     </div>
+                                    <?php if($advice->link):?>
+                                    <div class="advice-link">
+                                        <a href="<?=$advice->link;?>">Подробнее</a>
+                                    </div>
+                                    <?php endif;?>
                                 </div>
                             </div>
                         </div>

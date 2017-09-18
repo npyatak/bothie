@@ -69,9 +69,9 @@ $(document).ready(function () {
             gutter: 40
         });
     });
-    $container.on( 'layoutComplete', function( event, items ) {
-        console.log( items.length );
-    });
+    // $container.on( 'layoutComplete', function( event, items ) {
+    //     console.log( items.length );
+    // });
 
     $(window).resize(function(){
         middle_layer_fun();
@@ -125,25 +125,6 @@ $(document).ready(function () {
         return false;
     });
 
-    function getShareUrl(obj) {
-        if(obj.data('type') == 'vk') {
-            url  = 'http://vkontakte.ru/share.php?';
-            url += 'url='          + encodeURIComponent(obj.data('url'));
-            url += '&title='       + encodeURIComponent(obj.data('title'));
-            url += '&text=' + encodeURIComponent(obj.data('desc'));
-            url += '&image='       + encodeURIComponent(obj.data('image'));
-            url += '&noparse=true';
-        } else {
-            url  = 'http://www.facebook.com/sharer.php?s=100';
-            url += '&p[title]='     + encodeURIComponent(obj.data('title'));
-            url += '&p[url]='       + encodeURIComponent(obj.data('url'));
-            url += '&p[images][0]=' + encodeURIComponent(obj.data('image'));
-            url += '&p[summary]='   + encodeURIComponent(obj.data('desc'));
-        }
-
-        return url;
-    }
-
     $('.shares-items a').click(function(e) {
         url = getShareUrl($(this));
 
@@ -152,3 +133,22 @@ $(document).ready(function () {
         return false;
     })
 });
+
+function getShareUrl(obj) {
+    if(obj.data('type') == 'vk') {
+        url  = 'http://vkontakte.ru/share.php?';
+        url += 'url='          + encodeURIComponent(obj.data('url'));
+        url += '&title='       + encodeURIComponent(obj.data('title'));
+        url += '&text=' + encodeURIComponent(obj.data('desc'));
+        url += '&image='       + encodeURIComponent(obj.data('image'));
+        url += '&noparse=true';
+    } else {
+        url  = 'http://www.facebook.com/sharer.php?s=100';
+        url += '&p[title]='     + encodeURIComponent(obj.data('title'));
+        url += '&p[url]='       + encodeURIComponent(obj.data('url'));
+        url += '&p[images][0]=' + encodeURIComponent(obj.data('image'));
+        url += '&p[summary]='   + encodeURIComponent(obj.data('desc'));
+    }
+
+    return url;
+}

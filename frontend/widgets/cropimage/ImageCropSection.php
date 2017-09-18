@@ -15,6 +15,7 @@ use yii\web\AssetManager;
 class ImageCropSection extends Widget
 {
     public $form;
+    public $label;
     /**
      * @var Model the data model that this widget is associated with.
      */
@@ -130,6 +131,7 @@ class ImageCropSection extends Widget
                 $this->options_remove['class'] = 'mr-remove-input';
             }
             return $this->render('view', [
+                'label' => $this->label,
                 'form' => $this->form,
                 'model' => $this->model,
                 'plugin_options' => $this->plugin_options,

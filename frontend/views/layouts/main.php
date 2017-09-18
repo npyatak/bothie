@@ -88,10 +88,10 @@ AppAsset::register($this);
     'options' => ['class' => 'error-sign-in']
 ]) ?>
 
-<?php if(Yii::$app->user->isGuest) {
+<?php if(Yii::$app->user->isGuest && Yii::$app->controller->action->id == 'vote') {
     echo $this->render('_login_modal');
 } elseif(!Yii::$app->user->identity->ig_id) {
-    echo $this->render('_missing_fields');
+    //echo $this->render('_missing_fields');
 }?>
 
 <?php if($_SERVER['HTTP_HOST'] != 'bothie.local') {

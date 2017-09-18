@@ -6,7 +6,7 @@ use yii\helpers\Html;
 $url = Url::canonical();
 $imageUrl = Url::toRoute(['images/items/share.png'], true);
 $title = 'Nokia 8: покажи свою историю с обеих сторон';
-$desc = 'Создай свое бози и выигрывай Nokia 8 #fridaybothie #бозинапятнице #bothie';
+$desc = 'Создай свое бози и выиграй Nokia 8 #fridaybothie #бозинапятнице #bothie';
 
 $this->registerMetaTag(['property' => 'og:description', 'content' => $desc], 'og:description');
 $this->registerMetaTag(['property' => 'og:title', 'content' => $title], 'og:title');

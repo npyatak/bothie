@@ -14,20 +14,20 @@ use yii\helpers\Html;
     <form action="">
         <div class="form-group">
             <div class="left">
-                <label for="conditions" class="form-label"></label>
-                <input id="conditions" type="checkbox" class="form-control">
+                <label for="conditions" class="form-label checked"></label>
+                <input id="conditions" type="checkbox" checked="checked" class="form-control">
             </div>
             <div class="right">
-                <p>Я согласен с  <a href="<?=Url::to(['page/personal-info-rules']);?>">условиями обработки данных</a></p>
+                <p>Авторизуясь, я согласен с  <a href="<?=Url::to(['page/personal-info-rules']);?>">условиями обработки данных</a></p>
             </div>
         </div>
         <div class="form-group">
             <div class="left">
-                <label for="rules" class="form-label"></label>
-                <input id="rules" type="checkbox" class="form-control">
+                <label for="rules" class="form-label checked"></label>
+                <input id="rules" type="checkbox" checked="checked" class="form-control">
             </div>
             <div class="right">
-                <p>Я согласен с   <a href="<?=Url::to(['page/rules']);?>">полными правилами</a></p>
+                <p>Авторизуясь, я согласен с   <a href="<?=Url::to(['page/rules']);?>">полными правилами</a></p>
             </div>
         </div>
     </form>

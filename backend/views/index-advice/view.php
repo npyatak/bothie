@@ -45,6 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'order',
             'title',
+            'link',
             [
                 'attribute' => 'text',
                 'format' => 'raw',

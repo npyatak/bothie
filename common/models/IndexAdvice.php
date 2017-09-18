@@ -38,7 +38,7 @@ class IndexAdvice extends \yii\db\ActiveRecord
     {
         return [
             [['order'], 'required'],
-            [['text', 'question'], 'string'],
+            [['text', 'question', 'link'], 'string'],
             [['status', 'order'], 'integer'],
             [['image_1', 'image_2', 'title'], 'string', 'max' => 255],
         ];
@@ -69,6 +69,7 @@ class IndexAdvice extends \yii\db\ActiveRecord
             'question' => 'Вопрос',
             'status' => 'Статус',
             'order' => 'Номер',
+            'link' => 'Ссылка',
         ];
     }
 

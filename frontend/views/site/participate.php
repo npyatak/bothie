@@ -27,6 +27,7 @@ use yii\widgets\ActiveForm;
                     <div class="col-6">
                         <?=$form->field($model, "frontImageFile")->widget(frontend\widgets\cropimage\ImageCropSection::className(), [
                             'form' => $form,
+                            'label' => $currentWeek->hint_1,
                             'options' => [
                                 'id' => 'post-frontimagefile',
                                 'class' => 'hidden',
@@ -50,6 +51,7 @@ use yii\widgets\ActiveForm;
                     <div class="col-6">
                         <?=$form->field($model, "backImageFile")->widget(frontend\widgets\cropimage\ImageCropSection::className(), [
                             'form' => $form,
+                            'label' => $currentWeek->hint_2,
                             'options' => [
                                 'id' => 'post-backimagefile',
                                 'class' => 'hidden',

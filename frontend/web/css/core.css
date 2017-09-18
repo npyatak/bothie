@@ -646,3 +646,9 @@ input.form-control {
     cursor: pointer;
     outline: none;
 }
+.advice-link {
+    margin-top: 20px;
+}
+.advice-link a {
+    color: #FF9A6F!important;
+}

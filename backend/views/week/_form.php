@@ -43,6 +43,10 @@ use kartik\date\DatePicker;
     ]);
     ?>
 
+    <?= $form->field($model, 'hint_1')->textInput() ?>
+
+    <?= $form->field($model, 'hint_2')->textInput() ?>
+
     <?//= $form->field($model, 'status')->dropDownList(get_class($model)::getStatusArray(), ['class'=>'']) ?>
 
     <div class="form-group">

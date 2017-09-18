@@ -135,6 +135,7 @@ class SiteController extends Controller
         } 
 
         return $this->render('participate', [
+            'currentWeek' => $this->currentWeek,
             'weeks' => Week::find()->all(),
             'model' => $model,
         ]);
