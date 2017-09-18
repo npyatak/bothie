@@ -90,8 +90,8 @@ AppAsset::register($this);
 
 <?php if(Yii::$app->user->isGuest && Yii::$app->controller->action->id == 'vote') {
     echo $this->render('_login_modal');
-} elseif(!Yii::$app->user->identity->ig_id) {
-    //echo $this->render('_missing_fields');
+} elseif(!Yii::$app->user->identity->ig_id && Yii::$app->controller->action->id == 'participate') {
+    echo $this->render('_missing_fields');
 }?>
 
 <?php if($_SERVER['HTTP_HOST'] != 'bothie.local') {

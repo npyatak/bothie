@@ -6,7 +6,7 @@ use yii\helpers\Html;
 <div class="site-login__first text-center">
     <h2 class="title-lg"><?= Html::encode($this->title) ?></h2>
     <?php echo \frontend\widgets\social\SocialWidget::widget(['action' => 'site/login']); ?>
-    <p>Авторизуйся, используя свой аккаунт в Instagram</p>
+    <p>Авторизуйся, используя один из аккаунтов соц.сетей</p>
 </div>
 <div class="site-login__second">
     <span class="alert"></span>

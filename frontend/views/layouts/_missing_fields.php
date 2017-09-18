@@ -30,8 +30,7 @@ yii\bootstrap\Modal::begin([
         'enableAjaxValidation'=>true,
     ]); ?>
         <br>
-        <h4>Пожалуйста, заполните ваш логин Инстаграма.<br>
-            Это необходимо для работы с сайтом.</h4>
+        <h4>Для участия в конкурсе необходимо заполнить ваш логин Инстаграма.</h4>
 
         <div class="input">
             <?= $form->field($user, 'ig_username')->textInput(['class' => 'form-control'])->label(false);?>
