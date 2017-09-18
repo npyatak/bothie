@@ -68,6 +68,8 @@ class ParserController extends Controller {
         foreach ($parseData as $data) {
             if(!in_array($data->ig_user_id, $userIgIds)) {
                 $user = new User;
+                $user->soc = 'ig';
+                $user->sid = $data->ig_user_id;
                 $user->ig_id = $data->ig_user_id;
 
                 $user->save();

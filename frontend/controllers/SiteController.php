@@ -41,7 +41,7 @@ class SiteController extends Controller
                     [
                         'actions' => ['login'],
                         'allow' => true,
-                        'roles' => ['?'],
+                        //'roles' => ['?'],
                     ],
                     [
                         'actions' => ['logout', 'participate', 'user-action'],
@@ -167,16 +167,15 @@ class SiteController extends Controller
                         Yii::$app->getSession()->setFlash('error', 'Вы не можете войти. Ваш аккаунт заблокирован');
                         
                         $eauth->redirect($eauth->getCancelUrl());
-                    }
-                    /*elseif(!$user->username) {                        
-                        $user->username = $eauth->attributes['username'];
-                        $user->full_name = $eauth->attributes['full_name'];
-                        $user->image = $eauth->attributes['profile_picture'];
-                        $user->website = $eauth->attributes['website'];
-                        $user->bio = $eauth->attributes['bio'];
+                    } elseif(!$user->name) {
+                        $user->name = $eauth->first_name;
+                        $user->surname = $eauth->last_name;
+                        if(isset($eauth->photo_url)) $user->image = $eauth->photo_url;
+                        if(isset($eauth->ig_id)) $user->ig_id = $eauth->ig_id;
+                        if(isset($eauth->ig_username)) $user->ig_username = $eauth->ig_username;
 
                         $user->save();
-                    }*/
+                    }
 
                     $user->ip = $_SERVER['REMOTE_ADDR'];
                     $user->browser = $_SERVER['HTTP_USER_AGENT'];
