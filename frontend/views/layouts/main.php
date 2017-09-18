@@ -88,7 +88,7 @@ AppAsset::register($this);
     'options' => ['class' => 'error-sign-in']
 ]) ?>
 
-<?php if(Yii::$app->user->isGuest && Yii::$app->controller->action->id == 'vote') {
+<?php if(Yii::$app->user->isGuest && in_array(Yii::$app->controller->action->id, ['vote', 'index', 'post'])) {
     echo $this->render('_login_modal');
 } elseif(!Yii::$app->user->identity->ig_id && Yii::$app->controller->action->id == 'participate') {
     echo $this->render('_missing_fields');
