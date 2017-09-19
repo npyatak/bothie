@@ -43,7 +43,9 @@ $this->registerMetaTag(['property' => 'fb:app_id', 'content' => '170494981954616
                         <p>Увеличь шансы участника на победу, голосуй!</p>
                     </div>
                     <div class="bottom">
-                        <a href="<?=Url::toRoute(['site/vote']);?>" class="vote-button"><span>Голосовать</span></a>
+                        <?php if($userPost->userCan(PostAction::TYPE_LIKE)):?>
+                            <a href="<?=Url::toRoute(['site/vote']);?>" class="vote-button" data-id="<?=$userPost->id;?>"><span>Голосовать</span></a>
+                        <?php endif;?>
                     </div>
                 </div>
                 <div class="section-bottom text-center">

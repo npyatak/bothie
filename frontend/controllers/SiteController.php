@@ -146,7 +146,11 @@ class SiteController extends Controller
         
         if (isset($serviceName)) {
             $eauth = Yii::$app->get('eauth')->getIdentity($serviceName);
-            $eauth->setRedirectUrl(Url::toRoute('site/participate'));
+            if($serviceName == 'ig') {
+                $eauth->setRedirectUrl(Url::toRoute('site/participate'));
+            } else {
+                $eauth->setRedirectUrl(Url::toRoute('site/vote'));
+            }
             $eauth->setCancelUrl(Url::toRoute('site/login'));
             
             try {

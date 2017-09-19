@@ -110,6 +110,22 @@ $(document).ready(function () {
             }
         });
     });
+
+    $(document).on('click', '.vote-page .vote-button', function (e) {
+        e.preventDefault();
+
+        var obj = $(this);
+
+        $.ajax({
+            type: 'GET',
+            url: '/site/user-action',
+            data: 'id='+obj.attr('data-id'),
+            success: function (data) {
+                $('.vote-page h4 span').html(data.score);
+                obj.remove();
+            }
+        });
+    });
     
     $('.show-menu').click(function () {
         $(this).toggleClass('active');
