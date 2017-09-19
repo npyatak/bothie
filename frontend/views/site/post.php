@@ -43,8 +43,10 @@ $this->registerMetaTag(['property' => 'fb:app_id', 'content' => '170494981954616
                         <p>Увеличь шансы участника на победу, голосуй!</p>
                     </div>
                     <div class="bottom">
-                        <?php if($userPost->userCan(PostAction::TYPE_LIKE)):?>
-                            <a href="<?=Url::toRoute(['site/vote']);?>" class="vote-button" data-id="<?=$userPost->id;?>"><span>Голосовать</span></a>
+                        <?php if(Yii::$app->user->isGuest):?>
+                            <a href="<?=Url::toRoute(['site/vote']);?>" class="vote-button post-modal-btn" data-id="<?=$userPost->id;?>"><span>Голосовать</span></a>
+                        <?php elseif($userPost->userCan(PostAction::TYPE_LIKE)):?>
+                            <a href="<?=Url::toRoute(['site/vote']);?>" class="vote-button post-vote-btn" data-id="<?=$userPost->id;?>"><span>Голосовать</span></a>
                         <?php endif;?>
                     </div>
                 </div>

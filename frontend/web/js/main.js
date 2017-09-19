@@ -111,7 +111,7 @@ $(document).ready(function () {
         });
     });
 
-    $(document).on('click', '.vote-page .vote-button', function (e) {
+    $(document).on('click', '.vote-page .post-vote-btn', function (e) {
         e.preventDefault();
 
         var obj = $(this);
@@ -143,7 +143,7 @@ $(document).ready(function () {
         }
     });
 
-    $(document).on('click', '.login-modal-btn', function() {
+    $(document).on('click', '.login-modal-btn, .post-modal-btn', function() {
         $('#modal-login').modal();
         return false;
     });
