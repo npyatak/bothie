@@ -157,7 +157,7 @@ $(document).ready(function () {
     })
 
     $('a').click(function(event) {
-        if($(this).data('event-label')) {
+        if(typeof $(this).data('event-label') != 'undefined') {
             eventLabel = $(this).data('event-label');
             ga('send', 'event', {
                 eventCategory: 'link',

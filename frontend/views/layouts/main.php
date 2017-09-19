@@ -22,7 +22,11 @@ AppAsset::register($this);
 </head>
 <body class="overflow">
 <?php $this->beginBody() ?>
+
+<?php if($_SERVER['HTTP_HOST'] != 'bothie.local'):?>
 <img src="http://r.mail.ru/r/4166?btype=show&gpmddealid=27537706&puid1=61&puid2=1&%random%" style="width:0;height:0;position:absolute;visibility:hidden;" alt=""/>
+<?php endif;?>
+
 <div class="preloader"><span class="icon"><i class="fa fa-cog fa-spin"></i></span></div>
 <div class="wrapper">
     <div class="main-menu">
