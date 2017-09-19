@@ -378,12 +378,6 @@ class SiteController extends Controller
         return $this->redirect('/');
     }
 
-    public function actionTest() {
-        Yii::$app->getSession()->setFlash('error', 'Ваш аккаунт заблокирован');
-        
-        return $this->render('test');
-    }
-
     private function findPost($id) {
         $post = Post::findOne($id);
 

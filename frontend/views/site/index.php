@@ -147,7 +147,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'Создай св
                                     </div>
                                     <?php if($advice->link):?>
                                     <div class="advice-link">
-                                        <a href="<?=$advice->link;?>">Подробнее</a>
+                                        <a href="<?=$advice->link;?>" data-event-label="more<?=$advice->id;?>">Подробнее</a>
                                     </div>
                                     <?php endif;?>
                                 </div>

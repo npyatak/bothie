@@ -23,6 +23,7 @@ use yii\widgets\ActiveForm;
                     ],
                     //'enableClientValidation'=>false
                 ]); ?>
+
                 <div class="row">
                     <div class="col-6">
                         <?=$form->field($model, "frontImageFile")->widget(frontend\widgets\cropimage\ImageCropSection::className(), [
@@ -73,7 +74,12 @@ use yii\widgets\ActiveForm;
                         ])->label(false);?>
                     </div>
                 </div>
-                <div class="form-group">
+
+                <div class="loading">
+                    <span class="icon"><i class="fa fa-cog fa-spin"></i></span>
+                    <span class="loading-text">Идёт загрузка...</span>
+                </div>
+                <div class="form-group buttons">
                     <?= Html::submitButton('Готово', ['class' =>'border-link']) ?>
                     <br>
                     <?=Html::a('Как выиграть?', Url::toRoute(['site/how-to-win']), ['class' => 'simple-link']);?>

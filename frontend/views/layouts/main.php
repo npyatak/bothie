@@ -36,19 +36,25 @@ AppAsset::register($this);
                     <div class="col-6">
                         <?php
                         $menuItems = [
-                            ['label' => 'Главная', 'url' => Url::toRoute(['site/index'])],
-                            ['label' => 'Участвовать', 'url' => Url::toRoute(['site/participate'])],
-                            ['label' => 'Голосовать', 'url' => Url::toRoute(['site/vote'])],
+                            ['label' => 'Главная', 'url' => Url::toRoute(['site/index']), 'data-event-label' => 'logo-main'],
+                            ['label' => 'Участвовать', 'url' => Url::toRoute(['site/participate']), 'data-event-label' => 'logo-participate'],
+                            ['label' => 'Голосовать', 'url' => Url::toRoute(['site/vote']), 'data-event-label' => 'logo-vote'],
                             ['label' => 'Правила', 'url' => Url::to(['page/rules'])],
                         ];
                         ?>
                         <div class="nav">
                             <ul class="ul">
                                 <?php foreach ($menuItems as $item):?>
-                                    <li><?=Html::a($item['label'], $item['url'], ['class' => Yii::$app->controller->action->id === $item['action'] ? 'active' : '']);?></li>
+                                    <li><?=Html::a($item['label'], $item['url'], [
+                                        'class' => Yii::$app->controller->action->id === $item['action'] ? 'active' : '',
+                                        'data-event-label' => $item['data-event-label'] ? $item['data-event-label'] : ''
+                                    ]);?></li>
                                 <?php endforeach;?>
                                 <?php if (Yii::$app->user->isGuest):?>
-                                    <li><?=Html::a('Войти', Url::toRoute(['site/login']), ['class' => Yii::$app->controller->action->id === $item['action']]);?></li>
+                                    <li><?=Html::a('Войти', Url::toRoute(['site/login']), [
+                                        'class' => Yii::$app->controller->action->id === $item['action'],
+                                        'data-event-label' => 'logo-login',
+                                    ]);?></li>
                                 <?php else:?>
                                     <li><?=Html::beginForm(['/site/logout'], 'post');?>
                                         <?=Html::submitButton(

@@ -61,17 +61,24 @@ $(document).ready(function () {
         }
     });
     var $container = $('#container');
+    var columnWidth = 300;
+    $('.grid-item').each(function() {
+        if($(this).width() < columnWidth) {
+            columnWidth = $(this).width();
+        }
+    });
     // Инициализация Масонри, после загрузки изображений
     $container.imagesLoaded( function() {
         $container.masonry({
             itemSelector: '.grid-item',
             percentPosition: true,
+            columnWidth: columnWidth,
             gutter: 40
         });
     });
-    // $container.on( 'layoutComplete', function( event, items ) {
-    //     console.log( items.length );
-    // });
+    $container.on( 'layoutComplete', function( event, items ) {
+        console.log( items.length );
+    });
 
     $(window).resize(function(){
         middle_layer_fun();
@@ -132,6 +139,26 @@ $(document).ready(function () {
 
         return false;
     })
+
+    $('a').click(function(event) {
+        if($(this).data('event-label')) {
+            eventLabel = $(this).data('event-label');
+            ga('send', 'event', {
+                eventCategory: 'link',
+                eventAction: 'click',
+                eventLabel: eventLabel,
+                transport: 'beacon'
+            });
+        }
+    });
+
+    var form = $('#post-image-form');
+    form.on('afterValidate', function() {
+        if(form.find('.has-error').length == 0) {
+            form.find('.buttons').hide();
+            form.find('.loading').show();
+        }
+    });
 });
 
 function getShareUrl(obj) {
