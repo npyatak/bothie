@@ -22,6 +22,7 @@ AppAsset::register($this);
 </head>
 <body class="overflow">
 <?php $this->beginBody() ?>
+<img src="http://r.mail.ru/r/4166?btype=show&gpmddealid=27537706&puid1=61&puid2=1&%random%" style="width:0;height:0;position:absolute;visibility:hidden;" alt=""/>
 <div class="preloader"><span class="icon"><i class="fa fa-cog fa-spin"></i></span></div>
 <div class="wrapper">
     <div class="main-menu">
