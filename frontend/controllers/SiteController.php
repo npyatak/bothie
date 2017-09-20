@@ -97,13 +97,13 @@ class SiteController extends Controller
         if(!Yii::$app->user->isGuest && $model->load(Yii::$app->request->post())) {
             $model->is_from_ig = 0;
             $model->user_id = Yii::$app->user->id;
-            $model->week_id = Week::getCurrent();
+            $model->week_id = $this->currentWeek->id;
 
             $model->frontImageFile = UploadedFile::getInstance($model, 'frontImageFile');
             $model->backImageFile = UploadedFile::getInstance($model, 'backImageFile');
 
-            $model->front_image = md5('front'.time()).'.'.$model->frontImageFile->extension;;
-            $model->back_image = md5('back'.time()).'.'.$model->backImageFile->extension;;
+            $model->front_image = md5('front'.time()).'.'.$model->frontImageFile->extension;
+            $model->back_image = md5('back'.time()).'.'.$model->backImageFile->extension;
 
             if($model->save()) {
                 $path = $model->imageSrcPath;
@@ -119,7 +119,7 @@ class SiteController extends Controller
                     'y' => $model->front_y,
                     'x' => $model->front_x,
                     'scale' => $model->front_scale,
-                    'angle' => $model->front_angle,
+                    'degrees' => $model->front_angle,
                 ]);
                 Image::cropImageSection($path.$model->back_image, $path.$model->back_image, [
                     'width' => $model->back_w,
@@ -127,7 +127,7 @@ class SiteController extends Controller
                     'y' => $model->back_y,
                     'x' => $model->back_x,
                     'scale' => $model->back_scale,
-                    'angle' => $model->back_angle,
+                    'degrees' => $model->back_angle,
                 ]);
 
                 return $this->redirect(['participate']);
