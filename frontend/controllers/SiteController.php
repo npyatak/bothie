@@ -133,7 +133,7 @@ class SiteController extends Controller
                 return $this->redirect(['participate']);
             }
         } 
-
+        
         return $this->render('participate', [
             'currentWeek' => $this->currentWeek,
             'weeks' => Week::find()->all(),

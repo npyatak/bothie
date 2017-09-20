@@ -74,7 +74,9 @@ use yii\helpers\Html;
                 $('#container').append(html).masonry('appended', html);
 
                 btn.parent().find('.loading').hide();
-                if(data.length == 0) {
+                btn.show();
+
+                if(data.length == 1) {
                     btn.parent().remove();
                 }
             }

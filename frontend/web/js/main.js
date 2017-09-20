@@ -76,9 +76,6 @@ $(document).ready(function () {
             gutter: 40
         });
     });
-    $container.on( 'layoutComplete', function( event, items ) {
-        console.log( items.length );
-    });
 
     $(window).resize(function(){
         middle_layer_fun();

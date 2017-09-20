@@ -126,13 +126,8 @@ function mr_section_init(default_options) {
             // Update data on change
             $(this).on('guillotinechange', function (ev, data, action) {
                 data.scale = parseFloat(data.scale.toFixed(4));
-
-                //options.data_block.find('.mr-origin-height').val($(this).height());
-                //options.data_block.find('.mr-origin-width').val($(this).width());
-                console.log(options.data_block);
+                
                 for (var k in data) {
-                    console.log(k);
-                    console.log(data[k]);
                     options.data_block.find('.mr-' + k).val(data[k]);
                 }
             });

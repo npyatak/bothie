@@ -34,6 +34,8 @@ use yii\widgets\ActiveForm;
                         </div>
                                 
                     <?php ActiveForm::end(); ?>
+                <?php elseif($currentWeek == null):?>
+                    <h4>Голосование закрыто. Пожалуйста, дождитесь нового этапа конкурса.</h4>
                 <?php else:?>
                 <h3 class="do-it-bothie__title">Сделай бози:</h3>
                 <?php $form = ActiveForm::begin([
