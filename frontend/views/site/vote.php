@@ -60,7 +60,7 @@ use yii\helpers\Html;
     $('.load-more').on('click', function() {
         var btn = $(this);
         btn.hide();
-        btn.parent().find('.loading').show();
+        btn.parent().find('.loading .icon').show();
 
         var ids = [];
         $('.grid-item').each(function(el) {
@@ -73,7 +73,7 @@ use yii\helpers\Html;
                 var html = $(data);
                 $('#container').append(html).masonry('appended', html);
 
-                btn.parent().find('.loading').hide();
+                btn.parent().find('.loading .icon').hide();
                 btn.show();
 
                 if(data.length == 1) {
