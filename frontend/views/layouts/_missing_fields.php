@@ -17,9 +17,6 @@ yii\bootstrap\Modal::begin([
         'show' => true,
     ],
     'closeButton' => false,
-    //'header' => '<div class="modal-header-shadow"></div><div class="logo"><img src="/img/logo.png" alt=""></div>',
-    //'header' => '<div class="head-bg"><div class="head-bg-img"></div><div class="head-bg-content"><div class="logo"><img src="/img/logo.png" alt=""></div></div></div>'
-
 ]);
 ?>
 
@@ -51,20 +48,6 @@ yii\bootstrap\Modal::begin([
     #modalContent {
         padding: 40px 0;
         text-align: center;
-    }
-    #modalContent h4 {
-        color: #fff;
-    }
-    #modalContent .input {
-        margin: 40px auto;
-    }
-    #modalContent input {
-        position: relative;
-        width: 300px;
-        height: 50px;
-        opacity: 1;
-        font-size: 25px;
-        margin: auto;
     }
     .fade {
         opacity: 1;

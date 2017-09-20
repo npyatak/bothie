@@ -143,16 +143,20 @@ class SiteController extends Controller
 
     public function actionLogin() {
         $serviceName = Yii::$app->getRequest()->getQueryParam('service');
+        $ref = Yii::$app->getRequest()->getQueryParam('ref');
         
         if (isset($serviceName)) {
             $eauth = Yii::$app->get('eauth')->getIdentity($serviceName);
-            if($serviceName == 'ig') {
+
+            if($ref !== '' && $ref != '/login') {
+                $eauth->setRedirectUrl(Url::toRoute($ref));
+            } elseif($serviceName == 'ig') {
                 $eauth->setRedirectUrl(Url::toRoute('site/participate'));
             } else {
                 $eauth->setRedirectUrl(Url::toRoute('site/vote'));
             }
             $eauth->setCancelUrl(Url::toRoute('site/login'));
-            
+
             try {
                 if ($eauth->authenticate()) {
                     $user = User::findByService($serviceName, $eauth->id);
@@ -349,10 +353,6 @@ class SiteController extends Controller
                 $user->ig_id = $json->user->id;
 
                 $user->save(false, ['ig_username', 'ig_id']);
-                // echo '<pre>';
-                // print_r($json->user->id);
-                // echo '</pre>';
-                // exit;
             }
         }
         

@@ -101,9 +101,9 @@ AppAsset::register($this);
 
 <?php if(Yii::$app->user->isGuest && in_array(Yii::$app->controller->action->id, ['vote', 'index', 'post'])) {
     echo $this->render('_login_modal');
-} elseif(!Yii::$app->user->identity->ig_id && Yii::$app->controller->action->id == 'participate') {
-    echo $this->render('_missing_fields');
-}?>
+} //elseif(!Yii::$app->user->identity->ig_id && Yii::$app->controller->action->id == 'participate') {
+    //echo $this->render('_missing_fields');
+//}?>
 
 <?php if($_SERVER['HTTP_HOST'] != 'bothie.local') {
     $codes = \common\models\Code::find()->all();

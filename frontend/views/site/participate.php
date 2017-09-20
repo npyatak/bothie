@@ -14,6 +14,27 @@ use yii\widgets\ActiveForm;
             <div class="p-a__title wow fadeInUp"></div>
             <hr class="hr">
             <div class="do-it-bothie wow fadeInUp">
+                <?php if(!Yii::$app->user->identity->ig_id):?>
+                    <?php 
+                    $user = Yii::$app->user->identity;
+                    $form = ActiveForm::begin([
+                        'id' => 'form-signup',
+                        'action' => '/site/missing-fields',
+                        'enableAjaxValidation'=>true,
+                    ]); ?>
+                        <br>
+                        <h4>Для участия в конкурсе необходимо заполнить ваш логин Инстаграма.</h4>
+
+                        <div class="input">
+                            <?= $form->field($user, 'ig_username')->textInput(['class' => 'form-control'])->label(false);?>
+                        </div>
+
+                        <div class="modal-button">
+                            <?= Html::submitButton('Подтвердить', ['class' => 'border-link']) ?>
+                        </div>
+                                
+                    <?php ActiveForm::end(); ?>
+                <?php else:?>
                 <h3 class="do-it-bothie__title">Сделай бози:</h3>
                 <?php $form = ActiveForm::begin([
                     'options' => [
@@ -87,6 +108,7 @@ use yii\widgets\ActiveForm;
                 <?php ActiveForm::end(); ?>
             </div>
             <hr class="hr">
+            <?php endif;?>
         </div>
 
 

@@ -664,3 +664,17 @@ input.form-control {
 .advice-link a {
     color: #FF9A6F!important;
 }
+#form-signup h4 {
+    color: #fff;
+}
+#form-signup .input {
+    margin: 40px auto;
+}
+#form-signup input {
+    position: relative;
+    width: 300px;
+    height: 50px;
+    opacity: 1;
+    font-size: 25px;
+    margin: auto;
+}

@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\web\View;
 
@@ -27,7 +28,7 @@ if ($popup) {
 		<?php
 		foreach ($services as $name => $service) {
 			echo '<li class="eauth-service eauth-service-id-' . $service->id . '">';
-			echo Html::a($service->title, [$action, 'service' => $name], [
+			echo Html::a($service->title, [$action, 'service' => $name, 'ref' => Url::current()], [
 				'class' => 'eauth-service-link '.$name,
 				'data-eauth-service' => $service->id,
 			]);
