@@ -44,7 +44,7 @@ class Week extends \yii\db\ActiveRecord
         return [
             [['number', 'name', 'dateStartFormatted', 'dateEndFormatted'], 'required'],
             [['number'], 'integer'],
-            [['description_1', 'description_2'], 'string'],
+            [['description_1', 'description_2', 'winners'], 'string'],
             [['name'], 'string', 'max' => 100],
             [['image', 'hint_1', 'hint_2'], 'string', 'max' => 255],
             [['number'], 'unique'],
@@ -70,6 +70,7 @@ class Week extends \yii\db\ActiveRecord
             'date_end' => 'Дата окончания этапа',
             'hint_1' => 'Подсказка 1',
             'hint_2' => 'Подсказка 2',
+            'winners' => 'Победители',
         ];
     }
 
@@ -150,5 +151,9 @@ class Week extends \yii\db\ActiveRecord
 
     public static function getCurrent() {
         return self::find()->where(['<', 'date_start', time()])->andWhere(['>', 'date_end', time()])->one();
+    }
+
+    public function isFinished() {
+        return $this->date_end < time();
     }
 }

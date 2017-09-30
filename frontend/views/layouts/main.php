@@ -38,13 +38,14 @@ AppAsset::register($this);
                             <a href="http://friday.ru" target="_blank"></a>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 nav-container">
                         <?php
                         $menuItems = [
                             ['label' => 'Главная', 'url' => Url::toRoute(['site/index']), 'data-event-label' => 'logo-main'],
                             ['label' => 'Участвовать', 'url' => Url::toRoute(['site/participate']), 'data-event-label' => 'logo-participate'],
                             ['label' => 'Голосовать', 'url' => Url::toRoute(['site/vote']), 'data-event-label' => 'logo-vote'],
                             ['label' => 'Правила', 'url' => Url::to(['page/rules'])],
+                            ['label' => 'Победители', 'url' => Url::to(['site/winners']), 'data-event-label' => 'logo-winners'],
                         ];
                         ?>
                         <div class="nav">

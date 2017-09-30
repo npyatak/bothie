@@ -31,14 +31,14 @@ use kartik\date\DatePicker;
 
     <?= $form->field($model, 'description_1')->widget(CustomCKEditor::className(),[
         'editorOptions' => [
-            'preset' => 'tiny',
+            'preset' => 'basic',
         ],
     ]);
     ?>
 
     <?= $form->field($model, 'description_2')->widget(CustomCKEditor::className(),[
         'editorOptions' => [
-            'preset' => 'tiny',
+            'preset' => 'basic',
         ],
     ]);
     ?>
@@ -46,6 +46,13 @@ use kartik\date\DatePicker;
     <?= $form->field($model, 'hint_1')->textInput() ?>
 
     <?= $form->field($model, 'hint_2')->textInput() ?>
+
+    <?= $form->field($model, 'winners')->widget(CustomCKEditor::className(),[
+        'editorOptions' => [
+            'preset' => 'basic',
+        ],
+    ]);
+    ?>
 
     <?//= $form->field($model, 'status')->dropDownList(get_class($model)::getStatusArray(), ['class'=>'']) ?>
 

@@ -678,3 +678,20 @@ input.form-control {
     font-size: 25px;
     margin: auto;
 }
+.nav-container {
+    padding: 0;
+}
+.winners {
+    text-align: left;
+}
+.winners .week-type__item {
+    display: inline-block;
+    margin: 120px 0 100px 40px;
+}
+.winners .desc {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 330px);
+    margin: 130px 0 0 80px;
+    color: #fff;
+}

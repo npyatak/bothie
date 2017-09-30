@@ -69,7 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         return Html::img($model->igImageUrl, ['style' => $style]);
                     } else {
-                        return Html::img($model->frontImageUrl, ['width' => '280px']).Html::img($model->backImageUrl, ['width' => '280px']);
+                        return Html::img($model->frontImageUrl, ['width' => '300px']).Html::img($model->backImageUrl, ['width' => '300px']);
                     }
                 }
             ],

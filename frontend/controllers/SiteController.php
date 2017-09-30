@@ -331,6 +331,12 @@ class SiteController extends Controller
         return $this->render('personal-info-rules');
     }
 
+    public function actionWinners() {
+        return $this->render('winners', [
+            'weeks' => Week::find()->all(),
+        ]);
+    }
+
     public function actionMissingFields() {
         if(Yii::$app->user->isGuest) {
             throw new NotFoundHttpException('The requested page does not exist.');
