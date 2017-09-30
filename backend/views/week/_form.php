@@ -32,6 +32,7 @@ use kartik\date\DatePicker;
     <?= $form->field($model, 'description_1')->widget(CustomCKEditor::className(),[
         'editorOptions' => [
             'preset' => 'basic',
+            'allowedContent' => true,
         ],
     ]);
     ?>
@@ -39,6 +40,7 @@ use kartik\date\DatePicker;
     <?= $form->field($model, 'description_2')->widget(CustomCKEditor::className(),[
         'editorOptions' => [
             'preset' => 'basic',
+            'allowedContent' => true,
         ],
     ]);
     ?>
@@ -50,6 +52,7 @@ use kartik\date\DatePicker;
     <?= $form->field($model, 'winners')->widget(CustomCKEditor::className(),[
         'editorOptions' => [
             'preset' => 'basic',
+            'allowedContent' => true,
         ],
     ]);
     ?>
