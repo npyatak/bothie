@@ -42,10 +42,10 @@ AppAsset::register($this);
                         <?php
                         $menuItems = [
                             ['label' => 'Главная', 'url' => Url::toRoute(['site/index']), 'data-event-label' => 'logo-main'],
-                            ['label' => 'Участвовать', 'url' => Url::toRoute(['site/participate']), 'data-event-label' => 'logo-participate'],
-                            ['label' => 'Голосовать', 'url' => Url::toRoute(['site/vote']), 'data-event-label' => 'logo-vote'],
+                            //['label' => 'Участвовать', 'url' => Url::toRoute(['site/participate']), 'data-event-label' => 'logo-participate'],
+                            //['label' => 'Голосовать', 'url' => Url::toRoute(['site/vote']), 'data-event-label' => 'logo-vote'],
                             ['label' => 'Правила', 'url' => Url::to(['page/rules'])],
-                            ['label' => 'Победители', 'url' => Url::to(['/how-to-win#winners']), 'data-event-label' => 'logo-winners'],
+                            ['label' => 'Победители', 'url' => Url::toRoute(['site/winners']), 'data-event-label' => 'logo-winners'],
                         ];
                         ?>
                         <div class="nav">

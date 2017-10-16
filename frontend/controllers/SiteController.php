@@ -92,6 +92,8 @@ class SiteController extends Controller
     }
 
     public function actionParticipate() {
+        return $this->redirect(Url::toRoute('site/winners'));
+
         $model = new Post();
 
         if(!Yii::$app->user->isGuest && $model->load(Yii::$app->request->post())) {
@@ -209,6 +211,8 @@ class SiteController extends Controller
     }
 
     public function actionHowToWin() {
+        return $this->redirect(Url::toRoute('site/winners'));
+
         return $this->render('how_to_win', [
             'currentWeek' => $this->currentWeek,
             'weeks' => Week::find()->all(),
@@ -260,6 +264,8 @@ class SiteController extends Controller
     }
 
     public function actionVote() {
+        return $this->redirect(Url::toRoute('site/winners'));
+
         $limit = 12;
         $count = Post::find()->where(['week_id' => $this->currentWeek->id, 'status' => Post::STATUS_ACTIVE])->count();
 

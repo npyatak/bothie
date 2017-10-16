@@ -63,6 +63,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'Создай св
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
+                <?php if($currentWeek):?>
                     <div class="left wow fadeInLeft">
                         <img class="img-inBlock" src="<?=$currentWeek->imageUrl;?>" alt="Nokia 8">
                         <div class="img-caption">
@@ -70,6 +71,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'Создай св
                             <span><?=$currentWeek->name;?></span>
                         </div>
                     </div>
+                <?php endif;?>
                 </div>
                 <div class="col-md-6 text-center">
                     <div class="top wow fadeInUp">
